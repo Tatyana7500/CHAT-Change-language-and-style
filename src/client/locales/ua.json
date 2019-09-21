@@ -1,0 +1,16 @@
+{
+  "ua": {
+    "Chat": "Чат",
+    "Name": "Ім'я",
+    "Login": "Логін",
+    "Users": "Друзі",
+    "E-mail": "E-mail",
+    "Password": "Пароль",
+    "Send": "Відправити",
+    "Your email": "Email",
+    "Sign in": "Реєстрація",
+    "Your password": "Пароль",
+    "Your message": "Ваше повідомлення",
+    "Confirm password": "Підтвердження паролю"
+  }
+}
