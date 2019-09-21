@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
-const MainHeader = props => {
+const MainHeader = (props, { t }) => {
     const { name, email } = props;
     
     return (
@@ -9,7 +10,7 @@ const MainHeader = props => {
             <div className='wrapper header__wrapper'>
                 <div className='info'>
                     <div>
-                        <span>Name:</span>
+                        <span>{t('Name')}:</span>
                         <span className='info__name'>{name}</span>
                     </div>
                     <div>
@@ -28,5 +29,5 @@ MainHeader.propTypes = {
     email: PropTypes.string.isRequired,
 };
 
-export default MainHeader;
+export default withTranslation('common')(MainHeader);
 

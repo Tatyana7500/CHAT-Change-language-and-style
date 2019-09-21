@@ -1,16 +1,16 @@
 {
   "en": {
-    "Name": "Name",
-    "Chat": "CHAT",
-    "Send": "SEND",
-    "Login": "LOGIN",
-    "Users": "USERS",
-    "E-mail": "E-mail",
-    "Sign in": "SIGN IN",
-    "Password": "Password",
-    "Your email": "Your email",
-    "Your message": "Your message",
-    "Your password": "Your password",
-    "Confirm password": "Confirm Password"
+    "name": "Name",
+    "chat": "CHAT",
+    "send": "SEND",
+    "login": "LOGIN",
+    "users": "USERS",
+    "eMail": "E-mail",
+    "signIn": "SIGN IN",
+    "password": "Password",
+    "yourEmail": "Your email",
+    "yourMessage": "Your message",
+    "yourPassword": "Your password",
+    "confirmPassword": "Confirm Password"
   }
 }

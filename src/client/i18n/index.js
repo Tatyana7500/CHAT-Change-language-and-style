@@ -1,6 +1,5 @@
 import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import { en, ua, de, ar } from './locales/index';
+import { en, ua, de, ar } from './locales';
 
 const options = {
     interpolation: {
@@ -39,7 +38,6 @@ const options = {
 };
 
 i18n
-    .use(LanguageDetector)
     .init(options)
     .changeLanguage('en', (err, t) => {
         if (err) return console.log('something went wrong loading', err);

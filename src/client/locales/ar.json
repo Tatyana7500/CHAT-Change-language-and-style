@@ -1,16 +1,16 @@
 {
   "ar": {
-    "Send": "إرسال",
-    "Chat": "دردشة",
-    "Login": "دخول",
-    "E-mail": "بريد",
-    "Name": "الاسم الأول",
-    "Sign in": "تسجيل",
-    "Users": "المستخدمين",
-    "Your email": "بريدك",
-    "Password": "كلمة المرور",
-    "Your message": "رسالتك",
-    "Your password": "كلمة مرورك",
-    "Confirm password": "أعد كتابة كلمة المرور"
+    "send": "إرسال",
+    "chat": "دردشة",
+    "login": "دخول",
+    "eMail": "بريد",
+    "name": "الاسم الأول",
+    "signIn": "تسجيل",
+    "users": "المستخدمين",
+    "yourEmail": "بريدك",
+    "password": "كلمة المرور",
+    "yourMessage": "رسالتك",
+    "yourPassword": "كلمة مرورك",
+    "confirmPassword": "أعد كتابة كلمة المرور"
   }
 }
