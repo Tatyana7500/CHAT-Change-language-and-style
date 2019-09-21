@@ -20,6 +20,7 @@ class Main extends Component {
             chat: constants.PUBLIC,
             messageAreaValue: '',
             emojisMenu: false,
+            userState: constants.OFFLINE,
             messageBody: {
                 sender: '',
                 receiver: '',
@@ -115,16 +116,25 @@ class Main extends Component {
         });
     };
 
-    componentDidMount() {
-        this.getItemFromLocalStorage();
+   async componentDidMount() {
+       await this.getItemFromLocalStorage();
 
-        this.socket.on(constants.MESSAGE, (message) => {
-            if (message.name !== this.state.name) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
+        await this.socket.on(constants.MESSAGE, (message) => {
+                if (message.name !== this.state.name) {
+                    this.setState({
+                        messagesList: [...this.state.messagesList, message],
+                    });
+                }
+            });
+            this.socket.emit(constants.ONLINE, this.state.idUserSender);
+
+            this.socket.on(constants.ONLINE, (resp) => {
+                resp.map((item)=>{
+
                 });
-            }
-        });
+            });
+       
+       
     }
 
     render() {
@@ -137,6 +147,7 @@ class Main extends Component {
                 <ContentWindow
                     chat={this.state.clickChat}
                     usersList={this.state.usersList}
+                    userState={this.state.userState}
                     windowState={this.state.mainWindowState}
                     messages={this.state.messagesList}
                     addEmoji={this.addEmoji}
