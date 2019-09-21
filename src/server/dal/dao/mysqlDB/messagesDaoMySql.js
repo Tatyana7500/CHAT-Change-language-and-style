@@ -42,7 +42,7 @@ MessagesDaoMySqlDB.prototype.readByReceiver = async function (receiver) {
             messages = rows;
         });
 
-    messages = conversionMessages(messages);
+    messages = util.convertMessages(messages);
 
     return messages;
 };
@@ -63,7 +63,7 @@ MessagesDaoMySqlDB.prototype.readBySenderAndReceiver = async function (sender, r
 
     let messages = [...sent, ...received];
 
-    messages = util.conversionMessages(messages);
+    messages = util.convertMessages(messages);
     messages.sort(util.dynamicSort('date'));
 
     return messages;

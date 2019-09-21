@@ -57,7 +57,7 @@ async function handleMessage(message) {
         email: email,
     };
    
-    if (receiver === 'ALL') {
+    if (receiver === constants.ALL) {
         socket.broadcast.emit(constants.MESSAGE, oneMessage);
     } else {
         const socketIds = clients.filter(item => item.id === id || item.id === receiver)
@@ -119,9 +119,9 @@ app.get('/messages', async (request, res) => {
     let users = await chatDal.readAllUsers();
     let messages = [];
 
-    if (chat === 'PUBLIC') {
+    if (chat === constants.PUBLIC) {
         messages = await chatDal.readPublicMessages();
-    } else if (chat === 'PRIVATE') {
+    } else if (chat === constants.PRIVATE) {
         messages = await chatDal.readPrivateMessages(sender, receiver);
     }
 

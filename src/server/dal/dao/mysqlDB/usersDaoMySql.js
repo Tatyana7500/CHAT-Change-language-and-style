@@ -38,10 +38,10 @@ UsersDaoMySqlDB.prototype.readUser = async function (email, password) {
 
     await this.connection.execute(`SELECT * FROM users WHERE email='${email}' AND password='${password}'`)
         .then(([rows]) => {
-            user = rows;
+            user = rows[0];
         });
 
-    user = util.conversionUser(user);
+    user = util.convertUser(user);
 
     return user;
 };
@@ -54,20 +54,21 @@ UsersDaoMySqlDB.prototype.readAll = async function () {
             users = rows;
         });
 
-    users = util.conversionUsers(users);
+    users = util.convertUsers(users);
 
     return users;
 };
 
 UsersDaoMySqlDB.prototype.readUserToId = async function (id) {
     let user;
+    id = parseInt(id);
 
-    await this.connection.query(`SELECT * FROM users WHERE _id = ${id}`)
+    await this.connection.query(`SELECT * FROM users WHERE _id=${id}`)
         .then(([rows]) => {
             user = rows;
         });
 
-    user = util.conversionUsers(users);
+    user = util.convertUsers(user);
 
     return user;
 };

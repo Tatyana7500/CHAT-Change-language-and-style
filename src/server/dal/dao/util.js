@@ -13,7 +13,7 @@ function dynamicSort(property) {
     };
 }
 
-function conversionMessages(obj) {
+function convertMessages(obj) {
     let messages = [];
 
     for (let i = 0; i < obj.length; i++) {
@@ -24,30 +24,24 @@ function conversionMessages(obj) {
     return messages;
 }
 
-function conversionUsers(obj) {
+function convertUsers(list) {
     let users = [];
 
-    for (let i = 0; i < obj.length; i++) {
-        const user = { _id: obj[i]._id, name: obj[i].name, email: obj[i].email, password: obj[i].password };
+    for (let i = 0; i < list.length; i++) {
+        const user = convertUser(list[i]);
         users.push(user);
     }
 
     return users;
 }
 
-function conversionUser(obj) {
-    let user;
-
-    for (let i = 0; i < obj.length; i++) {
-        user = { _id: obj[i]._id, name: obj[i].name, email: obj[i].email, password: obj[i].password };
-    }
-
-    return user;
+function convertUser(obj) {
+    return { _id: (obj._id).toString(), name: obj.name, email: obj.email, password: obj.password };
 }
 
 module.exports = {
     dynamicSort: dynamicSort,
-    conversionMessages: conversionMessages,
-    conversionUsers: conversionUsers,
-    conversionUser: conversionUser,
+    convertMessages: convertMessages,
+    convertUsers: convertUsers,
+    convertUser: convertUser,
 };
