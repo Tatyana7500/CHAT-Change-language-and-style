@@ -22,8 +22,17 @@ chatDal.initialize();
 
 const clients = [];
 
+// function Client (id, soketId) {
+//     this.id = id;
+//     this.soketId = soketId;
+// }
+
 io.sockets.on('connection', socket => {
-     socket.on(constants.MESSAGE, handleMessage); 
+    socket.on(constants.MESSAGE, handleMessage);
+    socket.on(constants.ONLINE, (res)=>{
+       clients.push(res);
+    });
+    socket.broadcast.emit(constants.ONLINE, clients);
 });
 
 async function handleDisconnect(socket) {

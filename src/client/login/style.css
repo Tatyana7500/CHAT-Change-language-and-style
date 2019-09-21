@@ -283,15 +283,23 @@ body {
     padding: 10px;
 }
 
-.users__card {
+.users__card{
     margin: 0 auto;
     height: 7%;
-    background-color: #f83c87;
     display: flex;
     font-size: 25px;
     border-bottom:1px solid #3d3d3d;
     cursor: pointer;
 }
+
+.offline {
+    background-color: #f83c87;
+}
+
+.online {
+    background-color:green;
+}
+
 
 .login-form__btn {
    position: relative;
@@ -328,3 +336,9 @@ body {
     cssFloat: right;
     marginLeft: 200px;
 }
+/* .offline{
+    
+}
+.online{
+    background-color: green;
+} */

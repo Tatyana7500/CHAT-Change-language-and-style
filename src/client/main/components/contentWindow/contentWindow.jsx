@@ -18,6 +18,7 @@ const ContentWindow = props => {
         closeMenu,
         showEmojis,
         emojisMenu,
+        userState,
     } = props;
 
     return (
@@ -39,7 +40,8 @@ const ContentWindow = props => {
                 </div>
             </div>
 
-            {windowState === constants.USERS && <UsersList usersList={usersList} />}
+            {windowState === constants.USERS && <UsersList usersList={usersList}
+                                                            userState={userState} />}
             {windowState === constants.MESSAGE && <ChatWindow messages={messages}
                                                               addEmoji={addEmoji}
                                                               emojisMenu={emojisMenu}
@@ -65,6 +67,7 @@ ContentWindow.propTypes = {
     showEmojis: PropTypes.func.isRequired,
     closeMenu: PropTypes.func.isRequired,
     emojisMenu: PropTypes.bool.isRequired,
+    userState: PropTypes.string.isRequired,
 };
 
 export default ContentWindow;
