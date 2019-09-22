@@ -21,7 +21,7 @@ const ChatWindow = props => {
             <div className='massageField' id='massageField'>
                 {messages.map((item, index) => {
                     return (
-                        <ChatCloud key={index} name={item.name} text={item.message} email={item.email} date={item.date}/>
+                        <ChatCloud key={index} name={item.name} text={item.message} email={item.email} date={new Date(item.date).toLocaleString()}/>
                     );
                 })
                 }
