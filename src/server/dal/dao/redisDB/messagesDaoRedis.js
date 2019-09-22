@@ -1,6 +1,6 @@
 const DAO = require('../dao');
 const config = require('../../../config');
-const redis = require('redis');
+const redis = require('async-redis');
 const util = require('../util');
 const url = config.settings.redis.connectionRedis;
 
@@ -27,46 +27,29 @@ MessagesDaoRedisDB.prototype.create = async function (msg) {
 };
 
 MessagesDaoRedisDB.prototype.readByReceiver = async function (receiver) {
-    return new Promise((resolve, reject) => {
-        const msgs = [];
-        this.client.zrange('msg_' + receiver, 0, -1, function (err, string) {
-            if (err) {
-                reject(err);
-            }
-            for (let i = 0; i < string.length; i++) {
-                msgs.push(JSON.parse(string[i]));
-            }
-            resolve(msgs);
-        });
-    });
+    const msgs = [];
+    const string = await this.client.zrange('msg_' + receiver, 0, -1);
+    for (let i = 0; i < string.length; i++) {
+        msgs.push(JSON.parse(string[i]));
+    }
+    return msgs;
 };
 
 MessagesDaoRedisDB.prototype.readBySenderAndReceiver = async function (sender, receiver) {
-    return new Promise((resolve, reject) => {
-        const messages = [];
-        const th = this;
-        this.client.zrange('msg_' + sender + receiver, 0, -1, function (err, string) {
-            if (err) {
-                reject(err);
-            }
-            for (let i = 0; i < string.length; i++) {
-                messages.push(JSON.parse(string[i]));
-            }
-            let temp = sender;
-            sender = receiver;
-            receiver = temp;
-            th.client.zrange('msg_' + receiver + sender, 0, -1, function (err, string) {
-                if (err) {
-                    reject(err);
-                }
-                for (let i = 0; i < string.length; i++) {
-                    messages.push(JSON.parse(string[i]));
-                }
-                messages.sort(util.dynamicSort('date'));
-                resolve(messages);
-            });
-        });
-    });
+    const messages = [];
+    const sent = await this.client.zrange('msg_' + sender + '_' + receiver, 0, -1);
+    for (let i = 0; i < sent.length; i++) {
+        messages.push(JSON.parse(sent[i]));
+    }
+    let temp = sender;
+    sender = receiver;
+    receiver = temp;
+    const received = await this.client.zrange('msg_' + sender + '_' + receiver, 0, -1);
+    for (let i = 0; i < received.length; i++) {
+        messages.push(JSON.parse(received[i]));
+    }
+    messages.sort(util.dynamicSort('date'));
+    resolve(messages);
 };
 
 module.exports = MessagesDaoRedisDB;

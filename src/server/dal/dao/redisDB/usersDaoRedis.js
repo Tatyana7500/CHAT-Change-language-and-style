@@ -1,6 +1,6 @@
 const DAO = require('../dao');
 const config = require('../../../config');
-const redis = require('redis');
+const redis = require('async-redis');
 const url = config.settings.redis.connectionRedis;
 
 function UsersDaoRedisDB() {
@@ -30,49 +30,26 @@ UsersDaoRedisDB.prototype.create = async function (object) {
 };
 
 UsersDaoRedisDB.prototype.readUser = async function (email, password) {
-    return new Promise((resolve, reject) => {
-        const key = 'user_' + email;
-        this.client.get(key, function (err, string) {
-            if (err) {
-                reject(err);
-            }
-            let user = JSON.parse(string);
-            if (user.email === email && user.password === password) {
-                resolve(user);
-            }
-        });
-    });
+    const string = await this.client.get('user_' + email);
+    const user = JSON.parse(string);
+    if (user.email === email && user.password === password) {
+        return user;
+    }
 };
 
 UsersDaoRedisDB.prototype.readAll = async function () {
-    const th = this;
-    return new Promise((resolve, reject) => {
-        this.client.scan('0', 'MATCH', 'user_*', 'COUNT', '1000', function (err, keys) {
-            if (err) {
-                reject(err);
-            }
-            th.client.mget(keys[1], function (err, string) {
-                const users = [];
-                for (let i = 0; i < string.length; i++) {
-                    users.push(JSON.parse(string[i]));
-                }
-                resolve(users);
-            });
-        });
-    });
+    const keys = await this.client.scan('0', 'MATCH', 'user_*', 'COUNT', '1000');
+    const string = await this.client.mget(keys[1]);
+    const users = [];
+    for (let i = 0; i < string.length; i++) {
+        users.push(JSON.parse(string[i]));
+    }
+    return users;
 };
 
 UsersDaoRedisDB.prototype.readUserToId = async function (id) {
-    const key = 'user_' + id;
-    return new Promise((resolve, reject) => {
-        this.client.get(key, function (err, string) {
-            if (err) {
-                reject(err);
-            }
-            let user = JSON.parse(string);
-            resolve([user]);
-        });
-    });
+    const user = await this.client.get('user_' + id);
+    return [JSON.parse(user)];
 };
 
 module.exports = UsersDaoRedisDB;
