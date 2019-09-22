@@ -9,21 +9,21 @@ const options = {
     debug: true,
 
     resources: {
-        de: {
+        DE: {
             common: de.de,
         },
-        en: {
+        EN: {
             common: en.en,
         },
-        ua: {
+        UA: {
             common: ua.ua,
         },
-        ar: {
+        AR: {
             common: ar.ar,
         },
     },
 
-    fallbackLng: 'en',
+    fallbackLng: 'EN',
 
     ns: ['common'],
 
@@ -37,10 +37,6 @@ const options = {
     },
 };
 
-i18n
-    .init(options)
-    .changeLanguage('en', (err, t) => {
-        if (err) return console.log('something went wrong loading', err);
-    });
+i18n.init(options);
 
 export default i18n;
