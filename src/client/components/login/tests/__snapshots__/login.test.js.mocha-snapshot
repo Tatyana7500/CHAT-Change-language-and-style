@@ -1,0 +1,1037 @@
+exports["Login snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "header__settings",
+            "children": {
+              "type": "SettingLanguage",
+              "props": {
+                "defaultCountry": "US",
+                "changeLanguage": "changeLanguage"
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "login-wrapper",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "buttons",
+                  "children": [
+                    {
+                      "type": "a",
+                      "props": {
+                        "id": "loginBtn",
+                        "href": "/login",
+                        "className": "btn buttons__btn"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "a",
+                      "props": {
+                        "id": "singInBtn",
+                        "href": "/signIn",
+                        "className": "btn buttons__btn buttons__btn_active"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "login-form",
+                  "children": [
+                    {
+                      "type": "label",
+                      "props": {
+                        "name": "Email",
+                        "htmlFor": "loginPageEmailInput",
+                        "className": "login-form__label"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "input",
+                      "ref": {},
+                      "props": {
+                        "required": true,
+                        "type": "text",
+                        "maxLength": "16",
+                        "id": "loginPageEmailInput",
+                        "className": "login-form__input"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "label",
+                      "props": {
+                        "name": "password",
+                        "htmlFor": "loginPagePasswordInput",
+                        "className": "login-form__label"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "input",
+                      "ref": {},
+                      "props": {
+                        "required": true,
+                        "maxLength": "16",
+                        "type": "password",
+                        "id": "loginPagePasswordInput",
+                        "className": "login-form__input"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "input",
+                      "props": {
+                        "type": "submit",
+                        "id": "enterAccount",
+                        "onClick": "[function]",
+                        "className": "btn login-form__btn"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "header__settings",
+          "children": {
+            "type": "SettingLanguage",
+            "props": {
+              "defaultCountry": "US",
+              "changeLanguage": "changeLanguage"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "function",
+          "type": "SettingLanguage",
+          "props": {
+            "defaultCountry": "US",
+            "changeLanguage": "changeLanguage"
+          }
+        }
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "login-wrapper",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "buttons",
+                "children": [
+                  {
+                    "type": "a",
+                    "props": {
+                      "id": "loginBtn",
+                      "href": "/login",
+                      "className": "btn buttons__btn"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "a",
+                    "props": {
+                      "id": "singInBtn",
+                      "href": "/signIn",
+                      "className": "btn buttons__btn buttons__btn_active"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "login-form",
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "Email",
+                      "htmlFor": "loginPageEmailInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "required": true,
+                      "type": "text",
+                      "maxLength": "16",
+                      "id": "loginPageEmailInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "password",
+                      "htmlFor": "loginPagePasswordInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "required": true,
+                      "maxLength": "16",
+                      "type": "password",
+                      "id": "loginPagePasswordInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "props": {
+                      "type": "submit",
+                      "id": "enterAccount",
+                      "onClick": "[function]",
+                      "className": "btn login-form__btn"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "buttons",
+              "children": [
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "loginBtn",
+                    "href": "/login",
+                    "className": "btn buttons__btn"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "singInBtn",
+                    "href": "/signIn",
+                    "className": "btn buttons__btn buttons__btn_active"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "loginBtn",
+                  "href": "/login",
+                  "className": "btn buttons__btn"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "singInBtn",
+                  "href": "/signIn",
+                  "className": "btn buttons__btn buttons__btn_active"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "login-form",
+              "children": [
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "Email",
+                    "htmlFor": "loginPageEmailInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "type": "text",
+                    "maxLength": "16",
+                    "id": "loginPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "password",
+                    "htmlFor": "loginPagePasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "maxLength": "16",
+                    "type": "password",
+                    "id": "loginPagePasswordInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "props": {
+                    "type": "submit",
+                    "id": "enterAccount",
+                    "onClick": "[function]",
+                    "className": "btn login-form__btn"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "Email",
+                  "htmlFor": "loginPageEmailInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "type": "text",
+                  "maxLength": "16",
+                  "id": "loginPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "password",
+                  "htmlFor": "loginPagePasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "maxLength": "16",
+                  "type": "password",
+                  "id": "loginPagePasswordInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "type": "submit",
+                  "id": "enterAccount",
+                  "onClick": "[function]",
+                  "className": "btn login-form__btn"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "type": "div",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "header__settings",
+          "children": {
+            "type": "SettingLanguage",
+            "props": {
+              "defaultCountry": "US",
+              "changeLanguage": "changeLanguage"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "function",
+          "type": "SettingLanguage",
+          "props": {
+            "defaultCountry": "US",
+            "changeLanguage": "changeLanguage"
+          }
+        }
+      },
+      "type": "div",
+      "props": {
+        "className": "header__settings"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "SettingLanguage",
+            "props": {
+              "defaultCountry": "US",
+              "changeLanguage": "changeLanguage"
+            }
+          },
+          "type": "SettingLanguage",
+          "props": {
+            "defaultCountry": "US",
+            "changeLanguage": "changeLanguage"
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "login-wrapper",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "buttons",
+                "children": [
+                  {
+                    "type": "a",
+                    "props": {
+                      "id": "loginBtn",
+                      "href": "/login",
+                      "className": "btn buttons__btn"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "a",
+                    "props": {
+                      "id": "singInBtn",
+                      "href": "/signIn",
+                      "className": "btn buttons__btn buttons__btn_active"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "login-form",
+                "children": [
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "Email",
+                      "htmlFor": "loginPageEmailInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "required": true,
+                      "type": "text",
+                      "maxLength": "16",
+                      "id": "loginPageEmailInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "password",
+                      "htmlFor": "loginPagePasswordInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "required": true,
+                      "maxLength": "16",
+                      "type": "password",
+                      "id": "loginPagePasswordInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "props": {
+                      "type": "submit",
+                      "id": "enterAccount",
+                      "onClick": "[function]",
+                      "className": "btn login-form__btn"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "buttons",
+              "children": [
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "loginBtn",
+                    "href": "/login",
+                    "className": "btn buttons__btn"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "singInBtn",
+                    "href": "/signIn",
+                    "className": "btn buttons__btn buttons__btn_active"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "loginBtn",
+                  "href": "/login",
+                  "className": "btn buttons__btn"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "singInBtn",
+                  "href": "/signIn",
+                  "className": "btn buttons__btn buttons__btn_active"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "login-form",
+              "children": [
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "Email",
+                    "htmlFor": "loginPageEmailInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "type": "text",
+                    "maxLength": "16",
+                    "id": "loginPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "password",
+                    "htmlFor": "loginPagePasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "maxLength": "16",
+                    "type": "password",
+                    "id": "loginPagePasswordInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "props": {
+                    "type": "submit",
+                    "id": "enterAccount",
+                    "onClick": "[function]",
+                    "className": "btn login-form__btn"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "Email",
+                  "htmlFor": "loginPageEmailInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "type": "text",
+                  "maxLength": "16",
+                  "id": "loginPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "password",
+                  "htmlFor": "loginPagePasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "maxLength": "16",
+                  "type": "password",
+                  "id": "loginPagePasswordInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "type": "submit",
+                  "id": "enterAccount",
+                  "onClick": "[function]",
+                  "className": "btn login-form__btn"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "login-wrapper"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "buttons",
+              "children": [
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "loginBtn",
+                    "href": "/login",
+                    "className": "btn buttons__btn"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "a",
+                  "props": {
+                    "id": "singInBtn",
+                    "href": "/signIn",
+                    "className": "btn buttons__btn buttons__btn_active"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "loginBtn",
+                  "href": "/login",
+                  "className": "btn buttons__btn"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "singInBtn",
+                  "href": "/signIn",
+                  "className": "btn buttons__btn buttons__btn_active"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "buttons"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "loginBtn",
+                  "href": "/login",
+                  "className": "btn buttons__btn"
+                }
+              },
+              "type": "a",
+              "props": {
+                "id": "loginBtn",
+                "href": "/login",
+                "className": "btn buttons__btn"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "a",
+                "props": {
+                  "id": "singInBtn",
+                  "href": "/signIn",
+                  "className": "btn buttons__btn buttons__btn_active"
+                }
+              },
+              "type": "a",
+              "props": {
+                "id": "singInBtn",
+                "href": "/signIn",
+                "className": "btn buttons__btn buttons__btn_active"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "login-form",
+              "children": [
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "Email",
+                    "htmlFor": "loginPageEmailInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "type": "text",
+                    "maxLength": "16",
+                    "id": "loginPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "password",
+                    "htmlFor": "loginPagePasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "required": true,
+                    "maxLength": "16",
+                    "type": "password",
+                    "id": "loginPagePasswordInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "props": {
+                    "type": "submit",
+                    "id": "enterAccount",
+                    "onClick": "[function]",
+                    "className": "btn login-form__btn"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "Email",
+                  "htmlFor": "loginPageEmailInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "type": "text",
+                  "maxLength": "16",
+                  "id": "loginPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "password",
+                  "htmlFor": "loginPagePasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "maxLength": "16",
+                  "type": "password",
+                  "id": "loginPagePasswordInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "type": "submit",
+                  "id": "enterAccount",
+                  "onClick": "[function]",
+                  "className": "btn login-form__btn"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "login-form"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "Email",
+                  "htmlFor": "loginPageEmailInput",
+                  "className": "login-form__label"
+                }
+              },
+              "type": "label",
+              "props": {
+                "name": "Email",
+                "htmlFor": "loginPageEmailInput",
+                "className": "login-form__label"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "type": "text",
+                  "maxLength": "16",
+                  "id": "loginPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              "type": "input",
+              "props": {
+                "required": true,
+                "type": "text",
+                "maxLength": "16",
+                "id": "loginPageEmailInput",
+                "className": "login-form__input"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "password",
+                  "htmlFor": "loginPagePasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              "type": "label",
+              "props": {
+                "name": "password",
+                "htmlFor": "loginPagePasswordInput",
+                "className": "login-form__label"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "required": true,
+                  "maxLength": "16",
+                  "type": "password",
+                  "id": "loginPagePasswordInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              "type": "input",
+              "props": {
+                "required": true,
+                "maxLength": "16",
+                "type": "password",
+                "id": "loginPagePasswordInput",
+                "className": "login-form__input"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "type": "submit",
+                  "id": "enterAccount",
+                  "onClick": "[function]",
+                  "className": "btn login-form__btn"
+                }
+              },
+              "type": "input",
+              "props": {
+                "type": "submit",
+                "id": "enterAccount",
+                "onClick": "[function]",
+                "className": "btn login-form__btn"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
