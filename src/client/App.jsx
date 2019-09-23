@@ -15,7 +15,8 @@ class App extends Component {
         const { theme, lang } = this.getSavedSettings();
         this.applyTheme(theme);
         i18n.changeLanguage(lang);
-
+        this.applyRlt(lang);
+       
         this.state = {
             theme,
             lang,
@@ -30,9 +31,17 @@ class App extends Component {
         }));
 
         i18n.changeLanguage(lang);
-
+        this.applyRlt(lang);
         this.saveSettings(settings);
     };
+
+    applyRlt = (lang) => {
+        if (lang === 'AR') {
+            document.body.setAttribute('style', 'direction:rtl');
+        } else {
+            document.body.setAttribute('style', 'direction:ltr');
+        }
+    }
 
     getSavedSettings = () => {
         const item = localStorage.getItem(constants.SETTINGS);
@@ -77,26 +86,26 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/main' render={props => (
                         <Main {...props}
-                              theme={theme}
-                              translate = { t }
-                              changeTheme={changeTheme}
-                              saveSettings={saveSettings}
-                              changeLanguage={changeLanguage}
-                              defaultCountry={defaultCountry}
+                            theme={theme}
+                            translate={t}
+                            changeTheme={changeTheme}
+                            saveSettings={saveSettings}
+                            changeLanguage={changeLanguage}
+                            defaultCountry={defaultCountry}
                         />)}
                     />
                     <Route exact path='/login' render={props => (
                         <Login {...props}
-                               translate = { t }
-                               changeLanguage={changeLanguage}
-                               defaultCountry={defaultCountry}
+                            translate={t}
+                            changeLanguage={changeLanguage}
+                            defaultCountry={defaultCountry}
                         />)}
                     />
                     <Route exact path='/signIn' render={props => (
                         <SignIn {...props}
-                                translate = { t }
-                                changeLanguage={changeLanguage}
-                                defaultCountry={defaultCountry}
+                            translate={t}
+                            changeLanguage={changeLanguage}
+                            defaultCountry={defaultCountry}
                         />)}
                     />
                 </Switch>
