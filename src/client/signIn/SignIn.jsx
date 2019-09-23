@@ -1,5 +1,6 @@
+import SettingLanguage from '../components/ChangeLanguage.jsx';
+import constants from '../../constants';
 import React from 'react';
-import constants from '../../server/Constants';
 import util from '../util';
 
 class SignIn extends React.Component {
@@ -26,61 +27,92 @@ class SignIn extends React.Component {
     };
 
     render() {
+        const { translate, defaultCountry, changeLanguage } = this.props;
+
         return (
-            <div className='login-wrapper signin'>
-                <div className='buttons'>
-                    <a
-                        id='singin_loginBtn'
-                        href='/login'
-                        className='btn buttons__btn'>
-                        Log in
-                    </a>
-                    <a
-                        id='singin_singInBtn'
-                        href='/signIn'
-                        className='btn buttons__btn buttons__btn  buttons__btn_active'>
-                        Sign in
-                    </a>
+            <div>
+                <div className='header__settings'>
+                    <SettingLanguage
+                        defaultCountry={defaultCountry}
+                        changeLanguage={changeLanguage}
+                    />
                 </div>
-                <div className='login-form'>
-                    <input
-                        id='singinPageEmailInput'
-                        ref={this.emailInputRef}
-                        type='text'
-                        className='login-form__input'
-                        maxLength='25'
-                        placeholder='E-mail'
-                    />
-                    <input
-                        id='singinPageNameInput'
-                        ref={this.nameInputRef}
-                        type='text'
-                        className='login-form__input'
-                        maxLength='16'
-                        placeholder='Name'
-                    />
-                    <input
-                        id='singinPagePasswordInput'
-                        ref={this.passwordInputRef}
-                        type='password'
-                        className='login-form__input'
-                        maxLength='16'
-                        placeholder='Password'
-                    />
-                    <input
-                        id='singinPageComfirmPasswordInput'
-                        type='password'
-                        className='login-form__input'
-                        maxLength='16'
-                        placeholder='ComfirmPassword'
-                    />
-                    <input
-                        id='regAccount'
-                        onClick={this.submitSignInForm}
-                        type='submit'
-                        value='sing in'
-                        className='btn login-form__btn'
-                    />
+                <div className='login-wrapper signin'>
+                    <div className='buttons'>
+                        <a
+                            href='/login'
+                            id='singin_loginBtn'
+                            className='btn buttons__btn'>
+                            {translate('login')}
+                        </a>
+                        <a
+                            href='/signIn'
+                            id='singin_singInBtn'
+                            className='btn buttons__btn buttons__btn  buttons__btn_active'>
+                            {translate('signIn')}
+                        </a>
+                    </div>
+                    <div className='login-form'>
+                        <label
+                            name='Email'
+                            htmlFor='loginPageEmailInput'
+                            className='login-form__label'>
+                            {translate('yourEmail')}
+                        </label>
+                        <input
+                            type='text'
+                            maxLength='25'
+                            ref={this.emailInputRef}
+                            id='singinPageEmailInput'
+                            className='login-form__input'
+                            placeholder={translate('eMail')}
+                        />
+                        <label
+                            name='name'
+                            htmlFor='singinPageNameInput'
+                            className='login-form__label' >{translate('name')}
+                        </label>
+                        <input
+                            type='text'
+                            maxLength='16'
+                            ref={this.nameInputRef}
+                            id='singinPageNameInput'
+                            className='login-form__input'
+                            placeholder={translate('name')}
+                        />
+                        <label
+                            name='password'
+                            htmlFor='loginPagePasswordInput'
+                            className='login-form__label' >{translate('yourPassword')}
+                        </label>
+                        <input
+                            maxLength='16'
+                            type='password'
+                            ref={this.passwordInputRef}
+                            id='singinPagePasswordInput'
+                            className='login-form__input'
+                            placeholder={translate('password')}
+                        />
+                        <label
+                            name='confirmPassword'
+                            htmlFor='singinPageComfirmPasswordInput'
+                            className='login-form__label' >{translate('confirmPassword')}
+                        </label>
+                        <input
+                            maxLength='16'
+                            type='password'
+                            className='login-form__input'
+                            id='singinPageComfirmPasswordInput'
+                            placeholder={translate('confirmPassword')}
+                        />
+                        <input
+                            type='submit'
+                            id='regAccount'
+                            value={translate('signIn')}
+                            className='btn login-form__btn'
+                            onClick={this.submitSignInForm}
+                        />
+                    </div>
                 </div>
             </div>
         );

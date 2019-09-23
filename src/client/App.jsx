@@ -1,74 +1,108 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import React, { Component } from 'react';
-import './App.css';
-import ReactFlagsSelect from 'react-flags-select';
-import 'react-flags-select/css/react-flags-select.css';
+import SignIn from './signIn/SignIn.jsx';
+import Login from './login/Login.jsx';
+import constants from '../constants';
+import Main from './main';
 import i18n from './i18n';
+import './css/styles.css';
 
-class AppSettings extends Component {
-    state = {
-        activeTheme: 'light',
-        lang: 'US',
-    };
+class App extends Component {
+    constructor(props) {
+        super(props);
 
-    lightThemeRef = React.createRef();
-    darkThemeRef = React.createRef();
-
-    changeLanguage = (lang) => {
-        this.setState({ lang: lang });
+        const { theme, lang } = this.getSavedSettings();
+        this.applyTheme(theme);
         i18n.changeLanguage(lang);
-    };
 
-    componentDidUpdate() {
-        const { activeTheme } = this.state;
-
-        if (this.lightThemeRef.current && activeTheme === 'light') {
-            this.lightThemeRef.current.classList.add('activeTheme');
-        } else {
-            this.lightThemeRef.current.classList.remove('activeTheme');
-        }
-
-        if (this.darkThemeRef.current && activeTheme === 'dark') {
-            this.darkThemeRef.current.classList.add('activeTheme');
-        } else {
-            this.darkThemeRef.current.classList.remove('activeTheme');
-        }
+        this.state = {
+            theme,
+            lang,
+        };
     }
 
-    handleSettingTheme = activeTheme => {
-        this.setState({
-            activeTheme: activeTheme,
-        });
+    changeLanguage = lang => {
+        const settings = { theme: this.state.theme, lang: lang };
+        this.setState(state => ({
+            ...state,
+            lang: lang,
+        }));
+
+        i18n.changeLanguage(lang);
+
+        this.saveSettings(settings);
+    };
+
+    getSavedSettings = () => {
+        const item = localStorage.getItem(constants.SETTINGS);
+
+        if (!item) {
+            return { theme: constants.LIGHT, lang: constants.US };
+        }
+
+        return JSON.parse(item);
+    };
+
+    applyTheme = theme => {
+        document.body.setAttribute('data-theme', theme);
+    };
+
+    saveSettings = (settings) => {
+        localStorage.setItem(constants.SETTINGS, JSON.stringify(settings));
+    };
+
+    changeTheme = () => {
+        const theme = this.state.theme === constants.LIGHT ? constants.DARK : constants.LIGHT;
+        const settings = { theme: theme, lang: this.state.lang };
+        this.setState(state => ({
+            ...state,
+            theme: theme,
+        }));
+
+        this.saveSettings(settings);
+        this.applyTheme(theme);
     };
 
     render() {
         const defaultCountry = this.state.lang.toUpperCase();
+        const changeLanguage = this.changeLanguage;
+        const saveSettings = this.saveSettings;
+        const changeTheme = this.changeTheme;
+        const { theme } = this.state;
+        const { t } = this.props;
 
         return (
-                <div className='settings'>
-                    <div className='settings__item'>
-                        <ReactFlagsSelect
-                            className = 'ReactFlagsSelect'
-                            countries = {['US', 'DE', 'AR', 'UA']}
-                            customLabels = {{ 'US': 'EN', 'DE': 'DE', 'AR': 'AR', 'UA': 'UA' }}
-                            defaultCountry = {defaultCountry}
-                            onSelect={this.changeLanguage}
-                        />
-                    </div>
-                    <div className='settings__item'>
-                        <button
-                            id='light'
-                            ref={this.lightThemeRef}
-                            className='settings__item_button activeTheme'
-                            onClick={() => this.handleSettingTheme('light')} />
-                        <button
-                            id='dark'
-                            ref={this.darkThemeRef}
-                            className='settings__item_button '
-                            onClick={() => this.handleSettingTheme('dark')} />
-                    </div>
-                </div>
+            <Router>
+                <Switch>
+                    <Route exact path='/main' render={props => (
+                        <Main {...props}
+                              theme={theme}
+                              translate = { t }
+                              changeTheme={changeTheme}
+                              saveSettings={saveSettings}
+                              changeLanguage={changeLanguage}
+                              defaultCountry={defaultCountry}
+                        />)}
+                    />
+                    <Route exact path='/login' render={props => (
+                        <Login {...props}
+                               translate = { t }
+                               changeLanguage={changeLanguage}
+                               defaultCountry={defaultCountry}
+                        />)}
+                    />
+                    <Route exact path='/signIn' render={props => (
+                        <SignIn {...props}
+                                translate = { t }
+                                changeLanguage={changeLanguage}
+                                defaultCountry={defaultCountry}
+                        />)}
+                    />
+                </Switch>
+            </Router>
         );
     }
 }
 
-export default AppSettings;
+export default withTranslation('common')(App);

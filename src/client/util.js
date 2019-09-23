@@ -1,3 +1,5 @@
+const constants = require('../constants');
+
 const sendPost = async (url, data) => {
     const response = await fetch(url, {
         method: 'POST',
@@ -17,25 +19,12 @@ const sendGet = async (url) => {
     return await data;
 };
 
-const setToLocalStorage = (data) => {
-    if (data) {
-        localStorage.setItem('chat', JSON.stringify(data));
-        window.location.href = '/main';
-    }
-};
-
-const getLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('chat'));
-};
-
-const goToLogin = () => {
-    window.location.href = '/login';
+const drawOnline = (id, arr) => {
+    return arr.includes(id) ? constants.ONLINE : constants.OFFLINE;
 };
 
 module.exports = {
+    drawOnline: drawOnline,
     sendGetRequest: sendGet,
     sendPostRequest: sendPost,
-    setToLocalStorage: setToLocalStorage,
-    getLocalStorage: getLocalStorage,
-    goToLogin: goToLogin,
 };

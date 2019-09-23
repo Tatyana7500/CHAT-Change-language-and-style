@@ -41,7 +41,7 @@ function convertUser(obj) {
 
 module.exports = {
     dynamicSort: dynamicSort,
-    convertMessages: convertMessages,
-    convertUsers: convertUsers,
     convertUser: convertUser,
+    convertUsers: convertUsers,
+    convertMessages: convertMessages,
 };

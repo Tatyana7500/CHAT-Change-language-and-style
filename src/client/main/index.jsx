@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import MainHeader from './components/mainHeader/mainHeader';
 import ContentWindow from './components/contentWindow/contentWindow';
-import constants from '../../server/constants';
-import util from '../util';
+import SettingLanguage from '../components/ChangeLanguage.jsx';
+import MainHeader from './components/mainHeader/mainHeader';
+import SettingTheme from '../components/ChangeTheme.jsx';
 import openSocket from 'socket.io-client';
+import React, { Component } from 'react';
+import constants from '../../constants';
+import PropTypes from 'prop-types';
+import logic from './logic';
+import util from '../util';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket(constants.LOCALHOST);
         this.state = {
-            name: '',
-            email: '',
             mainWindowState: constants.USERS,
-            usersList: [],
-            messagesList: [],
-            idUserSender: null,
             idUserReceiver: constants.ALL,
+            userState: constants.OFFLINE,
             chat: constants.PUBLIC,
             messageAreaValue: '',
+            idUserSender: null,
             emojisMenu: false,
-            userState: constants.OFFLINE,
+            messagesList: [],
+            usersList: [],
+            clients: [],
             messageBody: {
                 sender: '',
                 receiver: '',
@@ -33,13 +36,19 @@ class Main extends Component {
                 message: '',
                 date: '',
             },
+            email: '',
+            name: '',
         };
     }
 
+    static propTypes = {
+        translate: PropTypes.func.isRequired,
+    };
+
     addEmoji = (e) => {
-        const emoji = e.native;
+        const { native: emoji } = e;
         this.setState({
-            messageAreaValue: this.state.messageAreaValue + emoji,
+            messageAreaValue: `${this.state.messageAreaValue} ${emoji}`,
         });
     };
 
@@ -83,6 +92,10 @@ class Main extends Component {
         this.setState({ messageAreaValue: e.target.value });
     };
 
+    clickButtonLogOut = async () => {
+        logic.removeLocalStorage();
+    };
+
     clickButtonSend = async () => {
         await this.setState({
             messageBody: {
@@ -108,7 +121,7 @@ class Main extends Component {
     };
 
     getItemFromLocalStorage = () => {
-        const userObj = localStorage.getItem('chat');
+        const userObj = logic.getLocalStorage();
         this.setState({
             name: JSON.parse(userObj).name,
             email: JSON.parse(userObj).email,
@@ -116,50 +129,67 @@ class Main extends Component {
         });
     };
 
-   async componentDidMount() {
-       await this.getItemFromLocalStorage();
+    async componentDidMount() {
+        await this.getItemFromLocalStorage();
 
         await this.socket.on(constants.MESSAGE, (message) => {
-                if (message.name !== this.state.name) {
-                    this.setState({
-                        messagesList: [...this.state.messagesList, message],
-                    });
-                }
-            });
-            this.socket.emit(constants.ONLINE, this.state.idUserSender);
-
-            this.socket.on(constants.ONLINE, (resp) => {
-                resp.map((item)=>{
-
+            if (message.name !== this.state.name) {
+                this.setState({
+                    messagesList: [...this.state.messagesList, message],
                 });
+            }
+        });
+        this.socket.emit(constants.ONLINE, this.state.idUserSender);
+
+        this.socket.on(constants.ONLINE, (res) => {
+            this.setState({
+                clients: res,
             });
-       
-       
+        });
     }
 
     render() {
+       const { translate, defaultCountry, changeTheme, changeLanguage, theme } = this.props;
+
         return (
-            <div className='main'>
-                <MainHeader
-                    name={this.state.name}
-                    email={this.state.email}
-                />
-                <ContentWindow
-                    chat={this.state.clickChat}
-                    usersList={this.state.usersList}
-                    userState={this.state.userState}
-                    windowState={this.state.mainWindowState}
-                    messages={this.state.messagesList}
-                    addEmoji={this.addEmoji}
-                    clickChat={this.clickButtonChat}
-                    closeMenu={this.closeMenu}
-                    showEmojis={this.showEmojis}
-                    emojisMenu={this.state.emojisMenu}
-                    clickUsers={this.clickButtonUser}
-                    clickButtonSend={this.clickButtonSend}
-                    messageAreaValue={this.state.messageAreaValue}
-                    updateMessageValue={this.updateMessageValue}
-                />
+            <div>
+                <div className='header__settings'>
+                    <SettingTheme
+                        theme={theme}
+                        changeTheme={changeTheme}
+                    />
+                    <SettingLanguage
+                        defaultCountry={defaultCountry}
+                        changeLanguage={changeLanguage}
+                    />
+                </div>
+                <div className='main'>
+                    <MainHeader
+                        name={this.state.name}
+                        translate = {translate}
+                        email={this.state.email}
+                        clickButtonLogOut={this.clickButtonLogOut}
+                    />
+                    <ContentWindow
+                        name={this.state.name}
+                        translate = {translate}
+                        addEmoji={this.addEmoji}
+                        closeMenu={this.closeMenu}
+                        chat={this.state.clickChat}
+                        showEmojis={this.showEmojis}
+                        clients={this.state.clients}
+                        userState={this.state.userState}
+                        clickChat={this.clickButtonChat}
+                        usersList={this.state.usersList}
+                        clickUsers={this.clickButtonUser}
+                        emojisMenu={this.state.emojisMenu}
+                        messages={this.state.messagesList}
+                        clickButtonSend={this.clickButtonSend}
+                        windowState={this.state.mainWindowState}
+                        updateMessageValue={this.updateMessageValue}
+                        messageAreaValue={this.state.messageAreaValue}
+                    />
+                </div>
             </div>
         );
     }

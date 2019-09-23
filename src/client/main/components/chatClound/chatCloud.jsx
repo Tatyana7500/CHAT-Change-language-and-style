@@ -1,11 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const ChatCloud = props => {
-    const { name, email, text, date } = props;
+    const { name, email, text, date, nameSender } = props;
+    const float = name === nameSender ? 'massage messageSender' : 'massage messageReceiver';
 
     return (
-            <div className='massage'>
+            <div className={ float }>
                 <p className='massage__name'>{name}</p>
                 <p className='massage__email'>{email}</p>
                 <span className='massage__text'>{text}</span>
@@ -19,6 +20,7 @@ ChatCloud.propTypes = {
     email: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    nameSender: PropTypes.string.isRequired,
 };
 
 export default ChatCloud;

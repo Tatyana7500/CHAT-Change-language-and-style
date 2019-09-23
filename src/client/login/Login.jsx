@@ -1,9 +1,12 @@
+import SettingLanguage from '../components/ChangeLanguage.jsx';
+import { browserHistory } from 'react-router';
 import React, { Component } from 'react';
-import constants from '../../server/constants';
+import constants from '../../constants';
+import logic from './logic';
 import util from '../util';
-import './style.css';
+import '../css/style.css';
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.emailInputRef = React.createRef();
@@ -21,62 +24,78 @@ export default class Login extends Component {
         });
         const data = await util.sendPostRequest(`${constants.LOCALHOST}/auth`, this.state);
         
-        await util.setToLocalStorage(await data.json());
+        await logic.setToLocalStorage(await data.json());
+        window.location.href = '/main';
     };
 
     render() {
+        const { translate, defaultCountry, changeLanguage } = this.props;
+
         return (
-            <div className='login-wrapper'>
-                <div className='buttons'>
-                    <a 
-                        id='loginBtn'
-                        href='/login'
-                        className='btn buttons__btn buttons__btn_active'>login
-                    </a>
-                    <a 
-                        id='singInBtn'
-                        href='/signIn'
-                        className='btn buttons__btn buttons__btn'>sing in
-                    </a>
-                </div>
-                <div className='login-form'>
-                    <label 
-                        name='Email'
-                        htmlFor='loginPageEmailInput'
-                        className='login-form__label'>Your e-mail
-                    </label>
-                    <input 
-                        id='loginPageEmailInput'
-                        ref={this.emailInputRef}
-                        type='text'
-                        required
-                        maxLength='16'
-                        className='login-form__input'
-                        placeholder='E-mail'
-                    />
-                    <label 
-                        name='password'
-                        htmlFor='loginPagePasswordInput'
-                        className='login-form__label' >Your Password
-                    </label>
-                    <input 
-                        id='loginPagePasswordInput'
-                        ref={this.passwordInputRef}
-                        type='password'
-                        required
-                        className='login-form__input'
-                        maxLength='16'
-                        placeholder='Password'
-                    />
-                    <input 
-                        id='enterAccount'
-                        type='submit'
-                        value='login'
-                        onClick={this.submitLoginForm}
-                        className='btn login-form__btn'
-                    />
+            <div>
+            <div className='header__settings'>
+                <SettingLanguage
+                    defaultCountry={defaultCountry}
+                    changeLanguage={changeLanguage}
+                />
+            </div>
+                <div className='login-wrapper'>
+                    <div className='buttons'>
+                        <a
+                            id='loginBtn'
+                            href='/login'
+                            className='btn buttons__btn'>
+                            {translate('login')}
+                        </a>
+                        <a
+                            id='singInBtn'
+                            href='/signIn'
+                            className='btn buttons__btn buttons__btn_active'>
+                            {translate('signIn')}
+                        </a>
+                    </div>
+                    <div className='login-form'>
+                        <label
+                            name='Email'
+                            htmlFor='loginPageEmailInput'
+                            className='login-form__label'>
+                            {translate('yourEmail')}
+                        </label>
+                        <input
+                            required
+                            type='text'
+                            maxLength='16'
+                            id='loginPageEmailInput'
+                            ref={this.emailInputRef}
+                            className='login-form__input'
+                            placeholder={translate('eMail')}
+                        />
+                        <label
+                            name='password'
+                            htmlFor='loginPagePasswordInput'
+                            className='login-form__label' >{translate('yourPassword')}
+                        </label>
+                        <input
+                            required
+                            maxLength='16'
+                            type='password'
+                            id='loginPagePasswordInput'
+                            ref={this.passwordInputRef}
+                            className='login-form__input'
+                            placeholder={translate('password')}
+                        />
+                        <input
+                            type='submit'
+                            id='enterAccount'
+                            value={translate('login')}
+                            onClick={this.submitLoginForm}
+                            className='btn login-form__btn'
+                        />
+                    </div>
                 </div>
             </div>
         );
     }
 }
+
+export default Login;

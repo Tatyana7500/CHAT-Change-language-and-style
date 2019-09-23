@@ -1,0 +1,65 @@
+html {
+    --color-01:#35A298;
+    --color-03:#d1dae8;
+    --color-04:#000000;
+    --color-05:#8080b4;
+    --color-07:#e3e3f7;
+    --color-10:#9e9e9e;
+    --color-11:#cccccc;
+    --color-12:#ffffff;
+    --color-13:#676793;
+    --color-14:#f9f9f9;
+    --color-15:#161633;
+    --color-16:#2c4451;
+    --color-17:#212147;
+    --color-18:#333333;
+    --color-19:#383875;
+    --color-20:#212147;
+    --color-21:'☀️';
+    --color-22:'🌙';
+}
+
+body[data-theme='light'] {
+    --color-loginBackground:var(--color-12);
+    --color-textNotActive:var(--color-12);
+    --color-fieldButtons:var(--color-05);
+    --color-backMessage:var(--color-12);
+    --color-textActive:var(--color-18);
+    --color-headerUser:var(--color-05);
+    --color-textForm: var(--color-04);
+    --color-btnActive:var(--color-12);
+    --color-btnShadow:var(--color-20);
+    --color-navShadow:var(--color-19);
+    --color-wrapper: var(--color-03);
+    --color-btnHover:var(--color-19);
+    --color-language:var(--color-18);
+    --color-textNav:var(--color-12);
+    --color-active:var(--color-10);
+    --color-bottom:var(--color-11);
+    --color-shadow:var(--color-13);
+    --color-border:var(--color-13);
+    --color-theme:var(--color-21);
+    --color-body:var(--color-12);
+    --color-btn: var(--color-01);
+}
+
+body[data-theme='dark'] {
+    --color-loginBackground:var(--color-15);
+    --color-textNotActive:var(--color-12);
+    --color-fieldButtons:var(--color-11);
+    --color-backMessage:var(--color-18);
+    --color-textActive:var(--color-18);
+    --color-headerUser:var(--color-19);
+    --color-textForm: var(--color-12);
+    --color-btnActive:var(--color-12);
+    --color-btnShadow:var(--color-20);
+    --color-navShadow:var(--color-12);
+    --color-btnHover:var(--color-19);
+    --color-language:var(--color-12);
+    --color-textNav:var(--color-04);
+    --color-bottom:var(--color-12);
+    --color-border:var(--color-14);
+    --color-shadow:var(--color-14);
+    --color-theme:var(--color-22);
+    --color-body:var(--color-17);
+}
