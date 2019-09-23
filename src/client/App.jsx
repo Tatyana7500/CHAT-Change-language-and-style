@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SignIn from './components/signIn/SignIn.jsx';
+import Login from './components/login/Login.jsx';
 import { withTranslation } from 'react-i18next';
+import Main from './components/main/Main.jsx';
 import React, { Component } from 'react';
-import SignIn from './signIn/SignIn.jsx';
-import Login from './login/Login.jsx';
 import constants from '../constants';
-import Main from './main';
-import i18n from './i18n';
-import './css/styles.css';
+import i18n from './locale';
+import './theme/matrix.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         const { theme, lang } = this.getSavedSettings();
-        this.applyTheme(theme);
         i18n.changeLanguage(lang);
+        this.applyTheme(theme);
+        this.applyRlt(lang);
 
         this.state = {
             theme,
@@ -30,8 +31,16 @@ class App extends Component {
         }));
 
         i18n.changeLanguage(lang);
-
+        this.applyRlt(lang);
         this.saveSettings(settings);
+    };
+
+    applyRlt = (lang) => {
+        if (lang === 'AE') {
+            document.body.setAttribute('style', 'direction:rtl');
+        } else {
+            document.body.setAttribute('style', 'direction:ltr');
+        }
     };
 
     getSavedSettings = () => {

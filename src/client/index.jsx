@@ -1,7 +1,7 @@
 import { I18nextProvider } from 'react-i18next';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import i18n from './i18n';
+import i18n from './locale';
 import App from './App';
 
 ReactDOM.render(
