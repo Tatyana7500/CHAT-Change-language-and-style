@@ -1,0 +1,17 @@
+{
+  "en": {
+    "name": "Name",
+    "chat": "CHAT",
+    "send": "SEND",
+    "login": "LOGIN",
+    "logOut": "LOG OUT",
+    "users": "USERS",
+    "eMail": "E-mail",
+    "signIn": "SIGN IN",
+    "password": "Password",
+    "yourEmail": "Your email",
+    "yourMessage": "Your message",
+    "yourPassword": "Your password",
+    "confirmPassword": "Confirm Password"
+  }
+}

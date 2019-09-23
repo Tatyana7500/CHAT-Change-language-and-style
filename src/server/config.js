@@ -1,10 +1,13 @@
-const constants = require('./constants');
+const constants = require('../constants');
 
 module.exports = {
     databaseType: constants.MONGO,
     settings: {
         redis: {
-            connectionString: '',
+            connectionRedis: {
+                host: '127.0.0.1',
+                port: 6379,
+            },
         },
         mysql: {
             host: '127.0.0.1',

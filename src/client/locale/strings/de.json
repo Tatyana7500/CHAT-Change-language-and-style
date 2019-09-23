@@ -1,0 +1,17 @@
+{
+  "de": {
+    "eMail": "Mail",
+    "send": "Senden",
+    "name": "Vorname",
+    "chat": "Plaudern",
+    "users": "Benutzer",
+    "logOut": "Ausloggen",
+    "password": "Passwort",
+    "login": "Benutzername",
+    "yourEmail": "Deine Mail",
+    "signIn": "Registrierung",
+    "yourPassword": "Dein Passwort",
+    "yourMessage": "Deine Nachricht",
+    "confirmPassword": "Wiederholen Sie das Passwort"
+  }
+}

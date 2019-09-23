@@ -1,4 +1,4 @@
-const constants = require('../constants');
+const constants = require('../../constants');
 const UsersDaoRedisDB = require('./dao/redisDB/usersDaoRedis');
 const MessagesDaoRedisDB = require('./dao/redisDB/messagesDaoRedis');
 const UsersDaoMongoDB = require('./dao/mongoDB/usersDaoMongoDB');

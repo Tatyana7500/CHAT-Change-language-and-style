@@ -1,7 +1,7 @@
 const socket = require('socket.io');
 const express = require('express');
 const bodyParser = require('body-parser');
-const constants = require('./constants');
+const constants = require('../constants');
 const ChatDAL = require('./dal/chatDAL');
 const cors = require('cors');
 const jsonParser = bodyParser.json();
@@ -22,14 +22,9 @@ chatDal.initialize();
 
 const clients = [];
 
-// function Client (id, soketId) {
-//     this.id = id;
-//     this.soketId = soketId;
-// }
-
 io.sockets.on('connection', socket => {
     socket.on(constants.MESSAGE, handleMessage);
-    socket.on(constants.ONLINE, (res)=>{
+    socket.on(constants.ONLINE, (res) => {
        clients.push(res);
     });
     socket.broadcast.emit(constants.ONLINE, clients);
@@ -96,7 +91,7 @@ app.post('/auth', urlencodedParser, async (request, res) => {
         const user = await chatDal.readUser(emailInput, passwordInput);
         res.status(200).send(user);
     } catch (e) {
-        res.status(403).send(e.message);
+        res.status(403).send('User not exist or password not correct');
     }
 });
 
@@ -105,7 +100,7 @@ app.post('/signin', jsonParser, async (request, res) => {
         await chatDal.createUser(request.body);
         res.status(200).send('OK');
     } catch (e) {
-        res.status(409).send(e.message);
+        res.status(409).send('User with this email is already registered');
     }
 });
 
