@@ -4,8 +4,15 @@ import React, { Component } from 'react';
 import constants from '../../../constants';
 import logic from './logic';
 import '../../theme/index.css';
+import PropTypes from 'prop-types';
 
 class Login extends Component {
+    static propTypes = {
+        translate: PropTypes.func.isRequired,
+        defaultCountry: PropTypes.string.isRequired,
+        changeLanguage: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super(props);
         this.emailInputRef = React.createRef();

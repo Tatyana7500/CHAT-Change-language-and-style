@@ -1,5 +1,5 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
