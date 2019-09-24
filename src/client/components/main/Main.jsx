@@ -1,6 +1,6 @@
 import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
 import SettingTheme from '../common/themeDropdown/ThemeDropdown.jsx';
-import OntentBlock from './components/contentBlock/ContentBlock.jsx';
+import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
@@ -170,7 +170,7 @@ class Main extends Component {
                         email={this.state.email}
                         clickButtonLogOut={this.clickButtonLogOut}
                     />
-                    <OntentBlock
+                    <ContentBlock
                         name={this.state.name}
                         translate = {translate}
                         addEmoji={this.addEmoji}

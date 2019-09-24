@@ -4,7 +4,7 @@ import constants from '../../../../../constants';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const OntentBlock = props => {
+const ContentBlock = props => {
     const {
         name,
         clients,
@@ -69,7 +69,7 @@ const OntentBlock = props => {
     );
 };
 
-OntentBlock.propTypes = {
+ContentBlock.propTypes = {
     name: PropTypes.string.isRequired,
     clients: PropTypes.array.isRequired,
     addEmoji: PropTypes.func.isRequired,
@@ -88,4 +88,4 @@ OntentBlock.propTypes = {
     messageAreaValue: PropTypes.string.isRequired,
 };
 
-export default OntentBlock;
+export default ContentBlock;

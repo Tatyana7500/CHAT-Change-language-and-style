@@ -23,7 +23,7 @@ const drawOnline = (id, arr) => {
     return arr.includes(id) ? constants.ONLINE : constants.OFFLINE;
 };
 
-module.exports = {
+export default {
     drawOnline: drawOnline,
     sendGetRequest: sendGet,
     sendPostRequest: sendPost,
