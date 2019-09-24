@@ -2,9 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import SettingTheme from '../../common/themeDropdown/ThemeDropdown';
 import SettingLanguage from '../../common/languageDropdown/LanguageDropdown';
+import SettingEmoji from '../../common/emojiCheckbox/EmojisCheckbox';
+import SettingPrivateChat from '../../common/privateChatCheckbox/PrivateCheckbox';
 
 const ModalBlock = (props) => {
-    const { translate, defaultCountry, changeTheme, changeLanguage, theme, handleHide } = props;
+    const { translate, defaultCountry, changeTheme, changeLanguage, theme, handleHide, changeActiveEmoji, emoji, changeActivePrivateChat, privateChat } = props;
 
     return (
         <Fragment>
@@ -33,9 +35,17 @@ const ModalBlock = (props) => {
                 <div className='model__settings'>
                     <div className='model__settings-emoji'>
                         <p>{translate('emoji')}</p>
+                        <SettingEmoji
+                            emoji={emoji}
+                            changeActiveEmoji={changeActiveEmoji}
+                        />
                     </div>
                     <div className='model__settings-private'>
                         <p>{translate('chat')}</p>
+                        <SettingPrivateChat
+                            privateChat={privateChat}
+                            changeActivePrivateChat={changeActivePrivateChat}
+                        />
                     </div>
                 </div>
             </div>
@@ -47,6 +57,10 @@ ModalBlock.propTypes = {
     theme: PropTypes.string.isRequired,
     translate: PropTypes.func.isRequired,
     handleHide: PropTypes.func.isRequired,
+    changeActiveEmoji: PropTypes.func.isRequired,
+    changeActivePrivateChat: PropTypes.func.isRequired,
+    emoji: PropTypes.bool.isRequired,
+    privateChat: PropTypes.bool.isRequired,
     changeTheme: PropTypes.func.isRequired,
     changeLanguage: PropTypes.func.isRequired,
     defaultCountry: PropTypes.string.isRequired,

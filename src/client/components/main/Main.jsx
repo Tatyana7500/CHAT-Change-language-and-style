@@ -1,5 +1,3 @@
-import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
-import SettingTheme from '../common/themeDropdown/ThemeDropdown.jsx';
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
 import ModalBlock from '../modal/modalBlock/ModalBlock.jsx';
@@ -42,14 +40,28 @@ class Main extends Component {
             email: '',
             name: '',
         };
+
+        this.socket.on(constants.MESSAGE, (message) => {
+            if (message.name !== this.state.name && message.id === this.state.idUserReceiver) {
+                this.setState({
+                    messagesList: [...this.state.messagesList, message],
+                });
+            }
+        });
+
+        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
     }
 
     static propTypes = {
+        changeActivePrivateChat: PropTypes.func.isRequired,
+        changeActiveEmoji: PropTypes.func.isRequired,
         defaultCountry: PropTypes.string.isRequired,
         changeLanguage: PropTypes.func.isRequired,
+        privateChat: PropTypes.bool.isRequired,
         changeTheme: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
         theme: PropTypes.string.isRequired,
+        emoji: PropTypes.bool.isRequired,
     };
 
     handleShow = () => {
@@ -94,7 +106,12 @@ class Main extends Component {
     };
 
     clickButtonChat = async () => {
-        const data = await util.sendGetRequest(`${constants.LOCALHOST}/messages?chat=${this.state.chat}&sender=${this.state.idUserSender}&receiver=${this.state.idUserReceiver}`);
+        await this.setState(state => ({
+            ...state,
+            idUserReceiver: constants.ALL,
+            chat: constants.PUBLIC,
+        }));
+        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
         await this.setState({
             mainWindowState: constants.MESSAGE,
         });
@@ -115,7 +132,7 @@ class Main extends Component {
         await this.setState({
             messageBody: {
                 sender: this.state.idUserSender,
-                receiver: constants.ALL,
+                receiver: this.state.idUserReceiver,
                 message: this.state.messageAreaValue,
                 date: new Date().getTime(),
             },
@@ -146,35 +163,43 @@ class Main extends Component {
 
     async componentDidMount() {
         await this.getItemFromLocalStorage();
-
-        await this.socket.on(constants.MESSAGE, (message) => {
-            if (message.name !== this.state.name) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-            }
-        });
-        this.socket.emit(constants.ONLINE, this.state.idUserSender);
-
-        this.socket.on(constants.ONLINE, (res) => {
-            this.setState({
-                clients: res,
-            });
-        });
     }
 
+    openPrivatChat = async (e) => {
+        const target = e.target;
+
+        await this.setState(state => ({
+            ...state,
+            idUserReceiver: target.id,
+            chat: constants.PRIVATE,
+        }));
+
+        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
+        await this.setState({
+            mainWindowState: constants.MESSAGE,
+        });
+        await this.setState({
+            messagesList: data,
+        });
+    };
+
     render() {
-        const { translate, defaultCountry, changeTheme, changeLanguage, theme } = this.props;
+        const { translate, defaultCountry, changeTheme, changeLanguage, theme, changeActiveEmoji, changeActivePrivateChat, privateChat, emoji } = this.props;
 
         const modal = this.state.showModal ? (
                 <Modal>
                    <ModalBlock
-                       translate = {translate}
-                       defaultCountry = {defaultCountry}
-                       changeTheme = {changeTheme}
-                       changeLanguage = {changeLanguage}
+                       emoji = {emoji}
                        theme = {theme}
+                       translate = {translate}
+                       changeTheme = {changeTheme}
+                       privateChat = {privateChat}
                        handleHide = {this.handleHide}
+                       defaultCountry = {defaultCountry}
+                       changeLanguage = {changeLanguage}
+                       emojiActive = {this.state.emojiActive}
+                       changeActiveEmoji = {changeActiveEmoji}
+                       changeActivePrivateChat = {changeActivePrivateChat}
                    />
                 </Modal>
         ) : null;
@@ -197,6 +222,7 @@ class Main extends Component {
                     <ContentBlock
                         name={this.state.name}
                         translate = {translate}
+                        emoji={this.props.emoji}
                         addEmoji={this.addEmoji}
                         closeMenu={this.closeMenu}
                         chat={this.state.clickChat}
@@ -208,6 +234,8 @@ class Main extends Component {
                         clickUsers={this.clickButtonUser}
                         emojisMenu={this.state.emojisMenu}
                         messages={this.state.messagesList}
+                        privateChat={this.props.privateChat}
+                        openPrivatChat={this.openPrivatChat}
                         clickButtonSend={this.clickButtonSend}
                         windowState={this.state.mainWindowState}
                         updateMessageValue={this.updateMessageValue}

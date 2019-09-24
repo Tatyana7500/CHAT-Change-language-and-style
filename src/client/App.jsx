@@ -12,19 +12,20 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        const { theme, lang } = this.getSavedSettings();
+        const { privateChat, theme, lang, emoji } = this.getSavedSettings();
         i18n.changeLanguage(lang);
         this.applyTheme(theme);
-        this.applyRlt(lang);
 
         this.state = {
+            privateChat,
+            emoji,
             theme,
             lang,
         };
     }
 
     changeLanguage = lang => {
-        const settings = { theme: this.state.theme, lang: lang };
+        const settings = { theme: this.state.theme, lang: lang, privateChat: this.state.privateChat, emoji: this.state.emoji };
         this.setState(state => ({
             ...state,
             lang: lang,
@@ -32,6 +33,28 @@ class App extends Component {
 
         i18n.changeLanguage(lang);
         this.applyRlt(lang);
+        this.saveSettings(settings);
+    };
+
+    changeActiveEmoji = () => {
+        const emoji = this.state.emoji === true ? false : true;
+        const settings = { theme: this.state.theme, lang: this.state.lang, privateChat: this.state.privateChat, emoji: emoji };
+        this.setState(state => ({
+            ...state,
+            emoji: emoji,
+        }));
+
+        this.saveSettings(settings);
+    };
+
+    changeActivePrivateChat = () => {
+        const privateChat = this.state.privateChat === true ? false : true;
+        const settings = { theme: this.state.theme, lang: this.state.lang, privateChat: privateChat, emoji: this.state.emoji };
+        this.setState(state => ({
+            ...state,
+            privateChat: privateChat,
+        }));
+
         this.saveSettings(settings);
     };
 
@@ -47,7 +70,7 @@ class App extends Component {
         const item = localStorage.getItem(constants.SETTINGS);
 
         if (!item) {
-            return { theme: constants.LIGHT, lang: constants.US };
+            return { theme: constants.LIGHT, lang: constants.US, emoji: true, privateChat: true };
         }
 
         return JSON.parse(item);
@@ -63,7 +86,7 @@ class App extends Component {
 
     changeTheme = () => {
         const theme = this.state.theme === constants.LIGHT ? constants.DARK : constants.LIGHT;
-        const settings = { theme: theme, lang: this.state.lang };
+        const settings = { theme: theme, lang: this.state.lang, privateChat: this.state.privateChat, emoji: this.state.emoji };
         this.setState(state => ({
             ...state,
             theme: theme,
@@ -75,10 +98,12 @@ class App extends Component {
 
     render() {
         const defaultCountry = this.state.lang.toUpperCase();
+        const changeActivePrivateChat = this.changeActivePrivateChat;
+        const changeActiveEmoji = this.changeActiveEmoji;
         const changeLanguage = this.changeLanguage;
         const saveSettings = this.saveSettings;
         const changeTheme = this.changeTheme;
-        const { theme } = this.state;
+        const { theme, emoji, privateChat } = this.state;
         const { t } = this.props;
 
         return (
@@ -86,12 +111,16 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/main' render={props => (
                         <Main {...props}
+                              emoji={emoji}
                               theme={theme}
                               translate = { t }
                               changeTheme={changeTheme}
+                              privateChat={privateChat}
                               saveSettings={saveSettings}
                               changeLanguage={changeLanguage}
                               defaultCountry={defaultCountry}
+                              changeActiveEmoji={changeActiveEmoji}
+                              changeActivePrivateChat={changeActivePrivateChat}
                         />)}
                     />
                     <Route exact path='/login' render={props => (

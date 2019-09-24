@@ -7,6 +7,7 @@ import React from 'react';
 const ContentBlock = props => {
     const {
         name,
+        emoji,
         clients,
         messages,
         addEmoji,
@@ -22,6 +23,8 @@ const ContentBlock = props => {
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
+        privateChat,
+        openPrivatChat,
     } = props;
 
     return (
@@ -49,11 +52,13 @@ const ContentBlock = props => {
                     usersList={usersList}
                     userState={userState}
                     translate={translate}
+                    openPrivatChat={openPrivatChat}
                 />
             }
             {windowState === constants.MESSAGE &&
                 <HatBlock
                     name={name}
+                    emoji={emoji}
                     messages={messages}
                     addEmoji={addEmoji}
                     closeMenu={closeMenu}
@@ -63,6 +68,7 @@ const ContentBlock = props => {
                     clickButtonSend={clickButtonSend}
                     messageAreaValue={messageAreaValue}
                     updateMessageValue={updateMessageValue}
+                    privateChat = {privateChat}
                 />
             }
         </div>
@@ -70,6 +76,7 @@ const ContentBlock = props => {
 };
 
 ContentBlock.propTypes = {
+    emoji: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     clients: PropTypes.array.isRequired,
     addEmoji: PropTypes.func.isRequired,
@@ -86,6 +93,8 @@ ContentBlock.propTypes = {
     clickButtonSend: PropTypes.func.isRequired,
     updateMessageValue: PropTypes.func.isRequired,
     messageAreaValue: PropTypes.string.isRequired,
+    privateChat: PropTypes.bool.isRequired,
+    openPrivatChat: PropTypes.func.isRequired,
 };
 
 export default ContentBlock;

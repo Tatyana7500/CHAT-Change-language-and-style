@@ -7,6 +7,7 @@ import React from 'react';
 const HatBlock = props => {
     const {
         name,
+        emoji,
         addEmoji,
         messages,
         translate,
@@ -34,22 +35,29 @@ const HatBlock = props => {
                     id='textMassage'
                     className='textMassage'
                     value={messageAreaValue}
-                    onInput={updateMessageValue}
+                    onChange={updateMessageValue}
                     placeholder={translate('yourMessage')}>
                 </textarea>
-                <Emoji
-                    clickButtonSend = {clickButtonSend}
-                    emojisMenu = {emojisMenu}
-                    showEmojis = {showEmojis}
-                    addEmoji = {addEmoji}
-                    translate = {translate}
-                />
+                {emoji === true &&
+                    <Emoji
+                        clickButtonSend={clickButtonSend}
+                        emojisMenu={emojisMenu}
+                        showEmojis={showEmojis}
+                        addEmoji={addEmoji}
+                        translate={translate}
+                    />
+                }
+                <button
+                    onClick={clickButtonSend}
+                    className='btn btn-main footer__send'>{translate('send')}
+                </button>
             </div>
         </div>
     );
 };
 
 HatBlock.propTypes = {
+    emoji: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     addEmoji: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
