@@ -2,6 +2,8 @@ import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
 import SettingTheme from '../common/themeDropdown/ThemeDropdown.jsx';
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
+import ModalBlock from '../modal/modalBlock/ModalBlock.jsx';
+import Modal from '../modal/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import openSocket from 'socket.io-client';
@@ -21,6 +23,7 @@ class Main extends Component {
             messageAreaValue: '',
             idUserSender: null,
             emojisMenu: false,
+            showModal: false,
             messagesList: [],
             usersList: [],
             clients: [],
@@ -42,7 +45,19 @@ class Main extends Component {
     }
 
     static propTypes = {
+        defaultCountry: PropTypes.string.isRequired,
+        changeLanguage: PropTypes.func.isRequired,
+        changeTheme: PropTypes.func.isRequired,
         translate: PropTypes.func.isRequired,
+        theme: PropTypes.string.isRequired,
+    };
+
+    handleShow = () => {
+        this.setState({ showModal: true });
+    };
+
+    handleHide = () => {
+        this.setState({ showModal: false });
     };
 
     addEmoji = (e) => {
@@ -151,17 +166,26 @@ class Main extends Component {
     render() {
         const { translate, defaultCountry, changeTheme, changeLanguage, theme } = this.props;
 
+        const modal = this.state.showModal ? (
+                <Modal>
+                   <ModalBlock
+                       translate = {translate}
+                       defaultCountry = {defaultCountry}
+                       changeTheme = {changeTheme}
+                       changeLanguage = {changeLanguage}
+                       theme = {theme}
+                       handleHide = {this.handleHide}
+                   />
+                </Modal>
+        ) : null;
+
         return (
             <div>
                 <div className='header__settings'>
-                    <SettingTheme
-                        theme={theme}
-                        changeTheme={changeTheme}
-                    />
-                    <SettingLanguage
-                        defaultCountry={defaultCountry}
-                        changeLanguage={changeLanguage}
-                    />
+                    <button className='settings' onClick={this.handleShow}>
+                        <img src='src/client/assets/icons/settings.png' width='50' height='50' />
+                    </button>
+                    {modal}
                 </div>
                 <div className='main'>
                     <MainHeader

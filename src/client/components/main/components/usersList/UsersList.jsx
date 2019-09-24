@@ -17,7 +17,7 @@ const UsersList = props => {
                         return (
                             <div
                                 key={item._id}
-                                className={`users__card ${util.drawOnline(item._id, clients )}` } >
+                                className={`users__card ${util.drawOnline(item._id, clients)}` } >
                                 <p className='users__info' id={item._id}>{item.name}</p>
                                 <p className='users__info' id={item._id}>{item.email}</p>
                             </div>

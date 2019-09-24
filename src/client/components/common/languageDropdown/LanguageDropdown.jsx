@@ -9,7 +9,7 @@ const SettingLanguage = (props) => {
     return (
             <ReactFlagsSelect
                 className = 'ReactFlagsSelect'
-                onSelect={changeLanguage}
+                onSelect = {changeLanguage}
                 defaultCountry = {defaultCountry}
                 countries = {['US', 'DE', 'AE', 'UA']}
                 customLabels = {{ 'US': 'EN', 'DE': 'DE', 'AE': 'AE', 'UA': 'UA' }}

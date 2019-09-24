@@ -30,7 +30,7 @@
     "pg": "^7.12.1",
     "prop-types": "^15.7.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.9.0",
     "react-emojione": "^5.0.1",
     "react-flags-select": "^1.1.10",
     "react-i18next": "^10.12.5",
