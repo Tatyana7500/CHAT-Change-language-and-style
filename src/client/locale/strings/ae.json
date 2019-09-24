@@ -1,16 +1,19 @@
 {
   "ae": {
+    "eMail": "بريد",
     "send": "إرسال",
     "chat": "دردشة",
     "login": "دخول",
-    "eMail": "بريد",
-    "name": "الاسم الأول",
+    "theme": "موضوع",
+    "language": "لغة",
     "signIn": "تسجيل",
-    "logOut": "تسجيل خروج",
-    "users": "المستخدمين",
+    "emoji": "رمز تعبيري",
+    "name": "الاسم الأول",
     "yourEmail": "بريدك",
-    "password": "كلمة المرور",
+    "users": "المستخدمين",
+    "logOut": "تسجيل خروج",
     "yourMessage": "رسالتك",
+    "password": "كلمة المرور",
     "yourPassword": "كلمة مرورك",
     "confirmPassword": "أعد كتابة كلمة المرور"
   }

@@ -2,9 +2,12 @@
   "de": {
     "eMail": "Mail",
     "send": "Senden",
+    "emoji": "EMOJI",
+    "theme": "THEMA",
     "name": "Vorname",
     "chat": "Plaudern",
     "users": "Benutzer",
+    "language": "SPRACHE",
     "logOut": "Ausloggen",
     "password": "Passwort",
     "login": "Benutzername",

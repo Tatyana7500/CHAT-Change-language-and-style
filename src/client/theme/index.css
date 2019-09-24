@@ -447,7 +447,12 @@ body {
     left: 92%;
 }
 
-.model__settings_1 {
+.model__settings {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.model__settings p {
+    text-align: center;
 }
