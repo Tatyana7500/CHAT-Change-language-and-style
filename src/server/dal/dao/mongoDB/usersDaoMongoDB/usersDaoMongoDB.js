@@ -50,12 +50,4 @@ UsersDaoMongoDB.prototype.readUserToId = async function (id) {
     return await this.model.find({ _id: id });
 };
 
-let db = new UsersDaoMongoDB();
-db.initialize();
-db.create({
-    name: '1111',
-    email: '2222',
-    password: '3333',
-});
-
 module.exports = UsersDaoMongoDB;

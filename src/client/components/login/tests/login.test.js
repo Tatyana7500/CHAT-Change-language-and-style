@@ -16,9 +16,3 @@ describe('Login snapshot', () => {
         expect(wrapper).matchSnapshot();
     });
 });
-
-describe('Login methods', () => {
-    it('should be true', () => {
-        assert.isTrue(true);
-    });
-});
