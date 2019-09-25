@@ -78,30 +78,36 @@ describe('usersDaoMongoDB', () => {
     describe('create', () => {
         let dao;
         let user;
-        let mockObject;
         let sandBox;
+        let mockModel;
+        let mockUserModel;
+        let mockObject;
 
         before(async () => {
             dao = new UsersDaoMongoDB();
-            dao.initialize();
-
             mockObject = {};
             sandBox = sinon.createSandbox();
+            mockModel = sandBox.stub();
+            mockUserModel = {
+                save: sandBox.stub(),
+            };
+            mockModel.returns(mockUserModel);
+            sandBox.stub(dao, 'model').get(() => mockModel);
 
-            user = sandBox.spy(dao, 'model');
-
-            sandBox.stub(user, 'save');
+            dao.create(mockObject);
         });
 
-        it('Should called once this.model()', async done => {
-            await sinon.assert.calledOnce(user);
-            await sinon.assert.calledWith(user, mockObject);
-            done();
+        after(() => {
+            sandBox.restore();
         });
 
-        it('Should called once .save()', async done => {
-            await sinon.assert.calledOnce(user.save);
-            done();
+        it('should call this.model()', async () => {
+            await sinon.assert.calledOnce(dao.model);
+            await sinon.assert.calledWith(dao.model, mockObject);
+        });
+
+        it('should call save', async () => {
+           await sinon.assert.calledOnce(mockUserModel.save);
         });
     });
 });
