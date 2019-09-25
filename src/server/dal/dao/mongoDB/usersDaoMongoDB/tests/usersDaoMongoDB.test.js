@@ -88,18 +88,20 @@ describe('usersDaoMongoDB', () => {
             mockObject = {};
             sandBox = sinon.createSandbox();
 
-            user = sandBox.stub(dao, 'model').returns(mockObject);
+            user = sandBox.spy(dao, 'model');
 
-            await sandBox.stub(user, 'save');
+            sandBox.stub(user, 'save');
         });
 
-        it('Should called once this.model()', async () => {
-            sinon.assert.calledOnce(dao.model);
-            sinon.assert.calledWith(dao.model, mockObject);
+        it('Should called once this.model()', async done => {
+            await sinon.assert.calledOnce(user);
+            await sinon.assert.calledWith(user, mockObject);
+            done();
         });
 
-        it('Should called once .save()', async () => {
-            sinon.assert.calledOnce(user.save);
+        it('Should called once .save()', async done => {
+            await sinon.assert.calledOnce(user.save);
+            done();
         });
     });
 });
