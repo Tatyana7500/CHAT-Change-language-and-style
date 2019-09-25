@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import './Settings.css';
 import SettingTheme from '../../common/themeDropdown/ThemeDropdown';
 import SettingLanguage from '../../common/languageDropdown/LanguageDropdown';
 import SettingEmoji from '../../common/emojiCheckbox/EmojisCheckbox';
 import SettingPrivateChat from '../../common/privateChatCheckbox/PrivateCheckbox';
 import SettingDefault from '../../common/defaultSettings/DefaultSettings';
 
-const ModalBlock = (props) => {
+const Settings = (props) => {
     const {
         translate,
         defaultCountry,
@@ -23,21 +24,18 @@ const ModalBlock = (props) => {
 
     return (
         <Fragment>
-            <div className='model-wrapper'>
-            </div>
-            <div className='model'>
                 <button className='settings close' onClick={handleHide}>
                     <img src='src/client/assets/icons/close.png' width='20' height='20' />
                 </button>
-                <div className='model__settings'>
-                    <div className='model__settings-theme'>
+                <div className='modal__settings'>
+                    <div className='modal__settings-theme'>
                         <p>{translate('theme')}</p>
                         <SettingTheme
                             theme={theme}
                             changeTheme={changeTheme}
                         />
                     </div>
-                    <div className='model__settings-language'>
+                    <div className='modal__settings-language'>
                         <p>{translate('language')}</p>
                         <SettingLanguage
                             defaultCountry={defaultCountry}
@@ -45,15 +43,15 @@ const ModalBlock = (props) => {
                         />
                     </div>
                 </div>
-                <div className='model__settings'>
-                    <div className='model__settings-emoji'>
+                <div className='modal__settings'>
+                    <div className='modal__settings-emoji'>
                         <p>{translate('emoji')}</p>
                         <SettingEmoji
                             emoji={emoji}
                             changeActiveEmoji={changeActiveEmoji}
                         />
                     </div>
-                    <div className='model__settings-private'>
+                    <div className='modal__settings-private'>
                         <p>{translate('chat')}</p>
                         <SettingPrivateChat
                             privateChat={privateChat}
@@ -61,19 +59,18 @@ const ModalBlock = (props) => {
                         />
                     </div>
                 </div>
-                <div className='model__settings'>
+                <div className='modal__settings'>
                     <p>{translate('default')}</p>
                     <SettingDefault
                         translate={translate}
                         setDefaultSettings={setDefaultSettings}
                     />
                 </div>
-            </div>
         </Fragment>
     );
 };
 
-ModalBlock.propTypes = {
+Settings.propTypes = {
     theme: PropTypes.string.isRequired,
     translate: PropTypes.func.isRequired,
     handleHide: PropTypes.func.isRequired,
@@ -87,4 +84,4 @@ ModalBlock.propTypes = {
     setDefaultSettings: PropTypes.func.isRequired,
 };
 
-export default ModalBlock;
+export default Settings;

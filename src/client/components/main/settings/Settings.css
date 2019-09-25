@@ -1,0 +1,20 @@
+.close {
+    margin: 10px;
+    position: relative;
+    left: 92%;
+}
+
+.settings {
+    background-color: transparent;
+    border:none;
+}
+
+.modal__settings {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.modal__settings p {
+    text-align: center;
+}

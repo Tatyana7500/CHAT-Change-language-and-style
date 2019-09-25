@@ -1,7 +1,7 @@
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
-import ModalBlock from '../modal/modalBlock/ModalBlock.jsx';
-import Modal from '../modal/modal/Modal.jsx';
+import Settings from './settings/Settings.jsx';
+import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import openSocket from 'socket.io-client';
@@ -167,6 +167,10 @@ class Main extends Component {
     }
 
     openPrivateChat = async (e) => {
+        if (!this.props.privateChat){
+            return;
+        }
+
         const target = e.target;
 
         await this.setState(state => ({
@@ -198,24 +202,7 @@ class Main extends Component {
             changeActivePrivateChat,
         } = this.props;
 
-        const modal = this.state.showModal ? (
-                <Modal>
-                   <ModalBlock
-                       emoji = {emoji}
-                       theme = {theme}
-                       translate = {translate}
-                       changeTheme = {changeTheme}
-                       privateChat = {privateChat}
-                       handleHide = {this.handleHide}
-                       defaultCountry = {defaultCountry}
-                       changeLanguage = {changeLanguage}
-                       emojiActive = {this.state.emojiActive}
-                       setDefaultSettings={setDefaultSettings}
-                       changeActiveEmoji = {changeActiveEmoji}
-                       changeActivePrivateChat = {changeActivePrivateChat}
-                   />
-                </Modal>
-        ) : null;
+        const { showModal } = this.state;
 
         return (
             <div>
@@ -223,7 +210,6 @@ class Main extends Component {
                     <button className='settings' onClick={this.handleShow}>
                         <img src='src/client/assets/icons/settings.png' width='50' height='50' />
                     </button>
-                    {modal}
                 </div>
                 <div className='main'>
                     <MainHeader
@@ -255,6 +241,24 @@ class Main extends Component {
                         messageAreaValue={this.state.messageAreaValue}
                     />
                 </div>
+                <Modal showModal={showModal}>
+                    <div className='modal'>
+                        <Settings
+                            emoji = {emoji}
+                            theme = {theme}
+                            translate = {translate}
+                            changeTheme = {changeTheme}
+                            privateChat = {privateChat}
+                            handleHide = {this.handleHide}
+                            defaultCountry = {defaultCountry}
+                            changeLanguage = {changeLanguage}
+                            emojiActive = {this.state.emojiActive}
+                            setDefaultSettings={setDefaultSettings}
+                            changeActiveEmoji = {changeActiveEmoji}
+                            changeActivePrivateChat = {changeActivePrivateChat}
+                        />
+                    </div>
+                </Modal>
             </div>
         );
     }
