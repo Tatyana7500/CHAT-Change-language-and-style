@@ -20,7 +20,7 @@ class Main extends Component {
             chat: constants.PUBLIC,
             messageAreaValue: '',
             idUserSender: null,
-            emojisMenu: false,
+            emojiMenu: false,
             showModal: false,
             messagesList: [],
             usersList: [],
@@ -53,15 +53,16 @@ class Main extends Component {
     }
 
     static propTypes = {
-        changeActivePrivateChat: PropTypes.func.isRequired,
-        changeActiveEmoji: PropTypes.func.isRequired,
-        defaultCountry: PropTypes.string.isRequired,
-        changeLanguage: PropTypes.func.isRequired,
+        emoji: PropTypes.bool.isRequired,
+        theme: PropTypes.string.isRequired,
+        translate: PropTypes.func.isRequired,
         privateChat: PropTypes.bool.isRequired,
         changeTheme: PropTypes.func.isRequired,
-        translate: PropTypes.func.isRequired,
-        theme: PropTypes.string.isRequired,
-        emoji: PropTypes.bool.isRequired,
+        changeLanguage: PropTypes.func.isRequired,
+        defaultCountry: PropTypes.string.isRequired,
+        changeActiveEmoji: PropTypes.func.isRequired,
+        setDefaultSettings: PropTypes.func.isRequired,
+        changeActivePrivateChat: PropTypes.func.isRequired,
     };
 
     handleShow = () => {
@@ -79,7 +80,7 @@ class Main extends Component {
         });
     };
 
-    showEmojis = () => {
+    showEmoji = () => {
         this.setState({
                 emojisMenu: true,
             },
@@ -165,7 +166,7 @@ class Main extends Component {
         await this.getItemFromLocalStorage();
     }
 
-    openPrivatChat = async (e) => {
+    openPrivateChat = async (e) => {
         const target = e.target;
 
         await this.setState(state => ({
@@ -184,7 +185,18 @@ class Main extends Component {
     };
 
     render() {
-        const { translate, defaultCountry, changeTheme, changeLanguage, theme, changeActiveEmoji, changeActivePrivateChat, privateChat, emoji } = this.props;
+        const {
+            emoji,
+            theme,
+            translate,
+            privateChat,
+            changeTheme,
+            changeLanguage,
+            defaultCountry,
+            changeActiveEmoji,
+            setDefaultSettings,
+            changeActivePrivateChat,
+        } = this.props;
 
         const modal = this.state.showModal ? (
                 <Modal>
@@ -198,6 +210,7 @@ class Main extends Component {
                        defaultCountry = {defaultCountry}
                        changeLanguage = {changeLanguage}
                        emojiActive = {this.state.emojiActive}
+                       setDefaultSettings={setDefaultSettings}
                        changeActiveEmoji = {changeActiveEmoji}
                        changeActivePrivateChat = {changeActivePrivateChat}
                    />
@@ -226,16 +239,16 @@ class Main extends Component {
                         addEmoji={this.addEmoji}
                         closeMenu={this.closeMenu}
                         chat={this.state.clickChat}
-                        showEmojis={this.showEmojis}
+                        showEmoji={this.showEmoji}
                         clients={this.state.clients}
                         userState={this.state.userState}
                         clickChat={this.clickButtonChat}
                         usersList={this.state.usersList}
                         clickUsers={this.clickButtonUser}
-                        emojisMenu={this.state.emojisMenu}
+                        emojiMenu={this.state.emojiMenu}
                         messages={this.state.messagesList}
                         privateChat={this.props.privateChat}
-                        openPrivatChat={this.openPrivatChat}
+                        openPrivateChat={this.openPrivateChat}
                         clickButtonSend={this.clickButtonSend}
                         windowState={this.state.mainWindowState}
                         updateMessageValue={this.updateMessageValue}

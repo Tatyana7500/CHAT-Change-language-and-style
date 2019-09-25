@@ -4,7 +4,7 @@ import React from 'react';
 
 const SettingPrivateChat = (props) => {
     const { changeActivePrivateChat, privateChat } = props;
-    const isChecked = privateChat === true ? true : false;
+    const isChecked = privateChat === true;
 
     return (
         <input className='radio-privateChat' type='checkbox' onChange={changeActivePrivateChat} checked={isChecked}/>

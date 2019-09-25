@@ -1,6 +1,7 @@
 {
   "en": {
     "name": "Name",
+    "yes": "YES",
     "chat": "CHAT",
     "send": "SEND",
     "login": "LOGIN",
@@ -14,6 +15,7 @@
     "password": "Password",
     "yourEmail": "Your email",
     "yourMessage": "Your message",
+    "default": "Default settings",
     "yourPassword": "Your password",
     "confirmPassword": "Confirm Password"
   }

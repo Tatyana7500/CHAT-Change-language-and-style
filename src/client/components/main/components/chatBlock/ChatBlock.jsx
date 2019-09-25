@@ -1,4 +1,4 @@
-import HatCloud from '../chatClound/ChatClound.jsx';
+import HatCloud from '../chatCloud/ChatCloud.jsx';
 import Emoji from '../emoji/Emoji.jsx';
 import '../../../../theme/index.css';
 import PropTypes from 'prop-types';
@@ -11,8 +11,8 @@ const HatBlock = props => {
         addEmoji,
         messages,
         translate,
-        showEmojis,
-        emojisMenu,
+        showEmoji,
+        emojiMenu,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
@@ -41,8 +41,8 @@ const HatBlock = props => {
                 {emoji === true &&
                     <Emoji
                         clickButtonSend={clickButtonSend}
-                        emojisMenu={emojisMenu}
-                        showEmojis={showEmojis}
+                        emojiMenu={emojiMenu}
+                        showEmoji={showEmoji}
                         addEmoji={addEmoji}
                         translate={translate}
                     />
@@ -62,8 +62,8 @@ HatBlock.propTypes = {
     addEmoji: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
     translate: PropTypes.func.isRequired,
-    emojisMenu: PropTypes.bool.isRequired,
-    showEmojis: PropTypes.func.isRequired,
+    emojiMenu: PropTypes.bool.isRequired,
+    showEmoji: PropTypes.func.isRequired,
     clickButtonSend: PropTypes.func.isRequired,
     messageAreaValue: PropTypes.string.isRequired,
     updateMessageValue: PropTypes.func.isRequired,

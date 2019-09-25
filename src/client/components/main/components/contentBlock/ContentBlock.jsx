@@ -17,14 +17,14 @@ const ContentBlock = props => {
         userState,
         translate,
         clickUsers,
-        emojisMenu,
-        showEmojis,
+        emojiMenu,
+        showEmoji,
         windowState,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
         privateChat,
-        openPrivatChat,
+        openPrivateChat,
     } = props;
 
     return (
@@ -52,7 +52,7 @@ const ContentBlock = props => {
                     usersList={usersList}
                     userState={userState}
                     translate={translate}
-                    openPrivatChat={openPrivatChat}
+                    openPrivateChat={openPrivateChat}
                 />
             }
             {windowState === constants.MESSAGE &&
@@ -63,12 +63,12 @@ const ContentBlock = props => {
                     addEmoji={addEmoji}
                     closeMenu={closeMenu}
                     translate={translate}
-                    emojisMenu={emojisMenu}
-                    showEmojis={showEmojis}
+                    emojiMenu={emojiMenu}
+                    showEmoji={showEmoji}
+                    privateChat = {privateChat}
                     clickButtonSend={clickButtonSend}
                     messageAreaValue={messageAreaValue}
                     updateMessageValue={updateMessageValue}
-                    privateChat = {privateChat}
                 />
             }
         </div>
@@ -86,15 +86,15 @@ ContentBlock.propTypes = {
     closeMenu: PropTypes.func.isRequired,
     usersList: PropTypes.array.isRequired,
     clickUsers: PropTypes.func.isRequired,
-    showEmojis: PropTypes.func.isRequired,
-    emojisMenu: PropTypes.bool.isRequired,
+    showEmoji: PropTypes.func.isRequired,
+    emojiMenu: PropTypes.bool.isRequired,
     userState: PropTypes.string.isRequired,
     windowState: PropTypes.string.isRequired,
     clickButtonSend: PropTypes.func.isRequired,
     updateMessageValue: PropTypes.func.isRequired,
     messageAreaValue: PropTypes.string.isRequired,
     privateChat: PropTypes.bool.isRequired,
-    openPrivatChat: PropTypes.func.isRequired,
+    openPrivateChat: PropTypes.func.isRequired,
 };
 
 export default ContentBlock;

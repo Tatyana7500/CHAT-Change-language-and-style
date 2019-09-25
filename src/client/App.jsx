@@ -25,7 +25,13 @@ class App extends Component {
     }
 
     changeLanguage = lang => {
-        const settings = { theme: this.state.theme, lang: lang, privateChat: this.state.privateChat, emoji: this.state.emoji };
+        const settings = {
+            lang: lang,
+            emoji: this.state.emoji,
+            theme: this.state.theme,
+            privateChat: this.state.privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             lang: lang,
@@ -37,8 +43,14 @@ class App extends Component {
     };
 
     changeActiveEmoji = () => {
-        const emoji = this.state.emoji === true ? false : true;
-        const settings = { theme: this.state.theme, lang: this.state.lang, privateChat: this.state.privateChat, emoji: emoji };
+        const emoji = !this.state.emoji;
+        const settings = {
+            emoji: emoji,
+            lang: this.state.lang,
+            theme: this.state.theme,
+            privateChat: this.state.privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             emoji: emoji,
@@ -48,8 +60,14 @@ class App extends Component {
     };
 
     changeActivePrivateChat = () => {
-        const privateChat = this.state.privateChat === true ? false : true;
-        const settings = { theme: this.state.theme, lang: this.state.lang, privateChat: privateChat, emoji: this.state.emoji };
+        const privateChat = !this.state.privateChat;
+        const settings = {
+            lang: this.state.lang,
+            emoji: this.state.emoji,
+            theme: this.state.theme,
+            privateChat: privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             privateChat: privateChat,
@@ -70,7 +88,12 @@ class App extends Component {
         const item = localStorage.getItem(constants.SETTINGS);
 
         if (!item) {
-            return { theme: constants.LIGHT, lang: constants.US, emoji: true, privateChat: true };
+            return {
+                emoji: true,
+                privateChat: true,
+                lang: constants.US,
+                theme: constants.LIGHT,
+            };
         }
 
         return JSON.parse(item);
@@ -86,7 +109,13 @@ class App extends Component {
 
     changeTheme = () => {
         const theme = this.state.theme === constants.LIGHT ? constants.DARK : constants.LIGHT;
-        const settings = { theme: theme, lang: this.state.lang, privateChat: this.state.privateChat, emoji: this.state.emoji };
+        const settings = {
+            theme: theme,
+            lang: this.state.lang,
+            emoji: this.state.emoji,
+            privateChat: this.state.privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             theme: theme,
@@ -96,14 +125,38 @@ class App extends Component {
         this.applyTheme(theme);
     };
 
+    setDefaultSettings = () => {
+        const settings = {
+            emoji: true,
+            privateChat: true,
+            lang: constants.US,
+            theme: constants.LIGHT,
+        };
+
+        this.setState(state => ({
+            ...state,
+            emoji: true,
+            privateChat: true,
+            lang: constants.US,
+            theme: constants.LIGHT,
+        }));
+
+        this.applyRlt(settings.lang);
+        this.applyTheme(settings.theme);
+        i18n.changeLanguage(settings.lang);
+
+        this.saveSettings(settings);
+    };
+
     render() {
-        const defaultCountry = this.state.lang.toUpperCase();
         const changeActivePrivateChat = this.changeActivePrivateChat;
+        const defaultCountry = this.state.lang.toUpperCase();
+        const setDefaultSettings = this.setDefaultSettings;
+        const { theme, emoji, privateChat } = this.state;
         const changeActiveEmoji = this.changeActiveEmoji;
         const changeLanguage = this.changeLanguage;
         const saveSettings = this.saveSettings;
         const changeTheme = this.changeTheme;
-        const { theme, emoji, privateChat } = this.state;
         const { t } = this.props;
 
         return (
@@ -120,6 +173,7 @@ class App extends Component {
                               changeLanguage={changeLanguage}
                               defaultCountry={defaultCountry}
                               changeActiveEmoji={changeActiveEmoji}
+                              setDefaultSettings={setDefaultSettings}
                               changeActivePrivateChat={changeActivePrivateChat}
                         />)}
                     />

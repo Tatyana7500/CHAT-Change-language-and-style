@@ -4,7 +4,7 @@ import React from 'react';
 
 const SettingEmoji = (props) => {
     const { changeActiveEmoji, emoji } = props;
-    const isChecked = emoji === true ? true : false;
+    const isChecked = emoji === true;
 
     return (
         <input className='radio-emoji' type='checkbox' onChange={changeActiveEmoji} checked={isChecked}/>

@@ -2,6 +2,7 @@
   "de": {
     "eMail": "Mail",
     "send": "Senden",
+    "yes": "JA",
     "emoji": "EMOJI",
     "theme": "THEMA",
     "name": "Vorname",
@@ -15,6 +16,7 @@
     "signIn": "Registrierung",
     "yourPassword": "Dein Passwort",
     "yourMessage": "Deine Nachricht",
+    "default": "Standardeinstellungen",
     "confirmPassword": "Wiederholen Sie das Passwort"
   }
 }

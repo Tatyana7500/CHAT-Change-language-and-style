@@ -4,9 +4,22 @@ import SettingTheme from '../../common/themeDropdown/ThemeDropdown';
 import SettingLanguage from '../../common/languageDropdown/LanguageDropdown';
 import SettingEmoji from '../../common/emojiCheckbox/EmojisCheckbox';
 import SettingPrivateChat from '../../common/privateChatCheckbox/PrivateCheckbox';
+import SettingDefault from '../../common/defaultSettings/DefaultSettings';
 
 const ModalBlock = (props) => {
-    const { translate, defaultCountry, changeTheme, changeLanguage, theme, handleHide, changeActiveEmoji, emoji, changeActivePrivateChat, privateChat } = props;
+    const {
+        translate,
+        defaultCountry,
+        changeTheme,
+        changeLanguage,
+        theme,
+        handleHide,
+        changeActiveEmoji,
+        emoji,
+        changeActivePrivateChat,
+        privateChat,
+        setDefaultSettings,
+    } = props;
 
     return (
         <Fragment>
@@ -48,6 +61,13 @@ const ModalBlock = (props) => {
                         />
                     </div>
                 </div>
+                <div className='model__settings'>
+                    <p>{translate('default')}</p>
+                    <SettingDefault
+                        translate={translate}
+                        setDefaultSettings={setDefaultSettings}
+                    />
+                </div>
             </div>
         </Fragment>
     );
@@ -64,6 +84,7 @@ ModalBlock.propTypes = {
     changeTheme: PropTypes.func.isRequired,
     changeLanguage: PropTypes.func.isRequired,
     defaultCountry: PropTypes.string.isRequired,
+    setDefaultSettings: PropTypes.func.isRequired,
 };
 
 export default ModalBlock;

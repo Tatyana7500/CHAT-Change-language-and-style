@@ -6,13 +6,13 @@ import React from 'react';
 const Emoji = (props) => {
     const {
         addEmoji,
-        emojisMenu,
-        showEmojis,
+        emojiMenu,
+        showEmoji,
     } = props;
 
     return (
         <div>
-            {emojisMenu ?
+            {emojiMenu ?
                 <span className='emojiPicker'>
                                 <Picker
                                     title='weChat'
@@ -22,7 +22,7 @@ const Emoji = (props) => {
                             </span>
                 :
                 <p
-                    onClick={showEmojis}
+                    onClick={showEmoji}
                     className='getEmojiButton' >
                     {String.fromCodePoint(0x1f60a)}
                 </p>
@@ -33,8 +33,8 @@ const Emoji = (props) => {
 
 Emoji.propTypes = {
     addEmoji: PropTypes.func.isRequired,
-    emojisMenu: PropTypes.bool.isRequired,
-    showEmojis: PropTypes.func.isRequired,
+    emojiMenu: PropTypes.bool.isRequired,
+    showEmoji: PropTypes.func.isRequired,
 };
 
 export default Emoji;

@@ -2,6 +2,7 @@
   "ae": {
     "eMail": "بريد",
     "send": "إرسال",
+    "yes": "نعم",
     "chat": "دردشة",
     "login": "دخول",
     "theme": "موضوع",
@@ -15,6 +16,7 @@
     "yourMessage": "رسالتك",
     "password": "كلمة المرور",
     "yourPassword": "كلمة مرورك",
+    "default": "الإعدادات الافتراضية",
     "confirmPassword": "أعد كتابة كلمة المرور"
   }
 }

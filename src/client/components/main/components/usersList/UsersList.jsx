@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const UsersList = props => {
-    const { usersList, translate, clients, openPrivatChat } = props;
+    const { usersList, translate, clients, openPrivateChat } = props;
 
     return (
         <div className='content'>
@@ -18,8 +18,8 @@ const UsersList = props => {
                             <div
                                 key={item._id}
                                 className={`users__card ${util.drawOnline(item._id, clients)}` } >
-                                <p className='users__info' id={item._id} onClick={openPrivatChat}>{item.name}</p>
-                                <p className='users__info' id={item._id} onClick={openPrivatChat}>{item.email}</p>
+                                <p className='users__info' id={item._id} onClick={openPrivateChat}>{item.name}</p>
+                                <p className='users__info' id={item._id} onClick={openPrivateChat}>{item.email}</p>
                             </div>
                         );
                     })
@@ -33,7 +33,7 @@ UsersList.propTypes = {
     clients: PropTypes.array.isRequired,
     translate: PropTypes.func.isRequired,
     usersList: PropTypes.array.isRequired,
-    openPrivatChat: PropTypes.func.isRequired,
+    openPrivateChat: PropTypes.func.isRequired,
 };
 
 export default UsersList;

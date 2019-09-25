@@ -430,7 +430,7 @@ body {
     right: 0;
     top: 250px;
     width: 500px;
-    height: 200px;
+    height: 270px;
     position: absolute;
     box-shadow: 0 0 5px #000;
     background-color: var(--color-loginBackground);
