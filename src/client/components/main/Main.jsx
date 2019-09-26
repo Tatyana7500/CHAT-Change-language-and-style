@@ -1,6 +1,5 @@
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
-import withAuthorization from '../../hocs/withAuthorization';
 import Settings from './components/settings/Settings.jsx';
 import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
@@ -267,4 +266,4 @@ class Main extends Component {
     }
 }
 
-export default withAuthorization(Main);
+export default Main;

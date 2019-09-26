@@ -1,19 +1,30 @@
 import React from 'react';
 
-function withAuthorization(Component) {
-    return class extends React.Component {
-        componentWillCheckLS() {
-            const userValidate = JSON.parse(window.localStorage.getItem('chat'));
-
-            return userValidate !== null;
+function withAuthorization(Component, isAuthorized, redirect, logout) {
+    return class WithAuthorizationWrapper extends React.Component {
+        componentDidMount() {
+            this.checkAuthorization();
         }
 
-        render() {
-            if (this.componentWillCheckLS()) {
-                return <Component {...this.props} />;
-            } else {
-                window.location.href = '/login';
+        componentDidUpdate() {
+            this.checkAuthorization();
+        }
+
+        checkAuthorization = () => {
+            if (!isAuthorized) {
+                redirect();
             }
+        };
+
+        render() {
+            debugger;
+
+            return isAuthorized ? (
+                <Component
+                    logout={logout}
+                    {...this.props}
+                />
+            ) : null;
         }
     };
 }

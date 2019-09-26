@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import constants from '../constants';
 import i18n from './locale';
 import './theme/matrix.css';
+import withAuthorization from "./hocs/withAuthorization";
 
 class App extends Component {
     constructor(props) {
@@ -159,23 +160,31 @@ class App extends Component {
         const changeTheme = this.changeTheme;
         const { t } = this.props;
 
+        const isAuthorized = true;
+        const redirect = () => console.log('redirect');
+        const logout = () => console.log('logout');
+
+        const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout);
+
         return (
             <Router>
                 <Switch>
                     <Route exact path='/main' render={props => (
-                        <Main {...props}
-                              emoji={emoji}
-                              theme={theme}
-                              translate = { t }
-                              changeTheme={changeTheme}
-                              privateChat={privateChat}
-                              saveSettings={saveSettings}
-                              changeLanguage={changeLanguage}
-                              defaultCountry={defaultCountry}
-                              changeActiveEmoji={changeActiveEmoji}
-                              setDefaultSettings={setDefaultSettings}
-                              changeActivePrivateChat={changeActivePrivateChat}
-                        />)}
+                        <MainRoute
+                            {...props}
+                            emoji={emoji}
+                            theme={theme}
+                            translate = { t }
+                            changeTheme={changeTheme}
+                            privateChat={privateChat}
+                            saveSettings={saveSettings}
+                            changeLanguage={changeLanguage}
+                            defaultCountry={defaultCountry}
+                            changeActiveEmoji={changeActiveEmoji}
+                            setDefaultSettings={setDefaultSettings}
+                            changeActivePrivateChat={changeActivePrivateChat}
+                        />
+                    )}
                     />
                     <Route exact path='/login' render={props => (
                         <Login {...props}

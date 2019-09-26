@@ -2,6 +2,7 @@ module.exports = {
     US: 'US',
     ALL: 'ALL',
     CHAT: 'chat',
+    MOCK: 'mock',
     DARK: 'dark',
     USERS: 'users',
     REDIS: 'redis',
