@@ -156,13 +156,12 @@ describe('messagesDaoMongoDB', () => {
         let sandBox;
         let utilCall;
         let mockArgs;
-        let mockModel;
         let mockMessage;
+        let mockModel;
         let actualResult;
         let expectedResult;
         let mockSentMessages;
         let mockReceivedMessages;
-
 
         before(async () => {
             dao = new MessagesDaoMongoDB();
