@@ -7,11 +7,10 @@ export default function(Component) {
     class WithLocalization extends React.Component {
         render() {
             if (Component) {
-                const { t } = this.props;
 
                 return (
                     <I18nextProvider i18n={ i18n }>
-                        <Component {...this.props} t = {t} />
+                        <Component {...this.props} />
                     </I18nextProvider>
                 );
             }

@@ -3,6 +3,7 @@ import ua from './strings/ua.json';
 import de from './strings/de.json';
 import ae from './strings/ae.json';
 import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 const options = {
     interpolation: {
@@ -40,6 +41,8 @@ const options = {
     },
 };
 
-i18n.init(options);
+i18n
+    .use(initReactI18next)
+    .init(options);
 
 export default i18n;

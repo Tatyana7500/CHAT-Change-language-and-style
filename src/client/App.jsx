@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
-import { withTranslation } from 'react-i18next';
 import Main from './components/main/Main.jsx';
 import React, { Component } from 'react';
 import constants from '../constants';
@@ -197,5 +196,5 @@ class App extends Component {
         );
     }
 }
-export default withTranslation('common')(App);
-//export default withLocalization(App);
+
+export default withLocalization(App);
