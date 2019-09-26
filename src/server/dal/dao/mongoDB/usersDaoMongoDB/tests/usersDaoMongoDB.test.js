@@ -77,10 +77,6 @@ describe('usersDaoMongoDB', () => {
 
     describe('create', () => {
         let dao;
-<<<<<<< HEAD
-=======
-        let user;
->>>>>>> 9551da07a4387939f5d082cff9503dc5181d37d0
         let sandBox;
         let mockModel;
         let mockUserModel;
@@ -96,8 +92,6 @@ describe('usersDaoMongoDB', () => {
             };
             mockModel.returns(mockUserModel);
             sandBox.stub(dao, 'model').get(() => mockModel);
-<<<<<<< HEAD
-
             dao.create(mockObject);
         });
 
@@ -118,8 +112,6 @@ describe('usersDaoMongoDB', () => {
     describe('readAll', () => {
         let dao;
         let sandBox;
-        let mockUsers;
-        let mockAllUsers;
         let mockUsersModel;
 
         before(async () => {
@@ -139,23 +131,6 @@ describe('usersDaoMongoDB', () => {
         it('should call this.model()', async () => {
             await sinon.assert.calledOnce(mockUsersModel.find);
             await sinon.assert.calledWith(mockUsersModel.find, {});
-=======
-
-            dao.create(mockObject);
-        });
-
-        after(() => {
-            sandBox.restore();
-        });
-
-        it('should call this.model()', async () => {
-            await sinon.assert.calledOnce(dao.model);
-            await sinon.assert.calledWith(dao.model, mockObject);
-        });
-
-        it('should call save', async () => {
-           await sinon.assert.calledOnce(mockUserModel.save);
->>>>>>> 9551da07a4387939f5d082cff9503dc5181d37d0
         });
     });
 });
