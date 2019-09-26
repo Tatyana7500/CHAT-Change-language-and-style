@@ -1,19 +1,24 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
-import { withTranslation } from 'react-i18next';
 import Main from './components/main/Main.jsx';
 import React, { Component } from 'react';
 import constants from '../constants';
-import i18n from './locale';
+import PropTypes from 'prop-types';
 import './theme/matrix.css';
 import withAuthorization from "./hocs/withAuthorization";
 
 class App extends Component {
+    static propTypes = {
+        i18n: PropTypes.object.isRequired,
+    };
+
     constructor(props) {
         super(props);
 
         const { privateChat, theme, lang, emoji } = this.getSavedSettings();
+        const { i18n } = this.props;
         i18n.changeLanguage(lang);
         this.applyTheme(theme);
 
@@ -26,6 +31,8 @@ class App extends Component {
     }
 
     changeLanguage = lang => {
+        const { i18n } = this.props;
+
         const settings = {
             lang: lang,
             emoji: this.state.emoji,
@@ -127,6 +134,8 @@ class App extends Component {
     };
 
     setDefaultSettings = () => {
+        const { i18n } = this.props;
+
         const settings = {
             emoji: true,
             privateChat: true,
@@ -188,14 +197,14 @@ class App extends Component {
                     />
                     <Route exact path='/login' render={props => (
                         <Login {...props}
-                               translate = { t }
+                               translate={t}
                                changeLanguage={changeLanguage}
                                defaultCountry={defaultCountry}
                         />)}
                     />
                     <Route exact path='/signIn' render={props => (
                         <SignIn {...props}
-                                translate = { t }
+                                translate = {t}
                                 changeLanguage={changeLanguage}
                                 defaultCountry={defaultCountry}
                         />)}
@@ -206,4 +215,4 @@ class App extends Component {
     }
 }
 
-export default withTranslation('common')(App);
+export default withLocalization(App);
