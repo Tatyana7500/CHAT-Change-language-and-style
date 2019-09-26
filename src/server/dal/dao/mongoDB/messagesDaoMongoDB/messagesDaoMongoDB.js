@@ -7,7 +7,7 @@ const messageSchema = new mongoose.Schema({
     message: { type: String, required: true },
     sender: { type: String, required: true },
     receiver: { type: String, required: true },
-    date: {type: Number, required: true },
+    date: { type: Number, required: true },
 });
 
 function MessagesDaoMongoDB() {
