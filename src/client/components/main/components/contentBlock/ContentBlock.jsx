@@ -20,10 +20,10 @@ const ContentBlock = props => {
         emojiMenu,
         showEmoji,
         windowState,
+        privateChat,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
-        privateChat,
         openPrivateChat,
     } = props;
 

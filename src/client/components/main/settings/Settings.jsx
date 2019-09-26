@@ -71,17 +71,17 @@ const Settings = (props) => {
 };
 
 Settings.propTypes = {
+    emoji: PropTypes.bool.isRequired,
     theme: PropTypes.string.isRequired,
     translate: PropTypes.func.isRequired,
     handleHide: PropTypes.func.isRequired,
-    changeActiveEmoji: PropTypes.func.isRequired,
-    changeActivePrivateChat: PropTypes.func.isRequired,
-    emoji: PropTypes.bool.isRequired,
     privateChat: PropTypes.bool.isRequired,
     changeTheme: PropTypes.func.isRequired,
     changeLanguage: PropTypes.func.isRequired,
     defaultCountry: PropTypes.string.isRequired,
+    changeActiveEmoji: PropTypes.func.isRequired,
     setDefaultSettings: PropTypes.func.isRequired,
+    changeActivePrivateChat: PropTypes.func.isRequired,
 };
 
 export default Settings;

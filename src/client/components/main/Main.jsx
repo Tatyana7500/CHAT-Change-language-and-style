@@ -21,7 +21,7 @@ class Main extends Component {
             messageAreaValue: '',
             idUserSender: null,
             emojiMenu: false,
-            showModal: false,
+            isOpenModal: false,
             messagesList: [],
             usersList: [],
             clients: [],
@@ -66,11 +66,11 @@ class Main extends Component {
     };
 
     handleShow = () => {
-        this.setState({ showModal: true });
+        this.setState({ isOpenModal: true });
     };
 
     handleHide = () => {
-        this.setState({ showModal: false });
+        this.setState({ isOpenModal: false });
     };
 
     addEmoji = (e) => {
@@ -82,7 +82,7 @@ class Main extends Component {
 
     showEmoji = () => {
         this.setState({
-                emojisMenu: true,
+                emojiMenu: true,
             },
             () => document.addEventListener('click', this.closeMenu)
         );
@@ -90,7 +90,7 @@ class Main extends Component {
 
     closeMenu = () => {
         this.setState({
-                emojisMenu: false,
+                emojiMenu: false,
             },
             () => document.removeEventListener('click', this.closeMenu)
         );
@@ -167,7 +167,7 @@ class Main extends Component {
     }
 
     openPrivateChat = async (e) => {
-        if (!this.props.privateChat){
+        if (!this.props.privateChat) {
             return;
         }
 
@@ -202,7 +202,7 @@ class Main extends Component {
             changeActivePrivateChat,
         } = this.props;
 
-        const { showModal } = this.state;
+        const { isOpenModal } = this.state;
 
         return (
             <div>
@@ -241,24 +241,26 @@ class Main extends Component {
                         messageAreaValue={this.state.messageAreaValue}
                     />
                 </div>
-                <Modal showModal={showModal}>
-                    <div className='modal'>
-                        <Settings
-                            emoji = {emoji}
-                            theme = {theme}
-                            translate = {translate}
-                            changeTheme = {changeTheme}
-                            privateChat = {privateChat}
-                            handleHide = {this.handleHide}
-                            defaultCountry = {defaultCountry}
-                            changeLanguage = {changeLanguage}
-                            emojiActive = {this.state.emojiActive}
-                            setDefaultSettings={setDefaultSettings}
-                            changeActiveEmoji = {changeActiveEmoji}
-                            changeActivePrivateChat = {changeActivePrivateChat}
-                        />
-                    </div>
-                </Modal>
+                {isOpenModal ?
+                    <Modal>
+                        <div className='modal'>
+                            <Settings
+                                emoji={emoji}
+                                theme={theme}
+                                translate={translate}
+                                changeTheme={changeTheme}
+                                privateChat={privateChat}
+                                handleHide={this.handleHide}
+                                defaultCountry={defaultCountry}
+                                changeLanguage={changeLanguage}
+                                emojiActive={this.state.emojiActive}
+                                setDefaultSettings={setDefaultSettings}
+                                changeActiveEmoji={changeActiveEmoji}
+                                changeActivePrivateChat={changeActivePrivateChat}
+                            />
+                        </div>
+                    </Modal> : null
+                }
             </div>
         );
     }

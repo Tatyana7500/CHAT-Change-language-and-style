@@ -1,27 +1,41 @@
-import ModalWrapper from './modalWrapper/ModalWrapper';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
+import { createPortal } from 'react-dom';
 
 class Modal extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.modalContainer = document.createElement('div');
+        this.modalContainer.className = 'modal-container';
+    }
+
     static propTypes = {
-        showModal: PropTypes.bool.isRequired,
         path: PropTypes.object,
     };
 
+    static defaultProps = {
+        path: document.body,
+    };
+
+    componentDidMount() {
+        const { path } = this.props;
+
+        path.appendChild(this.modalContainer);
+    }
+
+    componentWillUnmount() {
+        const { path } = this.props;
+
+        path.removeChild(this.modalContainer);
+    }
+
     render() {
         const {
-            path,
             children,
-            showModal,
         } = this.props;
 
-        return showModal ?
-            <ModalWrapper showModal={showModal} path={path}>
-                <div className='modal-container'>
-                    { children }
-                </div>
-            </ModalWrapper> : null;
+        return createPortal(children, this.modalContainer);
     }
 }
 

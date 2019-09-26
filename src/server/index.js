@@ -48,7 +48,7 @@ async function handleDisconnect(socket) {
 async function handleMessage(message) {
     await chatDal.createMessage(message);
     const { receiver } = message;
-    await console.log(message);
+
     const user = await chatDal.readUserToId(message.sender);
     const oneMessage = {
         message: message.message,
