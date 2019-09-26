@@ -77,7 +77,6 @@ describe('usersDaoMongoDB', () => {
 
     describe('create', () => {
         let dao;
-        let user;
         let sandBox;
         let mockModel;
         let mockUserModel;
@@ -108,6 +107,33 @@ describe('usersDaoMongoDB', () => {
 
         it('should call save', async () => {
             await sinon.assert.calledOnce(mockUserModel.save);
+        });
+    });
+
+    describe('readAll', () => {
+        let dao;
+        let sandBox;
+        let mockUsers;
+        let mockAllUsers;
+        let mockUsersModel;
+
+        before(async () => {
+            dao = new UsersDaoMongoDB();
+            dao.initialize();
+            sandBox = sinon.createSandbox();
+            mockUsersModel = dao.model;
+            sandBox.stub(mockUsersModel, 'find');
+
+            dao.readAll();
+        });
+
+        after(() => {
+            sandBox.restore();
+        });
+
+        it('should call this.model()', async () => {
+            await sinon.assert.calledOnce(mockUsersModel.find);
+            await sinon.assert.calledWith(mockUsersModel.find, {});
         });
     });
 });
