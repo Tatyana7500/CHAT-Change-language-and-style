@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
 import { withTranslation } from 'react-i18next';
@@ -166,7 +167,7 @@ class App extends Component {
                         <Main {...props}
                               emoji={emoji}
                               theme={theme}
-                              translate = { t }
+                              translate={t}
                               changeTheme={changeTheme}
                               privateChat={privateChat}
                               saveSettings={saveSettings}
@@ -179,14 +180,14 @@ class App extends Component {
                     />
                     <Route exact path='/login' render={props => (
                         <Login {...props}
-                               translate = { t }
+                               translate={t}
                                changeLanguage={changeLanguage}
                                defaultCountry={defaultCountry}
                         />)}
                     />
                     <Route exact path='/signIn' render={props => (
                         <SignIn {...props}
-                                translate = { t }
+                                translate = {t}
                                 changeLanguage={changeLanguage}
                                 defaultCountry={defaultCountry}
                         />)}
@@ -196,5 +197,5 @@ class App extends Component {
         );
     }
 }
-
 export default withTranslation('common')(App);
+//export default withLocalization(App);

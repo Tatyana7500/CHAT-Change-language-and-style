@@ -1,21 +1,22 @@
+import { I18nextProvider } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
+import i18n from '../locale/index';
 import React from 'react';
 
-function withLocalization(Component) {
-    return class extends React.Component {
-        componentWillCheckLS() {
-            const userValidate = JSON.parse(window.localStorage.getItem('chat'));
-
-            return userValidate !== null;
-        }
-
+export default function(Component) {
+    class WithLocalization extends React.Component {
         render() {
-            if (this.componentWillCheckLS()) {
-                return <Component {...this.props} />;
-            } else {
-                window.location.href = '/login';
+            if (Component) {
+                const { t } = this.props;
+
+                return (
+                    <I18nextProvider i18n={ i18n }>
+                        <Component {...this.props} t = {t} />
+                    </I18nextProvider>
+                );
             }
         }
-    };
-}
+    }
 
-export default withLocalization;
+    return withTranslation('common')(WithLocalization);
+}
