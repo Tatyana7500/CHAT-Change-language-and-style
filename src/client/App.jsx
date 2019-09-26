@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import withAuthorization from '../client/hocs/withAuthorization';
 import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
 import Main from './components/main/Main.jsx';
+import logic from './components/main/logic';
 import React, { Component } from 'react';
 import constants from '../constants';
 import PropTypes from 'prop-types';
 import './theme/matrix.css';
-import withAuthorization from "./hocs/withAuthorization";
 
 class App extends Component {
     static propTypes = {
@@ -158,6 +159,12 @@ class App extends Component {
         this.saveSettings(settings);
     };
 
+    isAuthorization = () => {
+        const userValidate = JSON.parse(window.localStorage.getItem('chat'));
+
+        return userValidate !== null;
+    };
+
     render() {
         const changeActivePrivateChat = this.changeActivePrivateChat;
         const defaultCountry = this.state.lang.toUpperCase();
@@ -169,9 +176,13 @@ class App extends Component {
         const changeTheme = this.changeTheme;
         const { t } = this.props;
 
-        const isAuthorized = true;
-        const redirect = () => console.log('redirect');
-        const logout = () => console.log('logout');
+        const isAuthorized = this.isAuthorization();
+        const redirect = () => {
+            window.location.href = '/login';
+        };
+        const logout = () => {
+            logic.removeLocalStorage();
+        };
 
         const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout);
 
@@ -179,21 +190,19 @@ class App extends Component {
             <Router>
                 <Switch>
                     <Route exact path='/main' render={props => (
-                        <MainRoute
-                            {...props}
-                            emoji={emoji}
-                            theme={theme}
-                            translate = { t }
-                            changeTheme={changeTheme}
-                            privateChat={privateChat}
-                            saveSettings={saveSettings}
-                            changeLanguage={changeLanguage}
-                            defaultCountry={defaultCountry}
-                            changeActiveEmoji={changeActiveEmoji}
-                            setDefaultSettings={setDefaultSettings}
-                            changeActivePrivateChat={changeActivePrivateChat}
-                        />
-                    )}
+                        <MainRoute {...props}
+                                   emoji={emoji}
+                                   theme={theme}
+                                   translate={t}
+                                   changeTheme={changeTheme}
+                                   privateChat={privateChat}
+                                   saveSettings={saveSettings}
+                                   changeLanguage={changeLanguage}
+                                   defaultCountry={defaultCountry}
+                                   changeActiveEmoji={changeActiveEmoji}
+                                   setDefaultSettings={setDefaultSettings}
+                                   changeActivePrivateChat={changeActivePrivateChat}
+                        />)}
                     />
                     <Route exact path='/login' render={props => (
                         <Login {...props}

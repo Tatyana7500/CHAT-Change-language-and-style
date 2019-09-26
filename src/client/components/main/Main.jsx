@@ -54,6 +54,7 @@ class Main extends Component {
 
     static propTypes = {
         emoji: PropTypes.bool.isRequired,
+        logout: PropTypes.func.isRequired,
         theme: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
         privateChat: PropTypes.bool.isRequired,
@@ -125,10 +126,6 @@ class Main extends Component {
         this.setState({ messageAreaValue: e.target.value });
     };
 
-    clickButtonLogOut = async () => {
-        logic.removeLocalStorage();
-    };
-
     clickButtonSend = async () => {
         await this.setState({
             messageBody: {
@@ -192,6 +189,7 @@ class Main extends Component {
         const {
             emoji,
             theme,
+            logout,
             translate,
             privateChat,
             changeTheme,
@@ -216,7 +214,7 @@ class Main extends Component {
                         name={this.state.name}
                         translate = {translate}
                         email={this.state.email}
-                        clickButtonLogOut={this.clickButtonLogOut}
+                        clickButtonLogOut={logout}
                     />
                     <ContentBlock
                         name={this.state.name}
