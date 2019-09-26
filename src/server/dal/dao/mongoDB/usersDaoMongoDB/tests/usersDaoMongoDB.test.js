@@ -99,38 +99,50 @@ describe('usersDaoMongoDB', () => {
             sandBox.restore();
         });
 
-        it('should call this.model()', async () => {
-            await sinon.assert.calledOnce(dao.model);
-            await sinon.assert.calledWith(dao.model, mockObject);
+        it('should call this.model()', () => {
+            sinon.assert.calledOnce(dao.model);
+            sinon.assert.calledWith(dao.model, mockObject);
         });
 
-        it('should call save', async () => {
-            await sinon.assert.calledOnce(mockUserModel.save);
+        it('should call save', () => {
+            sinon.assert.calledOnce(mockUserModel.save);
         });
     });
 
     describe('readAll', () => {
         let dao;
         let sandBox;
-        let mockUsersModel;
+        let mockUserModel;
+        let expectedResult = ['user-1', 'user-2'];
+        let actualResult;
 
         before(async () => {
             dao = new UsersDaoMongoDB();
-            dao.initialize();
             sandBox = sinon.createSandbox();
-            mockUsersModel = dao.model;
-            sandBox.stub(mockUsersModel, 'find');
+            mockUserModel = {
+                find: sandBox.stub(),
+            };
+            mockUserModel.find.returns(expectedResult);
+            sandBox.stub(dao, 'model').get(() => mockUserModel);
 
-            dao.readAll();
+            actualResult = await dao.readAll();
         });
 
         after(() => {
             sandBox.restore();
         });
 
-        it('should call this.model()', async () => {
-            await sinon.assert.calledOnce(mockUsersModel.find);
-            await sinon.assert.calledWith(mockUsersModel.find, {});
+        after(() => {
+            sandBox.restore();
+        });
+
+        it('should call this.model()', () => {
+            sinon.assert.calledOnce(mockUserModel.find);
+            sinon.assert.calledWith(mockUserModel.find, {});
+        });
+
+        it('should return result', () => {
+            assert.deepEqual(actualResult, expectedResult);
         });
     });
 });
