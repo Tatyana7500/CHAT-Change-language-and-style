@@ -71,8 +71,6 @@ function withAuthorization(Component, isAuthorized, redirect, logout) {
         };
 
         render() {
-            debugger;
-
             return isAuthorized ? (
                 <Component
                     logout={logout}
