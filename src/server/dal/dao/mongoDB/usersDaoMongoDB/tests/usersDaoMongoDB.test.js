@@ -93,7 +93,7 @@ describe('usersDaoMongoDB', () => {
             mockModel.returns(mockUserModel);
             sandBox.stub(dao, 'model').get(() => mockModel);
 
-            dao.create(mockObject);
+            await dao.create(mockObject);
         });
 
         after(() => {
