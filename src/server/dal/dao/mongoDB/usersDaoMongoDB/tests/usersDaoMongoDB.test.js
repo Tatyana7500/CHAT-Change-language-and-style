@@ -99,38 +99,90 @@ describe('usersDaoMongoDB', () => {
             sandBox.restore();
         });
 
-        it('should call this.model()', async () => {
-            await sinon.assert.calledOnce(dao.model);
-            await sinon.assert.calledWith(dao.model, mockObject);
+        it('should call this.model()', () => {
+            sinon.assert.calledOnce(dao.model);
+            sinon.assert.calledWith(dao.model, mockObject);
         });
 
-        it('should call save', async () => {
-            await sinon.assert.calledOnce(mockUserModel.save);
+        it('should call save', () => {
+            sinon.assert.calledOnce(mockUserModel.save);
         });
     });
 
     describe('readAll', () => {
         let dao;
         let sandBox;
+        let actualResult;
+        let expectedResult = ['user1', 'user2', 'user3'];
         let mockUsersModel;
 
         before(async () => {
             dao = new UsersDaoMongoDB();
-            dao.initialize();
             sandBox = sinon.createSandbox();
-            mockUsersModel = dao.model;
-            sandBox.stub(mockUsersModel, 'find');
+            mockUsersModel = {
+                find: sandBox.stub(),
+            };
+            mockUsersModel.find.returns(expectedResult);
+            sandBox.stub(dao, 'model').get(() => mockUsersModel);
 
-            dao.readAll();
+            actualResult = await dao.readAll();
         });
 
         after(() => {
             sandBox.restore();
         });
 
-        it('should call this.model()', async () => {
-            await sinon.assert.calledOnce(mockUsersModel.find);
-            await sinon.assert.calledWith(mockUsersModel.find, {});
+        it('should call dao.model.find() once', () => {
+            sinon.assert.calledOnce(mockUsersModel.find);
+            sinon.assert.calledWith(mockUsersModel.find, {});
+        });
+
+        it('should return result', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
+        });
+    });
+
+    describe('readUser', () => {
+        let dao;
+        let sandBox;
+        let mockObject;
+        let actualResult;
+        let expectedResult = {
+            name: 'name',
+            email: 'email',
+            password: 'password',
+        };
+        let mockUsersModel;
+
+        before(async () => {
+            dao = new UsersDaoMongoDB();
+            sandBox = sinon.createSandbox();
+            mockObject = {
+                email: 'email',
+                password: 'password',
+            };
+            mockUsersModel = {
+                findOne: sandBox.stub(),
+            };
+            mockUsersModel.findOne.returns(expectedResult);
+            sandBox.stub(dao, 'model').get(() => mockUsersModel);
+
+            actualResult = await dao.readUser(mockObject.email, mockObject.password);
+        });
+
+        after(() => {
+            sandBox.restore();
+        });
+
+        it('Should called once findOne()', () => {
+            const { email, password } = mockObject;
+
+            sinon.assert.calledOnce(mockUsersModel.findOne);
+            sinon.assert.calledWith(mockUsersModel.findOne, { email, password });
+        });
+
+        it('Should return result', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
         });
     });
 });

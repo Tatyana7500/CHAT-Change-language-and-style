@@ -1,7 +1,7 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const mongoose = require('mongoose');
-const util = require('../util');
+const util = require('../../util');
 
 const messageSchema = new mongoose.Schema({
     message: { type: String, required: true },
