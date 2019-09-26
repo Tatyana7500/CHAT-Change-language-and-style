@@ -154,22 +154,19 @@ describe('messagesDaoMongoDB', () => {
     describe('readBySenderAndReceiver', () => {
         let dao;
         let sandBox;
-        let mockUtil;
+        let utilCall;
         let mockArgs;
         let mockModel;
-        let mockObject;
         let mockMessage;
         let actualResult;
         let expectedResult;
-        let mockSentObject;
-        let mockReceivedObject;
+        let mockSentMessages;
+        let mockReceivedMessages;
+
 
         before(async () => {
             dao = new MessagesDaoMongoDB();
             sandBox = sinon.createSandbox();
-            mockUtil = {
-                dynamicSort: sandBox.stub(),
-            };
             mockArgs = {
                 sender: 'sender',
                 receiver: 'receiver',
@@ -177,15 +174,16 @@ describe('messagesDaoMongoDB', () => {
             mockModel = {
                 find: sandBox.stub(),
             };
-            mockMessage = {
-                sort: sandBox.stub(),
-            };
             expectedResult = ['message1', 'message2'];
-            mockSentObject = {};
-            mockReceivedObject = {};
-            mockModel.find.withArgs({ sender: mockArgs.sender, receiver: mockArgs.receiver }).returns(mockSentObject);
-            mockModel.find.withArgs({ sender: mockArgs.receiver, receiver: mockArgs.sender }).returns(mockReceivedObject);
+            mockSentMessages = ['message1'];
+            mockReceivedMessages = ['message2'];
+            mockModel.find.withArgs({ sender: mockArgs.sender, receiver: mockArgs.receiver }).returns(mockSentMessages);
+            mockModel.find.withArgs({ sender: mockArgs.receiver, receiver: mockArgs.sender }).returns(mockReceivedMessages);
+            mockMessage = [...mockSentMessages, ...mockReceivedMessages];
+            utilCall = sandBox.stub(util, 'dynamicSort');
             sandBox.stub(dao, 'model').get(() => mockModel);
+            sandBox.stub(mockMessage, 'sort');
+            mockMessage.sort.withArgs(utilCall).returns(expectedResult);
 
             actualResult = await dao.readBySenderAndReceiver(mockArgs.sender, mockArgs.receiver);
         });
@@ -194,8 +192,18 @@ describe('messagesDaoMongoDB', () => {
             sandBox.restore();
         });
 
-        it('Should ', () => {
+        it('Should run util.dynamicSort', () => {
+            sinon.assert.calledOnce(util.dynamicSort);
+            sinon.assert.calledWith(util.dynamicSort, 'date');
+        });
 
+        it('Should run .sort()', () => {
+            sinon.assert.calledOnce(mockMessage.sort);
+            sinon.assert.calledWith(mockMessage.sort, utilCall);
+        });
+
+        it('should return correct messages', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
         });
     });
 });
