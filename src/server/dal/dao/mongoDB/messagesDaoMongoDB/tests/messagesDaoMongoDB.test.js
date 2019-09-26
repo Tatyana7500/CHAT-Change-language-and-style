@@ -156,7 +156,6 @@ describe('messagesDaoMongoDB', () => {
         let sandBox;
         let utilCall;
         let mockArgs;
-        let mockMessage;
         let mockModel;
         let actualResult;
         let expectedResult;
@@ -178,11 +177,8 @@ describe('messagesDaoMongoDB', () => {
             mockReceivedMessages = ['message2'];
             mockModel.find.withArgs({ sender: mockArgs.sender, receiver: mockArgs.receiver }).returns(mockSentMessages);
             mockModel.find.withArgs({ sender: mockArgs.receiver, receiver: mockArgs.sender }).returns(mockReceivedMessages);
-            mockMessage = [...mockSentMessages, ...mockReceivedMessages];
-            utilCall = sandBox.stub(util, 'dynamicSort');
+            sandBox.stub(util, 'dynamicSort');
             sandBox.stub(dao, 'model').get(() => mockModel);
-            sandBox.stub(mockMessage, 'sort');
-            mockMessage.sort.withArgs(utilCall).returns(expectedResult);
 
             actualResult = await dao.readBySenderAndReceiver(mockArgs.sender, mockArgs.receiver);
         });
@@ -191,14 +187,19 @@ describe('messagesDaoMongoDB', () => {
             sandBox.restore();
         });
 
+        it('Should called twice', () => {
+            sinon.assert.calledTwice(mockModel.find);
+            sinon.assert.calledWith(mockModel.find, { sender: mockArgs.sender, receiver: mockArgs.receiver });
+            sinon.assert.calledWith(mockModel.find, { sender: mockArgs.receiver, receiver: mockArgs.sender });
+        });
+
         it('Should run util.dynamicSort', () => {
             sinon.assert.calledOnce(util.dynamicSort);
             sinon.assert.calledWith(util.dynamicSort, 'date');
         });
 
-        it('Should run .sort()', () => {
-            sinon.assert.calledOnce(mockMessage.sort);
-            sinon.assert.calledWith(mockMessage.sort, utilCall);
+        it('Should be sorted', () => {
+            assert.deepStrictEqual([...mockReceivedMessages, ...mockSentMessages].sort(),  expectedResult);
         });
 
         it('should return correct messages', () => {
