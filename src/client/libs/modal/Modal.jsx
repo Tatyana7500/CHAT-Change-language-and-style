@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import './Modal.css';
-import { createPortal } from 'react-dom';
 
 class Modal extends PureComponent {
     constructor(props) {

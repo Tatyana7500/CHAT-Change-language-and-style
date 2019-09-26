@@ -3,11 +3,12 @@ import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
 import Main from './components/main/Main.jsx';
+import logic from './components/main/logic';
 import React, { Component } from 'react';
 import constants from '../constants';
 import PropTypes from 'prop-types';
 import './theme/matrix.css';
-import withAuthorization from "./hocs/withAuthorization";
+import withAuthorization from './hocs/withAuthorization';
 import resources from './locale';
 
 class App extends Component {
@@ -157,6 +158,12 @@ class App extends Component {
         this.saveSettings(settings);
     };
 
+    isAuthorization = () => {
+        const userValidate = JSON.parse(window.localStorage.getItem('chat'));
+
+        return userValidate !== null;
+    };
+
     render() {
         const changeActivePrivateChat = this.changeActivePrivateChat;
         const defaultCountry = this.state.lang.toUpperCase();
@@ -168,16 +175,20 @@ class App extends Component {
         const changeTheme = this.changeTheme;
         const { translate } = this.props;
 
-        const isAuthorized = true;
-        const redirect = () => console.log('redirect');
-        const logout = () => console.log('logout');
+        const isAuthorized = this.isAuthorization();
+        const redirect = () => {
+            window.location.href = '/login';
+        };
+        const logout = () => {
+            logic.removeLocalStorage();
+        };
 
         const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout);
 
         return (
             <Router>
                 <Switch>
-                    <Route exact path='/main' render={props => (
+                    <Route exact path='/main' render={props => 
                         <MainRoute
                             {...props}
                             emoji={emoji}
@@ -192,21 +203,21 @@ class App extends Component {
                             setDefaultSettings={setDefaultSettings}
                             changeActivePrivateChat={changeActivePrivateChat}
                         />
-                    )}
+                    }
                     />
-                    <Route exact path='/login' render={props => (
+                    <Route exact path='/login' render={props => 
                         <Login {...props}
                                translate={translate}
                                changeLanguage={changeLanguage}
                                defaultCountry={defaultCountry}
-                        />)}
+                        />}
                     />
-                    <Route exact path='/signIn' render={props => (
+                    <Route exact path='/signIn' render={props => 
                         <SignIn {...props}
                                 translate = {translate}
                                 changeLanguage={changeLanguage}
                                 defaultCountry={defaultCountry}
-                        />)}
+                        />}
                     />
                 </Switch>
             </Router>
