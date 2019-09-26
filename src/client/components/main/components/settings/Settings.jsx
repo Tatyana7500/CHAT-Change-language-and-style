@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './Settings.css';
-import SettingTheme from '../../common/themeDropdown/ThemeDropdown';
-import SettingLanguage from '../../common/languageDropdown/LanguageDropdown';
-import SettingEmoji from '../../common/emojiCheckbox/EmojisCheckbox';
-import SettingPrivateChat from '../../common/privateChatCheckbox/PrivateCheckbox';
-import SettingDefault from '../../common/defaultSettings/DefaultSettings';
+import SettingTheme from '../../../common/themeDropdown/ThemeDropdown.jsx';
+import SettingLanguage from '../../../common/languageDropdown/LanguageDropdown.jsx';
+import SettingEmoji from './components/emojiCheckbox/EmojisCheckbox.jsx';
+import SettingPrivateChat from './components/privateChatCheckbox/PrivateCheckbox.jsx';
+import SettingDefault from './components/defaultSettings/DefaultSettings.jsx';
 
 const Settings = (props) => {
     const {

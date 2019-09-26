@@ -1,6 +1,6 @@
-@import '../../../../theme/matrix.css';
+@import '../../../../../../../theme/matrix.css';
 
-.radio-emoji {
+.radio-default {
     width:70px;
     height:25px;
     -webkit-appearance: none;
@@ -13,7 +13,7 @@
     box-shadow: inset 0 0 10px rgba(0,0,0,.6)
 }
 
-.radio-emoji:before{
+.radio-default:before{
     content:'😊';
     position: absolute;
     width:25px;
@@ -27,6 +27,6 @@
     transform:scale(1,1)
 }
 
-.radio-emoji:checked:before{
+.radio-default:checked:before{
     left:45px;
 }
