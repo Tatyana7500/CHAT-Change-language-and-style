@@ -154,15 +154,14 @@ describe('messagesDaoMongoDB', () => {
     describe('readBySenderAndReceiver', () => {
         let dao;
         let sandBox;
-        let mockUtil;
         let mockArgs;
-        let mockModel;
-        let mockObject;
+        let mockUtil;
         let mockMessage;
+        let mockModel;
         let actualResult;
         let expectedResult;
-        let mockSentObject;
-        let mockReceivedObject;
+        let mockSentMessages;
+        let mockReceivedMessages;
 
         before(async () => {
             dao = new MessagesDaoMongoDB();
@@ -181,10 +180,10 @@ describe('messagesDaoMongoDB', () => {
                 sort: sandBox.stub(),
             };
             expectedResult = ['message1', 'message2'];
-            mockSentObject = {};
-            mockReceivedObject = {};
-            mockModel.find.withArgs({ sender: mockArgs.sender, receiver: mockArgs.receiver }).returns(mockSentObject);
-            mockModel.find.withArgs({ sender: mockArgs.receiver, receiver: mockArgs.sender }).returns(mockReceivedObject);
+            mockSentMessages = ['message1'];
+            mockReceivedMessages = ['message2'];
+            mockModel.find.withArgs({ sender: mockArgs.sender, receiver: mockArgs.receiver }).returns(mockSentMessages);
+            mockModel.find.withArgs({ sender: mockArgs.receiver, receiver: mockArgs.sender }).returns(mockReceivedMessages);
             sandBox.stub(dao, 'model').get(() => mockModel);
 
             actualResult = await dao.readBySenderAndReceiver(mockArgs.sender, mockArgs.receiver);
@@ -194,8 +193,8 @@ describe('messagesDaoMongoDB', () => {
             sandBox.restore();
         });
 
-        it('Should ', () => {
-
+        it('should return correct messages', () => {
+            assert.deepEqual(actualResult, expectedResult);
         });
     });
 });
