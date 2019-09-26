@@ -132,6 +132,10 @@ describe('usersDaoMongoDB', () => {
             sandBox.restore();
         });
 
+        after(() => {
+            sandBox.restore();
+        });
+
         it('should call dao.model.find() once', () => {
             sinon.assert.calledOnce(mockUsersModel.find);
             sinon.assert.calledWith(mockUsersModel.find, {});
