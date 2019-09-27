@@ -1,4 +1,6 @@
 const constants = require('../../constants');
+const UsersDaoMockDB = require('./dao/mockDB/usersDaoMockDB');
+const MessagesDaoMockDB = require('./dao/mockDB/messagesDaoMockDB');
 const UsersDaoRedisDB = require('./dao/redisDB/usersDaoRedis');
 const MessagesDaoRedisDB = require('./dao/redisDB/messagesDaoRedis');
 const UsersDaoMongoDB = require('./dao/mongoDB/usersDaoMongoDB/usersDaoMongoDB');
@@ -32,6 +34,8 @@ ChatDAL.prototype.createMessagesDAO = function () {
             return new MessagesDaoMySqlDB();
         case constants.POSTGRES:
             return new MessagesDaoPostgresDB();
+        case constants.MOCK:
+            return new MessagesDaoMockDB();
         default:
             throw new Error('unknown databaseType');
     }
@@ -47,6 +51,8 @@ ChatDAL.prototype.createUsersDAO = function () {
             return new UsersDaoMySqlDB();
         case constants.POSTGRES:
             return new UsersDaoPostgresDB();
+        case constants.MOCK:
+            return new UsersDaoMockDB();
         default:
             throw new Error('unknown databaseType');
     }

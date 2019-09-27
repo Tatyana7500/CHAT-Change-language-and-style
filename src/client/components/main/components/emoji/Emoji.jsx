@@ -2,6 +2,7 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 import PropTypes from 'prop-types';
 import React from 'react';
+import './Emoji.css';
 
 const Emoji = (props) => {
     const {

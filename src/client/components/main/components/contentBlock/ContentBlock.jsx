@@ -2,6 +2,7 @@ import UsersList from '../usersList/UsersList.jsx';
 import HatBlock from '../chatBlock/ChatBlock.jsx';
 import constants from '../../../../../constants';
 import PropTypes from 'prop-types';
+import './ContentBlock.css';
 import React from 'react';
 
 const ContentBlock = props => {
@@ -20,10 +21,10 @@ const ContentBlock = props => {
         emojiMenu,
         showEmoji,
         windowState,
+        privateChat,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
-        privateChat,
         openPrivateChat,
     } = props;
 

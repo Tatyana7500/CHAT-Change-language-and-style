@@ -2,9 +2,9 @@ import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
 import util from '../../utils/requestHelper';
 import React, { Component } from 'react';
 import constants from '../../../constants';
-import logic from './logic';
-import '../../theme/index.css';
 import PropTypes from 'prop-types';
+import logic from './logic';
+import './Login.css';
 
 class Login extends Component {
     static propTypes = {

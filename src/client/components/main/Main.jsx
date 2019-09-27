@@ -1,18 +1,20 @@
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
-import ModalBlock from '../modal/modalBlock/ModalBlock.jsx';
-import Modal from '../modal/modal/Modal.jsx';
+import Settings from './components/settings/Settings.jsx';
+import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import openSocket from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import logic from './logic';
+import './Main.css';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket(constants.LOCALHOST);
+        const isOpenModal = this.getStatusModal();
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -21,7 +23,7 @@ class Main extends Component {
             messageAreaValue: '',
             idUserSender: null,
             emojiMenu: false,
-            showModal: false,
+            isOpenModal: isOpenModal,
             messagesList: [],
             usersList: [],
             clients: [],
@@ -54,6 +56,7 @@ class Main extends Component {
 
     static propTypes = {
         emoji: PropTypes.bool.isRequired,
+        logout: PropTypes.func.isRequired,
         theme: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
         privateChat: PropTypes.bool.isRequired,
@@ -66,11 +69,23 @@ class Main extends Component {
     };
 
     handleShow = () => {
-        this.setState({ showModal: true });
+        localStorage.setItem(constants.MODAL, true);
+        this.setState({ isOpenModal: true });
     };
 
     handleHide = () => {
-        this.setState({ showModal: false });
+        localStorage.setItem(constants.MODAL, false);
+        this.setState({ isOpenModal: false });
+    };
+
+    getStatusModal = () => {
+        const modal = JSON.parse(localStorage.getItem(constants.MODAL));
+
+        if (!modal) {
+            return false;
+        }
+
+        return modal;
     };
 
     addEmoji = (e) => {
@@ -82,7 +97,7 @@ class Main extends Component {
 
     showEmoji = () => {
         this.setState({
-                emojisMenu: true,
+                emojiMenu: true,
             },
             () => document.addEventListener('click', this.closeMenu)
         );
@@ -90,7 +105,7 @@ class Main extends Component {
 
     closeMenu = () => {
         this.setState({
-                emojisMenu: false,
+                emojiMenu: false,
             },
             () => document.removeEventListener('click', this.closeMenu)
         );
@@ -123,10 +138,6 @@ class Main extends Component {
 
     updateMessageValue = (e) => {
         this.setState({ messageAreaValue: e.target.value });
-    };
-
-    clickButtonLogOut = async () => {
-        logic.removeLocalStorage();
     };
 
     clickButtonSend = async () => {
@@ -167,6 +178,10 @@ class Main extends Component {
     }
 
     openPrivateChat = async (e) => {
+        if (!this.props.privateChat) {
+            return;
+        }
+
         const target = e.target;
 
         await this.setState(state => ({
@@ -188,6 +203,7 @@ class Main extends Component {
         const {
             emoji,
             theme,
+            logout,
             translate,
             privateChat,
             changeTheme,
@@ -198,24 +214,7 @@ class Main extends Component {
             changeActivePrivateChat,
         } = this.props;
 
-        const modal = this.state.showModal ? (
-                <Modal>
-                   <ModalBlock
-                       emoji = {emoji}
-                       theme = {theme}
-                       translate = {translate}
-                       changeTheme = {changeTheme}
-                       privateChat = {privateChat}
-                       handleHide = {this.handleHide}
-                       defaultCountry = {defaultCountry}
-                       changeLanguage = {changeLanguage}
-                       emojiActive = {this.state.emojiActive}
-                       setDefaultSettings={setDefaultSettings}
-                       changeActiveEmoji = {changeActiveEmoji}
-                       changeActivePrivateChat = {changeActivePrivateChat}
-                   />
-                </Modal>
-        ) : null;
+        const { isOpenModal } = this.state;
 
         return (
             <div>
@@ -223,14 +222,13 @@ class Main extends Component {
                     <button className='settings' onClick={this.handleShow}>
                         <img src='src/client/assets/icons/settings.png' width='50' height='50' />
                     </button>
-                    {modal}
                 </div>
                 <div className='main'>
                     <MainHeader
                         name={this.state.name}
                         translate = {translate}
                         email={this.state.email}
-                        clickButtonLogOut={this.clickButtonLogOut}
+                        clickButtonLogOut={logout}
                     />
                     <ContentBlock
                         name={this.state.name}
@@ -255,6 +253,26 @@ class Main extends Component {
                         messageAreaValue={this.state.messageAreaValue}
                     />
                 </div>
+                {isOpenModal ?
+                    <Modal>
+                        <div className='modal'>
+                            <Settings
+                                emoji={emoji}
+                                theme={theme}
+                                translate={translate}
+                                changeTheme={changeTheme}
+                                privateChat={privateChat}
+                                handleHide={this.handleHide}
+                                defaultCountry={defaultCountry}
+                                changeLanguage={changeLanguage}
+                                emojiActive={this.state.emojiActive}
+                                setDefaultSettings={setDefaultSettings}
+                                changeActiveEmoji={changeActiveEmoji}
+                                changeActivePrivateChat={changeActivePrivateChat}
+                            />
+                        </div>
+                    </Modal> : null
+                }
             </div>
         );
     }

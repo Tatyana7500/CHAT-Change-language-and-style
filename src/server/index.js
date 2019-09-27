@@ -48,8 +48,9 @@ async function handleDisconnect(socket) {
 async function handleMessage(message) {
     await chatDal.createMessage(message);
     const { receiver } = message;
-    await console.log(message);
+
     const user = await chatDal.readUserToId(message.sender);
+    console.log(user);
     const oneMessage = {
         message: message.message,
         date: message.date,
@@ -58,9 +59,10 @@ async function handleMessage(message) {
         id: user[0]._id,
     };
 
+    console.log(oneMessage);
+
     if (receiver === constants.ALL) {
         io.sockets.emit(constants.MESSAGE, oneMessage);
-
     } else {
         clients.map((item) => {
             if (item.userId === receiver) {
@@ -68,7 +70,6 @@ async function handleMessage(message) {
             }
         });
     }
-
 }
 
 app.post('/message', jsonParser, async (request, res) => {

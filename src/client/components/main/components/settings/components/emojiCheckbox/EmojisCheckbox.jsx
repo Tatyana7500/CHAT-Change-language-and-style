@@ -1,4 +1,4 @@
-import './styles/EmojisCheckbox.css';
+import './EmojisCheckbox.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 

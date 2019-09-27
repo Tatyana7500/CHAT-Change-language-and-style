@@ -1,8 +1,8 @@
 import HatCloud from '../chatCloud/ChatCloud.jsx';
 import Emoji from '../emoji/Emoji.jsx';
-import '../../../../theme/index.css';
 import PropTypes from 'prop-types';
 import React from 'react';
+import './ChatBlock.css';
 
 const HatBlock = props => {
     const {
