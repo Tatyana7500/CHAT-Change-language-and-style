@@ -1,13 +1,13 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const mongoose = require('mongoose');
-const util = require('../util');
+const util = require('../../util');
 
 const messageSchema = new mongoose.Schema({
     message: { type: String, required: true },
     sender: { type: String, required: true },
     receiver: { type: String, required: true },
-    date: {type: Number, required: true },
+    date: { type: Number, required: true },
 });
 
 function MessagesDaoMongoDB() {

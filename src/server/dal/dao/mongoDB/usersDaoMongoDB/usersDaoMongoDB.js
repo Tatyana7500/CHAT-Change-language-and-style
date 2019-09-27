@@ -39,7 +39,7 @@ UsersDaoMongoDB.prototype.create = async function (object) {
 };
 
 UsersDaoMongoDB.prototype.readAll = async function () {
-     return await this.model.find({});
+    return await this.model.find({});
 };
 
 UsersDaoMongoDB.prototype.readUser = async function (email, password) {
