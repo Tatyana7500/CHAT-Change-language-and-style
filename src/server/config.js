@@ -1,7 +1,7 @@
 const constants = require('../constants');
 
 module.exports = {
-    databaseType: constants.MOCK,
+    databaseType: constants.MYSQL,
     settings: {
         redis: {
             connectionRedis: {

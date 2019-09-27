@@ -60,7 +60,6 @@
     background-color: var(--color-btnHover);
     color: #fff;
     width: 35%;
-    padding: 0px 0 7px 0;
     text-transform: uppercase;
     border-radius: 16px; display:inline-block;
     cursor: pointer;
