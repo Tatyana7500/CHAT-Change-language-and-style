@@ -1,18 +1,18 @@
-import HatClound from '../chatClound/ChatClound.jsx';
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
+import HatCloud from '../chatCloud/ChatCloud.jsx';
+import Emoji from '../emoji/Emoji.jsx';
 import PropTypes from 'prop-types';
-import '../../../../theme/index.css';
 import React from 'react';
+import './ChatBlock.css';
 
 const HatBlock = props => {
     const {
         name,
+        emoji,
         addEmoji,
         messages,
         translate,
-        showEmojis,
-        emojisMenu,
+        showEmoji,
+        emojiMenu,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
@@ -25,7 +25,7 @@ const HatBlock = props => {
                     const date = new Date(parseInt(item.date)).toTimeString().slice(0, 8);
 
                     return (
-                        <HatClound key={index} name={item.name} text={item.message} email={item.email} date={date} nameSender={name}/>
+                        <HatCloud key={index} name={item.name} text={item.message} email={item.email} date={date} nameSender={name}/>
                     );
                 })
                 }
@@ -35,39 +35,35 @@ const HatBlock = props => {
                     id='textMassage'
                     className='textMassage'
                     value={messageAreaValue}
-                    onInput={updateMessageValue}
+                    onChange={updateMessageValue}
                     placeholder={translate('yourMessage')}>
                 </textarea>
+                {emoji === true &&
+                    <Emoji
+                        clickButtonSend={clickButtonSend}
+                        emojiMenu={emojiMenu}
+                        showEmoji={showEmoji}
+                        addEmoji={addEmoji}
+                        translate={translate}
+                    />
+                }
                 <button
                     onClick={clickButtonSend}
-                    className='btn btn-main footer__send'>{translate('send')}</button>
-                {emojisMenu ?
-                    <span className='emojiPicker'>
-                        <Picker
-                            title='weChat'
-                            onSelect={addEmoji}
-                            emojiTooltip={true}
-                        />
-                    </span>
-                    :
-                    <p
-                        onClick={showEmojis}
-                        className='getEmojiButton' >
-                        {String.fromCodePoint(0x1f60a)}
-                    </p>
-                }
+                    className='btn btn-main footer__send'>{translate('send')}
+                </button>
             </div>
         </div>
     );
 };
 
 HatBlock.propTypes = {
+    emoji: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     addEmoji: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
     translate: PropTypes.func.isRequired,
-    showEmojis: PropTypes.func.isRequired,
-    emojisMenu: PropTypes.bool.isRequired,
+    emojiMenu: PropTypes.bool.isRequired,
+    showEmoji: PropTypes.func.isRequired,
     clickButtonSend: PropTypes.func.isRequired,
     messageAreaValue: PropTypes.string.isRequired,
     updateMessageValue: PropTypes.func.isRequired,

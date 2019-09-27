@@ -2,6 +2,7 @@ import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import React from 'react';
+import './SignIn.css';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
             password: this.passwordInputRef.current.value,
         });
         await util.sendPostRequest(`${constants.LOCALHOST}/signin`, this.state);
-        util.goToLogin();
+        window.location.href = '/login';
     };
 
     render() {
@@ -37,7 +38,7 @@ class SignIn extends React.Component {
                         changeLanguage={changeLanguage}
                     />
                 </div>
-                <div className='login-wrapper signin'>
+                <div className='signin'>
                     <div className='buttons'>
                         <a
                             href='/login'
@@ -52,7 +53,7 @@ class SignIn extends React.Component {
                             {translate('signIn')}
                         </a>
                     </div>
-                    <div className='login-form'>
+                    <div className='signin-form'>
                         <label
                             name='Email'
                             htmlFor='loginPageEmailInput'
@@ -109,7 +110,7 @@ class SignIn extends React.Component {
                             type='submit'
                             id='regAccount'
                             value={translate('signIn')}
-                            className='btn login-form__btn'
+                            className='btn signin-form__btn'
                             onClick={this.submitSignInForm}
                         />
                     </div>

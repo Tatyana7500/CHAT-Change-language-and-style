@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './ChatCloud.css';
 
-const HatClound = props => {
+const HatCloud = props => {
     const { name, email, text, date, nameSender } = props;
     const float = name === nameSender ? 'massage messageSender' : 'massage messageReceiver';
 
@@ -15,7 +16,7 @@ const HatClound = props => {
     );
 };
 
-HatClound.propTypes = {
+HatCloud.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -23,4 +24,4 @@ HatClound.propTypes = {
     nameSender: PropTypes.string.isRequired,
 };
 
-export default HatClound;
+export default HatCloud;

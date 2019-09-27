@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './MainHeader.css';
 import React from 'react';
 
 const MainHeader = (props) => {
@@ -17,7 +18,7 @@ const MainHeader = (props) => {
                         <span className='info__email'>{email}</span>
                     </div>
                 </div>
-                <a href='/login' onClick={clickButtonLogOut} className='btn btn-main logout' id='logOut'>{translate('logOut')}</a>
+                <a href='/login' onClick={clickButtonLogOut} className='btn_logout btn-main logout' id='logOut'>{translate('logOut')}</a>
             </div>
         </div>
     );

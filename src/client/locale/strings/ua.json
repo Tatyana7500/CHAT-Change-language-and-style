@@ -1,17 +1,22 @@
 {
   "ua": {
     "chat": "Чат",
+    "yes": "ТАК",
     "name": "Ім'я",
+    "theme": "ТЕМА",
     "login": "Логін",
     "users": "Друзі",
     "eMail": "E-mail",
-    "password": "Пароль",
     "logOut": "Вихід",
+    "language": "МОВА",
+    "emoji": "СМАЙЛИКИ",
+    "password": "Пароль",
     "send": "Відправити",
     "yourEmail": "Email",
     "signIn": "Реєстрація",
     "yourPassword": "Пароль",
     "yourMessage": "Ваше повідомлення",
+    "default": "Настройки за замовчуванням",
     "confirmPassword": "Підтвердження паролю"
   }
 }

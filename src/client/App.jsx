@@ -1,37 +1,88 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import withAuthorization from '../client/hocs/withAuthorization';
+import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
-import { withTranslation } from 'react-i18next';
 import Main from './components/main/Main.jsx';
+import logic from './components/main/logic';
 import React, { Component } from 'react';
 import constants from '../constants';
-import i18n from './locale';
+import PropTypes from 'prop-types';
+import resources from './locale';
 import './theme/matrix.css';
 
 class App extends Component {
+    static propTypes = {
+        setLanguage: PropTypes.func.isRequired,
+        translate: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super(props);
 
-        const { theme, lang } = this.getSavedSettings();
-        i18n.changeLanguage(lang);
+        const { privateChat, theme, lang, emoji } = this.getSavedSettings();
+        props.setLanguage(lang);
         this.applyTheme(theme);
-        this.applyRlt(lang);
 
         this.state = {
+            privateChat,
+            emoji,
             theme,
             lang,
         };
     }
 
     changeLanguage = lang => {
-        const settings = { theme: this.state.theme, lang: lang };
+        const { setLanguage } = this.props;
+
+        const settings = {
+            lang: lang,
+            emoji: this.state.emoji,
+            theme: this.state.theme,
+            privateChat: this.state.privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             lang: lang,
         }));
 
-        i18n.changeLanguage(lang);
+        setLanguage(lang);
         this.applyRlt(lang);
+        this.saveSettings(settings);
+    };
+
+    changeActiveEmoji = () => {
+        const emoji = !this.state.emoji;
+        const settings = {
+            emoji: emoji,
+            lang: this.state.lang,
+            theme: this.state.theme,
+            privateChat: this.state.privateChat,
+        };
+
+        this.setState(state => ({
+            ...state,
+            emoji: emoji,
+        }));
+
+        this.saveSettings(settings);
+    };
+
+    changeActivePrivateChat = () => {
+        const privateChat = !this.state.privateChat;
+        const settings = {
+            lang: this.state.lang,
+            emoji: this.state.emoji,
+            theme: this.state.theme,
+            privateChat: privateChat,
+        };
+
+        this.setState(state => ({
+            ...state,
+            privateChat: privateChat,
+        }));
+
         this.saveSettings(settings);
     };
 
@@ -47,7 +98,12 @@ class App extends Component {
         const item = localStorage.getItem(constants.SETTINGS);
 
         if (!item) {
-            return { theme: constants.LIGHT, lang: constants.US };
+            return {
+                emoji: true,
+                privateChat: true,
+                lang: constants.US,
+                theme: constants.LIGHT,
+            };
         }
 
         return JSON.parse(item);
@@ -63,7 +119,13 @@ class App extends Component {
 
     changeTheme = () => {
         const theme = this.state.theme === constants.LIGHT ? constants.DARK : constants.LIGHT;
-        const settings = { theme: theme, lang: this.state.lang };
+        const settings = {
+            theme: theme,
+            lang: this.state.lang,
+            emoji: this.state.emoji,
+            privateChat: this.state.privateChat,
+        };
+
         this.setState(state => ({
             ...state,
             theme: theme,
@@ -73,40 +135,89 @@ class App extends Component {
         this.applyTheme(theme);
     };
 
+    setDefaultSettings = () => {
+        const settings = {
+            emoji: true,
+            privateChat: true,
+            lang: constants.US,
+            theme: constants.LIGHT,
+        };
+
+        this.setState(state => ({
+            ...state,
+            emoji: true,
+            privateChat: true,
+            lang: constants.US,
+            theme: constants.LIGHT,
+        }));
+
+        this.applyRlt(settings.lang);
+        this.applyTheme(settings.theme);
+        this.props.setLanguage(settings.lang);
+
+        this.saveSettings(settings);
+    };
+
+    isAuthorization = () => {
+        const userValidate = JSON.parse(window.localStorage.getItem('chat'));
+
+        return userValidate !== null;
+    };
+
     render() {
+        const changeActivePrivateChat = this.changeActivePrivateChat;
         const defaultCountry = this.state.lang.toUpperCase();
+        const setDefaultSettings = this.setDefaultSettings;
+        const { theme, emoji, privateChat } = this.state;
+        const changeActiveEmoji = this.changeActiveEmoji;
         const changeLanguage = this.changeLanguage;
         const saveSettings = this.saveSettings;
         const changeTheme = this.changeTheme;
-        const { theme } = this.state;
-        const { t } = this.props;
+        const { translate } = this.props;
+
+        const isAuthorized = this.isAuthorization();
+        const redirect = () => {
+            window.location.href = '/login';
+        };
+        const logout = () => {
+            logic.removeLocalStorage();
+        };
+
+        const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout);
 
         return (
             <Router>
                 <Switch>
-                    <Route exact path='/main' render={props => (
-                        <Main {...props}
-                              theme={theme}
-                              translate = { t }
-                              changeTheme={changeTheme}
-                              saveSettings={saveSettings}
-                              changeLanguage={changeLanguage}
-                              defaultCountry={defaultCountry}
-                        />)}
+                    <Route exact path='/main' render={props =>
+                        <MainRoute
+                            {...props}
+                            emoji={emoji}
+                            theme={theme}
+                            translate = { translate }
+                            changeTheme={changeTheme}
+                            privateChat={privateChat}
+                            saveSettings={saveSettings}
+                            changeLanguage={changeLanguage}
+                            defaultCountry={defaultCountry}
+                            changeActiveEmoji={changeActiveEmoji}
+                            setDefaultSettings={setDefaultSettings}
+                            changeActivePrivateChat={changeActivePrivateChat}
+                        />
+                    }
                     />
-                    <Route exact path='/login' render={props => (
+                    <Route exact path='/login' render={props =>
                         <Login {...props}
-                               translate = { t }
+                               translate={translate}
                                changeLanguage={changeLanguage}
                                defaultCountry={defaultCountry}
-                        />)}
+                        />}
                     />
-                    <Route exact path='/signIn' render={props => (
+                    <Route exact path='/signIn' render={props =>
                         <SignIn {...props}
-                                translate = { t }
+                                translate = {translate}
                                 changeLanguage={changeLanguage}
                                 defaultCountry={defaultCountry}
-                        />)}
+                        />}
                     />
                 </Switch>
             </Router>
@@ -114,4 +225,4 @@ class App extends Component {
     }
 }
 
-export default withTranslation('common')(App);
+export default withLocalization(App, resources);

@@ -20,12 +20,17 @@ const io = socket(server);
 const chatDal = new ChatDAL();
 chatDal.initialize();
 
+function Client(userId, socketId) {
+    this.userId = userId;
+    this.socketId = socketId;
+}
+
 const clients = [];
 
 io.sockets.on('connection', socket => {
     socket.on(constants.MESSAGE, handleMessage);
     socket.on(constants.ONLINE, (res) => {
-       clients.push(res);
+       clients.push(new Client(res, socket.id));
     });
     socket.broadcast.emit(constants.ONLINE, clients);
 });
@@ -43,43 +48,32 @@ async function handleDisconnect(socket) {
 async function handleMessage(message) {
     await chatDal.createMessage(message);
     const { receiver } = message;
-    const { name, email, id } = await chatDal.readUserById(message.sender);
 
+    const user = await chatDal.readUserToId(message.sender);
+    console.log(user);
     const oneMessage = {
         message: message.message,
         date: message.date,
-        name: name,
-        email: email,
+        name: user[0].name,
+        email: user[0].email,
+        id: user[0]._id,
     };
-   
-    if (receiver === constants.ALL) {
-        socket.broadcast.emit(constants.MESSAGE, oneMessage);
-    } else {
-        const socketIds = clients.filter(item => item.id === id || item.id === receiver)
-            .map(client => client.socketId);
 
-        for (let socketId of socketIds) {
-            const socket = io.sockets.connected[socketId];
-            socket && socket.emit(constants.MESSAGE, oneMessage);
-        }
+    console.log(oneMessage);
+
+    if (receiver === constants.ALL) {
+        io.sockets.emit(constants.MESSAGE, oneMessage);
+    } else {
+        clients.map((item) => {
+            if (item.userId === receiver) {
+                io.sockets.connected[item.socketId].emit(constants.MESSAGE, oneMessage);
+            }
+        });
     }
 }
 
 app.post('/message', jsonParser, async (request, res) => {
-    await chatDal.createMessage(request.body);
-    const { receiver } = request.body;
-    const user = await chatDal.readUserToId(request.body.sender);
-
-    const oneMessage = {
-        message: request.body.message,
-        date: request.body.date,
-        name: user[0].name,
-        email: user[0].email,
-    };
-    
-    if (receiver === 'ALL') {
-        io.sockets.emit(constants.MESSAGE, oneMessage);
-    }
+    await handleMessage(request.body);
     
     res.status(200).send('ok');
 });

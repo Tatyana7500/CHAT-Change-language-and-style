@@ -1,18 +1,20 @@
-import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
-import SettingTheme from '../common/themeDropdown/ThemeDropdown.jsx';
-import OntentBlock from './components/contentBlock/ContentBlock.jsx';
+import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
+import Settings from './components/settings/Settings.jsx';
+import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import openSocket from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import logic from './logic';
+import './Main.css';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket(constants.LOCALHOST);
+        const isOpenModal = this.getStatusModal();
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -20,7 +22,8 @@ class Main extends Component {
             chat: constants.PUBLIC,
             messageAreaValue: '',
             idUserSender: null,
-            emojisMenu: false,
+            emojiMenu: false,
+            isOpenModal: isOpenModal,
             messagesList: [],
             usersList: [],
             clients: [],
@@ -39,10 +42,50 @@ class Main extends Component {
             email: '',
             name: '',
         };
+
+        this.socket.on(constants.MESSAGE, (message) => {
+            if (message.name !== this.state.name && message.id === this.state.idUserReceiver) {
+                this.setState({
+                    messagesList: [...this.state.messagesList, message],
+                });
+            }
+        });
+
+        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
     }
 
     static propTypes = {
+        emoji: PropTypes.bool.isRequired,
+        logout: PropTypes.func.isRequired,
+        theme: PropTypes.string.isRequired,
         translate: PropTypes.func.isRequired,
+        privateChat: PropTypes.bool.isRequired,
+        changeTheme: PropTypes.func.isRequired,
+        changeLanguage: PropTypes.func.isRequired,
+        defaultCountry: PropTypes.string.isRequired,
+        changeActiveEmoji: PropTypes.func.isRequired,
+        setDefaultSettings: PropTypes.func.isRequired,
+        changeActivePrivateChat: PropTypes.func.isRequired,
+    };
+
+    handleShow = () => {
+        localStorage.setItem(constants.MODAL, true);
+        this.setState({ isOpenModal: true });
+    };
+
+    handleHide = () => {
+        localStorage.setItem(constants.MODAL, false);
+        this.setState({ isOpenModal: false });
+    };
+
+    getStatusModal = () => {
+        const modal = JSON.parse(localStorage.getItem(constants.MODAL));
+
+        if (!modal) {
+            return false;
+        }
+
+        return modal;
     };
 
     addEmoji = (e) => {
@@ -52,9 +95,9 @@ class Main extends Component {
         });
     };
 
-    showEmojis = () => {
+    showEmoji = () => {
         this.setState({
-                emojisMenu: true,
+                emojiMenu: true,
             },
             () => document.addEventListener('click', this.closeMenu)
         );
@@ -62,7 +105,7 @@ class Main extends Component {
 
     closeMenu = () => {
         this.setState({
-                emojisMenu: false,
+                emojiMenu: false,
             },
             () => document.removeEventListener('click', this.closeMenu)
         );
@@ -79,7 +122,12 @@ class Main extends Component {
     };
 
     clickButtonChat = async () => {
-        const data = await util.sendGetRequest(`${constants.LOCALHOST}/messages?chat=${this.state.chat}&sender=${this.state.idUserSender}&receiver=${this.state.idUserReceiver}`);
+        await this.setState(state => ({
+            ...state,
+            idUserReceiver: constants.ALL,
+            chat: constants.PUBLIC,
+        }));
+        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
         await this.setState({
             mainWindowState: constants.MESSAGE,
         });
@@ -92,15 +140,11 @@ class Main extends Component {
         this.setState({ messageAreaValue: e.target.value });
     };
 
-    clickButtonLogOut = async () => {
-        logic.removeLocalStorage();
-    };
-
     clickButtonSend = async () => {
         await this.setState({
             messageBody: {
                 sender: this.state.idUserSender,
-                receiver: constants.ALL,
+                receiver: this.state.idUserReceiver,
                 message: this.state.messageAreaValue,
                 date: new Date().getTime(),
             },
@@ -131,65 +175,104 @@ class Main extends Component {
 
     async componentDidMount() {
         await this.getItemFromLocalStorage();
-
-        await this.socket.on(constants.MESSAGE, (message) => {
-            if (message.name !== this.state.name) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-            }
-        });
-        this.socket.emit(constants.ONLINE, this.state.idUserSender);
-
-        this.socket.on(constants.ONLINE, (res) => {
-            this.setState({
-                clients: res,
-            });
-        });
     }
 
+    openPrivateChat = async (e) => {
+        if (!this.props.privateChat) {
+            return;
+        }
+
+        const target = e.target;
+
+        await this.setState(state => ({
+            ...state,
+            idUserReceiver: target.id,
+            chat: constants.PRIVATE,
+        }));
+
+        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
+        await this.setState({
+            mainWindowState: constants.MESSAGE,
+        });
+        await this.setState({
+            messagesList: data,
+        });
+    };
+
     render() {
-        const { translate, defaultCountry, changeTheme, changeLanguage, theme } = this.props;
+        const {
+            emoji,
+            theme,
+            logout,
+            translate,
+            privateChat,
+            changeTheme,
+            changeLanguage,
+            defaultCountry,
+            changeActiveEmoji,
+            setDefaultSettings,
+            changeActivePrivateChat,
+        } = this.props;
+
+        const { isOpenModal } = this.state;
 
         return (
             <div>
                 <div className='header__settings'>
-                    <SettingTheme
-                        theme={theme}
-                        changeTheme={changeTheme}
-                    />
-                    <SettingLanguage
-                        defaultCountry={defaultCountry}
-                        changeLanguage={changeLanguage}
-                    />
+                    <button className='settings' onClick={this.handleShow}>
+                        <img src='src/client/assets/icons/settings.png' width='50' height='50' />
+                    </button>
                 </div>
                 <div className='main'>
                     <MainHeader
                         name={this.state.name}
                         translate = {translate}
                         email={this.state.email}
-                        clickButtonLogOut={this.clickButtonLogOut}
+                        clickButtonLogOut={logout}
                     />
-                    <OntentBlock
+                    <ContentBlock
                         name={this.state.name}
                         translate = {translate}
+                        emoji={this.props.emoji}
                         addEmoji={this.addEmoji}
                         closeMenu={this.closeMenu}
                         chat={this.state.clickChat}
-                        showEmojis={this.showEmojis}
+                        showEmoji={this.showEmoji}
                         clients={this.state.clients}
                         userState={this.state.userState}
                         clickChat={this.clickButtonChat}
                         usersList={this.state.usersList}
                         clickUsers={this.clickButtonUser}
-                        emojisMenu={this.state.emojisMenu}
+                        emojiMenu={this.state.emojiMenu}
                         messages={this.state.messagesList}
+                        privateChat={this.props.privateChat}
+                        openPrivateChat={this.openPrivateChat}
                         clickButtonSend={this.clickButtonSend}
                         windowState={this.state.mainWindowState}
                         updateMessageValue={this.updateMessageValue}
                         messageAreaValue={this.state.messageAreaValue}
                     />
                 </div>
+                {isOpenModal ?
+                    <Modal>
+                        <div className='modal'>
+                            <Settings
+                                emoji={emoji}
+                                theme={theme}
+                                translate={translate}
+                                changeTheme={changeTheme}
+                                privateChat={privateChat}
+                                handleHide={this.handleHide}
+                                defaultCountry={defaultCountry}
+                                changeLanguage={changeLanguage}
+                                emojiActive={this.state.emojiActive}
+                                setDefaultSettings={setDefaultSettings}
+                                changeActiveEmoji={changeActiveEmoji}
+                                changeActivePrivateChat={changeActivePrivateChat}
+                            />
+                        </div>
+                    </Modal> : null
+                }
             </div>
         );
     }

@@ -1,7 +1,7 @@
 const constants = require('../constants');
 
 module.exports = {
-    databaseType: constants.MONGO,
+    databaseType: constants.MYSQL,
     settings: {
         redis: {
             connectionRedis: {

@@ -2,11 +2,13 @@ import UsersList from '../usersList/UsersList.jsx';
 import HatBlock from '../chatBlock/ChatBlock.jsx';
 import constants from '../../../../../constants';
 import PropTypes from 'prop-types';
+import './ContentBlock.css';
 import React from 'react';
 
-const OntentBlock = props => {
+const ContentBlock = props => {
     const {
         name,
+        emoji,
         clients,
         messages,
         addEmoji,
@@ -16,12 +18,14 @@ const OntentBlock = props => {
         userState,
         translate,
         clickUsers,
-        emojisMenu,
-        showEmojis,
+        emojiMenu,
+        showEmoji,
         windowState,
+        privateChat,
         clickButtonSend,
         messageAreaValue,
         updateMessageValue,
+        openPrivateChat,
     } = props;
 
     return (
@@ -49,17 +53,20 @@ const OntentBlock = props => {
                     usersList={usersList}
                     userState={userState}
                     translate={translate}
+                    openPrivateChat={openPrivateChat}
                 />
             }
             {windowState === constants.MESSAGE &&
                 <HatBlock
                     name={name}
+                    emoji={emoji}
                     messages={messages}
                     addEmoji={addEmoji}
                     closeMenu={closeMenu}
                     translate={translate}
-                    emojisMenu={emojisMenu}
-                    showEmojis={showEmojis}
+                    emojiMenu={emojiMenu}
+                    showEmoji={showEmoji}
+                    privateChat = {privateChat}
                     clickButtonSend={clickButtonSend}
                     messageAreaValue={messageAreaValue}
                     updateMessageValue={updateMessageValue}
@@ -69,7 +76,8 @@ const OntentBlock = props => {
     );
 };
 
-OntentBlock.propTypes = {
+ContentBlock.propTypes = {
+    emoji: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     clients: PropTypes.array.isRequired,
     addEmoji: PropTypes.func.isRequired,
@@ -79,13 +87,15 @@ OntentBlock.propTypes = {
     closeMenu: PropTypes.func.isRequired,
     usersList: PropTypes.array.isRequired,
     clickUsers: PropTypes.func.isRequired,
-    showEmojis: PropTypes.func.isRequired,
-    emojisMenu: PropTypes.bool.isRequired,
+    showEmoji: PropTypes.func.isRequired,
+    emojiMenu: PropTypes.bool.isRequired,
     userState: PropTypes.string.isRequired,
     windowState: PropTypes.string.isRequired,
     clickButtonSend: PropTypes.func.isRequired,
     updateMessageValue: PropTypes.func.isRequired,
     messageAreaValue: PropTypes.string.isRequired,
+    privateChat: PropTypes.bool.isRequired,
+    openPrivateChat: PropTypes.func.isRequired,
 };
 
-export default OntentBlock;
+export default ContentBlock;
