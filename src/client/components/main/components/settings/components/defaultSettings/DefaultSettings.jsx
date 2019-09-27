@@ -1,4 +1,4 @@
-import './styles/defaultSettings.css';
+import './defaultSettings.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 

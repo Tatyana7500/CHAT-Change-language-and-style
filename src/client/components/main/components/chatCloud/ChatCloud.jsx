@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './ChatCloud.css';
 
 const HatCloud = props => {
     const { name, email, text, date, nameSender } = props;

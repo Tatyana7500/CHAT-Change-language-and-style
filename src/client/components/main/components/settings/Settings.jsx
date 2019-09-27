@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import './Settings.css';
-import SettingTheme from '../../../common/themeDropdown/ThemeDropdown.jsx';
-import SettingLanguage from '../../../common/languageDropdown/LanguageDropdown.jsx';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import SettingEmoji from './components/emojiCheckbox/EmojisCheckbox.jsx';
-import SettingPrivateChat from './components/privateChatCheckbox/PrivateCheckbox.jsx';
+import SettingTheme from '../../../common/themeDropdown/ThemeDropdown.jsx';
 import SettingDefault from './components/defaultSettings/DefaultSettings.jsx';
+import SettingLanguage from '../../../common/languageDropdown/LanguageDropdown.jsx';
+import SettingPrivateChat from './components/privateChatCheckbox/PrivateCheckbox.jsx';
 
 const Settings = (props) => {
     const {
@@ -75,8 +75,8 @@ Settings.propTypes = {
     theme: PropTypes.string.isRequired,
     translate: PropTypes.func.isRequired,
     handleHide: PropTypes.func.isRequired,
-    privateChat: PropTypes.bool.isRequired,
     changeTheme: PropTypes.func.isRequired,
+    privateChat: PropTypes.bool.isRequired,
     changeLanguage: PropTypes.func.isRequired,
     defaultCountry: PropTypes.string.isRequired,
     changeActiveEmoji: PropTypes.func.isRequired,

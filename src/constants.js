@@ -9,6 +9,7 @@ module.exports = {
     MYSQL: 'mysql',
     MONGO: 'mongo',
     LIGHT: 'light',
+    MODAL: 'modal',
     PUBLIC: 'PUBLIC',
     ONLINE: 'online',
     MESSAGE: 'message',

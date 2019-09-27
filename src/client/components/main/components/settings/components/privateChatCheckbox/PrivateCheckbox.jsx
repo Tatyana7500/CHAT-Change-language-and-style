@@ -1,4 +1,4 @@
-import './styles/privateCheckbox.css';
+import './privateCheckbox.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 

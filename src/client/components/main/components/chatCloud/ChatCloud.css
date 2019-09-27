@@ -1,0 +1,45 @@
+@import '../../../../theme/index.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.massage {
+    width: 70%;
+    background-color: var(--color-backMessage);
+    margin: 5px;
+    padding: 10px;
+}
+
+.messageSender {
+    float: right;
+    text-align: right;
+}
+
+.messageReceiver {
+    float: left;
+    text-align: left;
+}
+
+.massage__name {
+    color: red;
+    font-size: 17px;
+}
+
+.massage__text {
+    color: var(--color-textForm);
+}
+
+.massage__email{
+    color: red;
+    font-size: 14px;
+}
+
+.massage__time{
+    color:grey;
+    font-size:10px;
+}
+

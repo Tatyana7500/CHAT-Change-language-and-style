@@ -1,0 +1,86 @@
+@import '../../theme/index.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--color-loginBackground);
+}
+
+.btn {
+    background-color: var(--color-btn);
+    height:2.5em;
+    line-height: 2.5em;
+    text-align:center;
+    border: 0;
+    width:25%;
+    color: var(--color-textNotActive)
+}
+
+.btn:hover {
+    background-color: var(--color-btnHover);
+    color: var(--color-textNotActive);
+    box-shadow: 0 0 5px var(--color-btnShadow);
+}
+
+.signin {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px var(--color-shadow);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-loginBackground);
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    height: 35%;
+    justify-content: space-around;
+    min-width: 460px;
+    min-height: 550px;
+}
+
+.signin-form {
+    text-align: center;
+    flex:5;
+    transform: translate(0,10%);
+    color:var(--color-textForm)
+}
+
+.signin-form__input {
+    width: 50%;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.signin-form__label {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.signin-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    height: 15%;
+    background-color: var(--color-fieldButtons);
+}
+
+.signin-form__btn {
+    width: 35%;
+    margin:0 auto;
+    position: relative;
+    top:20%;
+    margin-top: 20px;
+    background-color: var(--color-btnActive);
+    color: var(--color-textActive);
+}
+
+.signin-buttons__btn {
+    text-decoration: none;
+    width:100px;
+    margin-top: 10px;
+}

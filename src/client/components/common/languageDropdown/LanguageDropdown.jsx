@@ -1,6 +1,7 @@
 import 'react-flags-select/css/react-flags-select.css';
 import ReactFlagsSelect from 'react-flags-select';
 import PropTypes from 'prop-types';
+import './LanguageDropdown.css';
 import React from 'react';
 
 const SettingLanguage = (props) => {

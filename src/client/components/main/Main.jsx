@@ -8,11 +8,13 @@ import openSocket from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import logic from './logic';
+import './Main.css';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket(constants.LOCALHOST);
+        const isOpenModal = this.getStatusModal();
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -21,7 +23,7 @@ class Main extends Component {
             messageAreaValue: '',
             idUserSender: null,
             emojiMenu: false,
-            isOpenModal: false,
+            isOpenModal: isOpenModal,
             messagesList: [],
             usersList: [],
             clients: [],
@@ -67,11 +69,23 @@ class Main extends Component {
     };
 
     handleShow = () => {
+        localStorage.setItem(constants.MODAL, true);
         this.setState({ isOpenModal: true });
     };
 
     handleHide = () => {
+        localStorage.setItem(constants.MODAL, false);
         this.setState({ isOpenModal: false });
+    };
+
+    getStatusModal = () => {
+        const modal = JSON.parse(localStorage.getItem(constants.MODAL));
+
+        if (!modal) {
+            return false;
+        }
+
+        return modal;
     };
 
     addEmoji = (e) => {
