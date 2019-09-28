@@ -1,30 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function withAuthorization(Component, isAuthorized, redirect, logout) {
-    return class WithAuthorizationWrapper extends React.Component {
-        componentDidMount() {
-            this.checkAuthorization();
-        }
+class WithAuthorizationWrapper extends React.Component {
+    static propTypes = {
+        isAuthorized: PropTypes.bool.isRequired,
+        logout: PropTypes.func.isRequired,
+        redirect: PropTypes.func.isRequired,
+        component: PropTypes.func.isRequired,
+        componentProps: PropTypes.object.isRequired,
+    };
 
-        componentDidUpdate() {
-            this.checkAuthorization();
-        }
+    componentDidMount() {
+        this.checkAuthorization();
+    }
 
-        checkAuthorization = () => {
-            if (!isAuthorized) {
-                redirect();
-            }
-        };
+    componentDidUpdate() {
+        this.checkAuthorization();
+    }
 
-        render() {
-            return isAuthorized ? (
-                <Component
-                    {...this.props}
-                    logout={logout}
-                />
-            ) : null;
+    checkAuthorization = () => {
+        if (!this.props.isAuthorized) {
+            this.props.redirect();
         }
     };
+
+    render() {
+        const {
+            component: Component,
+            componentProps,
+        } = this.props;
+
+        return this.props.isAuthorized ? (
+            <Component
+                {...componentProps}
+                logout={this.props.logout}
+            />
+        ) : null;
+    }
 }
 
-export default withAuthorization;
+export default WithAuthorizationWrapper;

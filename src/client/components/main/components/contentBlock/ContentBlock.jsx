@@ -9,7 +9,7 @@ const ContentBlock = props => {
     const {
         name,
         emoji,
-        clients,
+        usersOnline,
         messages,
         addEmoji,
         clickChat,
@@ -49,7 +49,7 @@ const ContentBlock = props => {
 
             {windowState === constants.USERS &&
                 <UsersList
-                    clients={clients}
+                    usersOnline={usersOnline}
                     usersList={usersList}
                     userState={userState}
                     translate={translate}
@@ -79,7 +79,7 @@ const ContentBlock = props => {
 ContentBlock.propTypes = {
     emoji: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-    clients: PropTypes.array.isRequired,
+    usersOnline: PropTypes.array.isRequired,
     addEmoji: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
     clickChat: PropTypes.func.isRequired,

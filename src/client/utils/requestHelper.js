@@ -19,8 +19,12 @@ const sendGet = async (url) => {
     return await data;
 };
 
-const drawOnline = (id, arr) => {
-    return arr.includes(id) ? constants.ONLINE : constants.OFFLINE;
+const drawOnline = (id) => {
+    const cards = document.querySelectorAll('.users__card');
+    cards.forEach(card => {
+        card.style.backgroundColor = id.includes(card.id) ? '#000000' : '#cccccc';
+    });
+    // return arr.includes(id) ? constants.ONLINE : constants.OFFLINE;
 };
 
 export default {

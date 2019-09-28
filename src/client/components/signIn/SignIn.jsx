@@ -1,4 +1,6 @@
 import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
+import ErrorWindow from '../common/errorWindow/ErrorWindow';
+import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
 import React from 'react';
@@ -10,25 +12,64 @@ class SignIn extends React.Component {
         this.nameInputRef = React.createRef();
         this.emailInputRef = React.createRef();
         this.passwordInputRef = React.createRef();
+        this.confirmPasswordInputRef = React.createRef();
         this.state = {
             name: '',
             email: '',
             password: '',
+            errorText: '',
+            isOpenErrorWindow: false,
         };
     }
 
+    handleHide = () => {
+        this.setState({ isOpenErrorWindow: false });
+    };
+
     submitSignInForm = async () => {
-        await this.setState({
-            name: this.nameInputRef.current.value,
-            email: this.emailInputRef.current.value,
-            password: this.passwordInputRef.current.value,
-        });
-        await util.sendPostRequest(`${constants.LOCALHOST}/signin`, this.state);
-        window.location.href = '/login';
+        const password = this.passwordInputRef.current.value;
+        const confirmPassword = this.confirmPasswordInputRef.current.value;
+
+        if (password === confirmPassword) {
+            await this.setState({
+                name: this.nameInputRef.current.value,
+                email: this.emailInputRef.current.value,
+                password: this.passwordInputRef.current.value,
+            });
+
+            const data = {
+                name: this.nameInputRef.current.value,
+                email: this.emailInputRef.current.value,
+                password: this.passwordInputRef.current.value,
+            };
+
+            const response = await util.sendPostRequest(`${constants.LOCALHOST}/signin`, data);
+
+            if (response.status !== 200) {
+                const errorText = await response.text();
+
+                this.setState(state => ({
+                    ...state,
+                    errorText,
+                    isOpenErrorWindow: true,
+                }));
+            } else {
+                window.location.href = '/login';
+            }
+        } else {
+            const errorText = 'Passwords do not match!';
+
+            this.setState(state => ({
+                ...state,
+                errorText,
+                isOpenErrorWindow: true,
+            }));
+        }
     };
 
     render() {
         const { translate, defaultCountry, changeLanguage } = this.props;
+        const { isOpenErrorWindow, errorText } = this.state;
 
         return (
             <div>
@@ -71,7 +112,7 @@ class SignIn extends React.Component {
                         <label
                             name='name'
                             htmlFor='singinPageNameInput'
-                            className='login-form__label' >{translate('name')}
+                            className='login-form__label'>{translate('name')}
                         </label>
                         <input
                             type='text'
@@ -84,7 +125,7 @@ class SignIn extends React.Component {
                         <label
                             name='password'
                             htmlFor='loginPagePasswordInput'
-                            className='login-form__label' >{translate('yourPassword')}
+                            className='login-form__label'>{translate('yourPassword')}
                         </label>
                         <input
                             maxLength='16'
@@ -97,12 +138,13 @@ class SignIn extends React.Component {
                         <label
                             name='confirmPassword'
                             htmlFor='singinPageComfirmPasswordInput'
-                            className='login-form__label' >{translate('confirmPassword')}
+                            className='login-form__label'>{translate('confirmPassword')}
                         </label>
                         <input
                             maxLength='16'
                             type='password'
                             className='login-form__input'
+                            ref={this.confirmPasswordInputRef}
                             id='singinPageComfirmPasswordInput'
                             placeholder={translate('confirmPassword')}
                         />
@@ -115,6 +157,17 @@ class SignIn extends React.Component {
                         />
                     </div>
                 </div>
+                {isOpenErrorWindow ?
+                    <Modal>
+                        <div className='modal'>
+                            <ErrorWindow
+                                error={errorText}
+                                handleHide={this.handleHide}
+                            >
+                            </ErrorWindow>
+                        </div>
+                    </Modal> : null
+                }
             </div>
         );
     }

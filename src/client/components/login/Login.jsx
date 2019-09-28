@@ -1,4 +1,6 @@
 import SettingLanguage from '../common/languageDropdown/LanguageDropdown.jsx';
+import ErrorWindow from '../common/errorWindow/ErrorWindow';
+import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import React, { Component } from 'react';
 import constants from '../../../constants';
@@ -18,24 +20,56 @@ class Login extends Component {
         this.emailInputRef = React.createRef();
         this.passwordInputRef = React.createRef();
         this.state = {
+            errorText: '',
             emailInput: '',
             passwordInput: '',
+            isOpenErrorWindow: false,
         };
     }
 
+    handleHide = () => {
+        this.setState({ isOpenErrorWindow: false });
+    };
+
     submitLoginForm = async () => {
-        await this.setState({
-            emailInput: this.emailInputRef.current.value,
-            passwordInput: this.passwordInputRef.current.value,
-        });
-        const data = await util.sendPostRequest(`${constants.LOCALHOST}/auth`, this.state);
-        
-        await logic.setToLocalStorage(await data.json());
-        window.location.href = '/main';
+        const email = this.emailInputRef.current.value;
+        const password = this.passwordInputRef.current.value;
+
+        if (email && password) {
+
+            await this.setState({
+                emailInput: email,
+                passwordInput: password,
+            });
+
+            const response = await util.sendPostRequest(`${constants.LOCALHOST}/auth`, this.state);
+
+            if (response.status !== 200) {
+                const errorText = await response.text();
+
+                this.setState(state => ({
+                    ...state,
+                    errorText,
+                    isOpenErrorWindow: true,
+                }));
+            } else {
+                await logic.setToLocalStorage(await response.json());
+                window.location.href = '/main';
+            }
+        } else {
+            const errorText = 'Fill in all the fields!';
+
+            this.setState(state => ({
+                ...state,
+                errorText,
+                isOpenErrorWindow: true,
+            }));
+        }
     };
 
     render() {
         const { translate, defaultCountry, changeLanguage } = this.props;
+        const { isOpenErrorWindow, errorText } = this.state;
 
         return (
             <div>
@@ -99,6 +133,17 @@ class Login extends Component {
                         />
                     </div>
                 </div>
+                {isOpenErrorWindow ?
+                    <Modal>
+                        <div className='modal'>
+                            <ErrorWindow
+                                error={errorText}
+                                handleHide={this.handleHide}
+                            >
+                            </ErrorWindow>
+                        </div>
+                    </Modal> : null
+                }
             </div>
         );
     }
