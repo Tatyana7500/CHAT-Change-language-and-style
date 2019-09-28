@@ -11,7 +11,8 @@ class Modal extends PureComponent {
     }
 
     static propTypes = {
-        path: PropTypes.elementType,
+        path: PropTypes.object,
+        children: PropTypes.object,
     };
 
     static defaultProps = {

@@ -27,21 +27,22 @@ function Client(userId, socketId) {
 
 const clients = [];
 
-io.sockets.on('connection', socket => {
+io.sockets.on('connection', async socket => {
     socket.on(constants.MESSAGE, handleMessage);
     socket.on(constants.ONLINE, (res) => {
-       clients.push(new Client(res, socket.id));
+        clients.push(new Client(res, socket.id));
+        io.sockets.emit(constants.ONLINE, clients.map(client => client.userId));
     });
-    socket.broadcast.emit(constants.ONLINE, clients);
+    socket.on(constants.DISCONNECT, () => handleDisconnect(socket));
 });
 
-async function handleDisconnect(socket) {
+function handleDisconnect(socket) {
     const client = clients.find(item => item.socketId === socket.id);
     const index = clients.indexOf(client);
 
     if (index > -1) {
         clients.splice(index, 1);
-        io.sockets.emit(constants.ONLINE, clients.map(client => client.id));
+        io.sockets.emit(constants.ONLINE, clients.map(client => client.userId));
     }
 }
 
@@ -50,7 +51,7 @@ async function handleMessage(message) {
     const { receiver } = message;
 
     const user = await chatDal.readUserToId(message.sender);
-    console.log(user);
+
     const oneMessage = {
         message: message.message,
         date: message.date,
@@ -59,16 +60,16 @@ async function handleMessage(message) {
         id: user[0]._id,
     };
 
-    console.log(oneMessage);
-
     if (receiver === constants.ALL) {
         io.sockets.emit(constants.MESSAGE, oneMessage);
     } else {
-        clients.map((item) => {
-            if (item.userId === receiver) {
-                io.sockets.connected[item.socketId].emit(constants.MESSAGE, oneMessage);
-            }
-        });
+        const socketIds = clients.filter(item => item.userId === receiver)
+             .map(client => client.socketId);
+
+        for (let socketId of socketIds) {
+            const socket = io.sockets.connected[socketId];
+            socket && socket.emit(constants.MESSAGE, oneMessage);
+        }
     }
 }
 

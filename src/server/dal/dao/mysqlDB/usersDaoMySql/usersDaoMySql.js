@@ -47,17 +47,24 @@ UsersDaoMySqlDB.prototype.readUser = async function (email, password) {
 };
 
 UsersDaoMySqlDB.prototype.readAll = async function () {
-    let users = [];
 
-    await this.connection.query('SELECT * FROM users')
-        .then(([rows]) => {
-            users = rows;
-        });
+    const result = await this.connection.query('SELECT * FROM users');
 
-    users = util.convertUsers(users);
-
-    return users;
+    return util.convertUsers(result[0]);
 };
+
+// UsersDaoMySqlDB.prototype.readAll = async function () {
+//     let users = [];
+//
+//     await this.connection.query('SELECT * FROM users')
+//         .then(([rows]) => {
+//             users = rows;
+//         });
+//
+//     users = util.convertUsers(users);
+//
+//     return users;
+// };
 
 UsersDaoMySqlDB.prototype.readUserToId = async function (id) {
     let user;

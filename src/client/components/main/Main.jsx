@@ -1,3 +1,4 @@
+import ButtonSettings from './components/buttonSettings/ButtonSettings.jsx';
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
 import Settings from './components/settings/Settings.jsx';
@@ -14,7 +15,6 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket(constants.LOCALHOST);
-        const isOpenModal = this.getStatusModal();
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -23,10 +23,10 @@ class Main extends Component {
             messageAreaValue: '',
             idUserSender: null,
             emojiMenu: false,
-            isOpenModal: isOpenModal,
+            isOpenModal: false,
             messagesList: [],
+            usersOnline: [],
             usersList: [],
-            clients: [],
             messageBody: {
                 sender: '',
                 receiver: '',
@@ -52,6 +52,12 @@ class Main extends Component {
         });
 
         this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
+        this.socket.on(constants.ONLINE, online => {
+            this.setState(state => ({
+                ...state,
+                usersOnline: online,
+            }));
+        });
     }
 
     static propTypes = {
@@ -69,23 +75,11 @@ class Main extends Component {
     };
 
     handleShow = () => {
-        localStorage.setItem(constants.MODAL, true);
         this.setState({ isOpenModal: true });
     };
 
     handleHide = () => {
-        localStorage.setItem(constants.MODAL, false);
         this.setState({ isOpenModal: false });
-    };
-
-    getStatusModal = () => {
-        const modal = JSON.parse(localStorage.getItem(constants.MODAL));
-
-        if (!modal) {
-            return false;
-        }
-
-        return modal;
     };
 
     addEmoji = (e) => {
@@ -126,11 +120,11 @@ class Main extends Component {
             ...state,
             idUserReceiver: constants.ALL,
             chat: constants.PUBLIC,
-        }));
-        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
-        await this.setState({
             mainWindowState: constants.MESSAGE,
-        });
+        }));
+
+        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
+
         await this.setState({
             messagesList: data,
         });
@@ -183,6 +177,7 @@ class Main extends Component {
         }
 
         const target = e.target;
+        console.log(target);
 
         await this.setState(state => ({
             ...state,
@@ -219,26 +214,26 @@ class Main extends Component {
         return (
             <div>
                 <div className='header__settings'>
-                    <button className='settings' onClick={this.handleShow}>
-                        <img src='src/client/assets/icons/settings.png' width='50' height='50' />
-                    </button>
+                    <ButtonSettings
+                        handleShow={this.handleShow}
+                    />
                 </div>
                 <div className='main'>
                     <MainHeader
                         name={this.state.name}
-                        translate = {translate}
+                        translate={translate}
                         email={this.state.email}
                         clickButtonLogOut={logout}
                     />
                     <ContentBlock
                         name={this.state.name}
-                        translate = {translate}
+                        translate={translate}
                         emoji={this.props.emoji}
                         addEmoji={this.addEmoji}
                         closeMenu={this.closeMenu}
                         chat={this.state.clickChat}
                         showEmoji={this.showEmoji}
-                        clients={this.state.clients}
+                        usersOnline={this.state.usersOnline}
                         userState={this.state.userState}
                         clickChat={this.clickButtonChat}
                         usersList={this.state.usersList}

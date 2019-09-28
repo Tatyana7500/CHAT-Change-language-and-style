@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import withAuthorization from '../client/hocs/withAuthorization';
+import WithAuthorizationWrapper from '../client/hocs/withAuthorization';
 import withLocalization from '../client/hocs/withLocalization';
 import SignIn from './components/signIn/SignIn.jsx';
 import Login from './components/login/Login.jsx';
@@ -183,27 +183,37 @@ class App extends Component {
             logic.removeLocalStorage();
         };
 
-        const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout);
+        const componentProps = {
+            emoji,
+            theme,
+            translate,
+            changeTheme,
+            privateChat,
+            saveSettings,
+            changeLanguage,
+            defaultCountry,
+            changeActiveEmoji,
+            setDefaultSettings,
+            changeActivePrivateChat,
+        };
+
+        // const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout, componentProps);
+
+        console.log('render App');
 
         return (
             <Router>
                 <Switch>
-                    <Route exact path='/main' render={props =>
-                        <MainRoute
-                            {...props}
-                            emoji={emoji}
-                            theme={theme}
-                            translate = { translate }
-                            changeTheme={changeTheme}
-                            privateChat={privateChat}
-                            saveSettings={saveSettings}
-                            changeLanguage={changeLanguage}
-                            defaultCountry={defaultCountry}
-                            changeActiveEmoji={changeActiveEmoji}
-                            setDefaultSettings={setDefaultSettings}
-                            changeActivePrivateChat={changeActivePrivateChat}
+                    {/*<Route exact path='/main' render={() => <MainRoute/>}/>*/}
+                    <Route exact path='/main' render={props => (
+                        <WithAuthorizationWrapper
+                            logout={logout}
+                            component={Main}
+                            redirect={redirect}
+                            isAuthorized={isAuthorized}
+                            componentProps = {componentProps}
                         />
-                    }
+                        )}
                     />
                     <Route exact path='/login' render={props =>
                         <Login {...props}
