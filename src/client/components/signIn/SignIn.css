@@ -17,7 +17,7 @@ body {
     text-align:center;
     border: 0;
     width:25%;
-    color: var(--color-textNotActive)
+    color: var(--color-textNotActive);
 }
 
 .btn:hover {
@@ -47,7 +47,7 @@ body {
     text-align: center;
     flex:5;
     transform: translate(0,10%);
-    color:var(--color-textForm)
+    color: var(--color-textForm);
 }
 
 .signin-form__input {

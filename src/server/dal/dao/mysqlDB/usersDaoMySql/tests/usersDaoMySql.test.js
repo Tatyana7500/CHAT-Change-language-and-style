@@ -59,34 +59,34 @@ describe('UsersDaoMySqlDB', () => {
     //     });
     // });
 
-    describe('create', () => {
-        let dao;
-        let sandBox;
-        let mockObject;
-        let mockConnection;
-
-        before(async () => {
-            dao = UsersDaoMySqlDB();
-            sandBox = sinon.createSandbox();
-            mockObject = {
-                name: 'name',
-                email: 'email',
-                password: 'password',
-            };
-            mockConnection = {
-                query: sandBox.stub(),
-            };
-            sandBox.stub(dao, 'connection').returns(mockConnection);
-
-            await dao.create(mockObject);
-        });
-
-        after(() => {
-            sandBox.restore();
-        });
-
-        it('Should called once query', () => {
-            sinon.assert.calledOnce(mockConnection.query);
-        });
-    });
+    // describe('create', () => {
+    //     let dao;
+    //     let sandBox;
+    //     let mockObject;
+    //     let mockConnection;
+    //
+    //     before(async () => {
+    //         dao = UsersDaoMySqlDB();
+    //         sandBox = sinon.createSandbox();
+    //         mockObject = {
+    //             name: 'name',
+    //             email: 'email',
+    //             password: 'password',
+    //         };
+    //         mockConnection = {
+    //             query: sandBox.stub(),
+    //         };
+    //         sandBox.stub(dao, 'connection').returns(mockConnection);
+    //
+    //         await dao.create(mockObject);
+    //     });
+    //
+    //     after(() => {
+    //         sandBox.restore();
+    //     });
+    //
+    //     it('Should called once query', () => {
+    //         sinon.assert.calledOnce(mockConnection.query);
+    //     });
+    // });
 });
