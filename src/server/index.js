@@ -63,12 +63,12 @@ async function handleMessage(message) {
     if (receiver === constants.ALL) {
         io.sockets.emit(constants.MESSAGE, oneMessage);
     } else {
-        const socketIds = clients.filter(item => item.userId === receiver)
+        const socketIds = clients.filter(item => item.userId == receiver)
              .map(client => client.socketId);
 
         for (let socketId of socketIds) {
             const socket = io.sockets.connected[socketId];
-            socket && socket.emit(constants.MESSAGE, oneMessage);
+            socket && socket.emit(constants.MESSAGEPRIVATE, oneMessage);
         }
     }
 }

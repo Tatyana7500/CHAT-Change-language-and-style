@@ -19,5 +19,6 @@ module.exports = {
     POSTGRES: 'postgres',
     CONNECTION: 'connection',
     DISCONNECT: 'disconnect',
+    MESSAGEPRIVATE: 'privateMessage',
     LOCALHOST: 'http://localhost:8080',
 };

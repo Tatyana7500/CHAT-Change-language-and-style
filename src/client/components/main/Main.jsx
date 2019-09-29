@@ -44,7 +44,15 @@ class Main extends Component {
         };
 
         this.socket.on(constants.MESSAGE, (message) => {
-            if (message.name !== this.state.name && message.id === this.state.idUserReceiver) {
+             if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
+                this.setState({
+                    messagesList: [...this.state.messagesList, message],
+                });
+             }
+        });
+
+        this.socket.on(constants.MESSAGEPRIVATE, (message) => {
+            if (message.name !== this.state.name && this.state.chat === constants.PRIVATE && message.id === this.state.idUserReceiver) {
                 this.setState({
                     messagesList: [...this.state.messagesList, message],
                 });
@@ -177,7 +185,6 @@ class Main extends Component {
         }
 
         const target = e.target;
-        console.log(target);
 
         await this.setState(state => ({
             ...state,

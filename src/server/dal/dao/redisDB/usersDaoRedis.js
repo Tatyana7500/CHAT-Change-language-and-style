@@ -4,6 +4,12 @@ const redis = require('async-redis');
 const url = config.settings.redis.connectionRedis;
 
 function UsersDaoRedisDB() {
+    this.client = null;
+}
+
+UsersDaoRedisDB.prototype = Object.create(DAO.prototype);
+UsersDaoRedisDB.prototype.constructor = UsersDaoRedisDB;
+UsersDaoRedisDB.prototype.initialize = function () {
     this.client = redis.createClient(url);
     this.client.on('connection', function () {
         console.log('Redis client connected');
@@ -12,11 +18,6 @@ function UsersDaoRedisDB() {
     this.client.on('error', function (err) {
         console.log(err);
     });
-}
-
-UsersDaoRedisDB.prototype = Object.create(DAO.prototype);
-UsersDaoRedisDB.prototype.constructor = UsersDaoRedisDB;
-UsersDaoRedisDB.prototype.initialize = function () {
 };
 
 UsersDaoRedisDB.prototype.create = async function (object) {
