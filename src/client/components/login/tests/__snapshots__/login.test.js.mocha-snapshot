@@ -103,7 +103,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                       "props": {
                         "type": "submit",
                         "id": "enterAccount",
-                        "onClick": "[function]",
+                        "onClick": "onClick",
                         "className": "btn login-form__btn"
                       },
                       "_store": {}
@@ -115,7 +115,8 @@ exports["Login snapshot/should render correctly(0)"] = {
             ]
           },
           "_store": {}
-        }
+        },
+        null
       ]
     },
     "rendered": [
@@ -227,7 +228,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "props": {
                       "type": "submit",
                       "id": "enterAccount",
-                      "onClick": "[function]",
+                      "onClick": "onClick",
                       "className": "btn login-form__btn"
                     },
                     "_store": {}
@@ -339,7 +340,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "props": {
                     "type": "submit",
                     "id": "enterAccount",
-                    "onClick": "[function]",
+                    "onClick": "onClick",
                     "className": "btn login-form__btn"
                   },
                   "_store": {}
@@ -395,14 +396,15 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "props": {
                   "type": "submit",
                   "id": "enterAccount",
-                  "onClick": "[function]",
+                  "onClick": "onClick",
                   "className": "btn login-form__btn"
                 }
               }
             ]
           }
         ]
-      }
+      },
+      null
     ]
   },
   "type": "div",
@@ -540,7 +542,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "props": {
                       "type": "submit",
                       "id": "enterAccount",
-                      "onClick": "[function]",
+                      "onClick": "onClick",
                       "className": "btn login-form__btn"
                     },
                     "_store": {}
@@ -652,7 +654,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "props": {
                     "type": "submit",
                     "id": "enterAccount",
-                    "onClick": "[function]",
+                    "onClick": "onClick",
                     "className": "btn login-form__btn"
                   },
                   "_store": {}
@@ -708,7 +710,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "props": {
                   "type": "submit",
                   "id": "enterAccount",
-                  "onClick": "[function]",
+                  "onClick": "onClick",
                   "className": "btn login-form__btn"
                 }
               }
@@ -864,7 +866,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "props": {
                     "type": "submit",
                     "id": "enterAccount",
-                    "onClick": "[function]",
+                    "onClick": "onClick",
                     "className": "btn login-form__btn"
                   },
                   "_store": {}
@@ -920,7 +922,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "props": {
                   "type": "submit",
                   "id": "enterAccount",
-                  "onClick": "[function]",
+                  "onClick": "onClick",
                   "className": "btn login-form__btn"
                 }
               }
@@ -1016,7 +1018,7 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "props": {
                   "type": "submit",
                   "id": "enterAccount",
-                  "onClick": "[function]",
+                  "onClick": "onClick",
                   "className": "btn login-form__btn"
                 }
               },
@@ -1024,7 +1026,7 @@ exports["Login snapshot/should render correctly(0)"] = {
               "props": {
                 "type": "submit",
                 "id": "enterAccount",
-                "onClick": "[function]",
+                "onClick": "onClick",
                 "className": "btn login-form__btn"
               }
             }

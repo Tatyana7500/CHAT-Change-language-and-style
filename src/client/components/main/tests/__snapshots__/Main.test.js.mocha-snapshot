@@ -1,0 +1,371 @@
+exports["Main snapshot/Main render corectly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "header__settings",
+            "children": {
+              "type": "ButtonSettings",
+              "props": {
+                "handleShow": "[function]"
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "main",
+            "children": [
+              {
+                "type": "MainHeader",
+                "props": {
+                  "name": "",
+                  "translate": "translate",
+                  "email": "",
+                  "clickButtonLogOut": "logout"
+                },
+                "_store": {}
+              },
+              {
+                "type": "ContentBlock",
+                "props": {
+                  "name": "",
+                  "translate": "translate",
+                  "emoji": true,
+                  "addEmoji": "[function]",
+                  "closeMenu": "[function]",
+                  "showEmoji": "[function]",
+                  "usersOnline": [],
+                  "userState": "offline",
+                  "clickChat": "[function]",
+                  "usersList": [],
+                  "clickUsers": "[function]",
+                  "emojiMenu": false,
+                  "messages": [],
+                  "openPrivateChat": "[function]",
+                  "clickButtonSend": "[function]",
+                  "windowState": "users",
+                  "updateMessageValue": "[function]",
+                  "messageAreaValue": ""
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        },
+        null
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "header__settings",
+          "children": {
+            "type": "ButtonSettings",
+            "props": {
+              "handleShow": "[function]"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "function",
+          "type": "ButtonSettings",
+          "props": {
+            "handleShow": "[function]"
+          }
+        }
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "main",
+          "children": [
+            {
+              "type": "MainHeader",
+              "props": {
+                "name": "",
+                "translate": "translate",
+                "email": "",
+                "clickButtonLogOut": "logout"
+              },
+              "_store": {}
+            },
+            {
+              "type": "ContentBlock",
+              "props": {
+                "name": "",
+                "translate": "translate",
+                "emoji": true,
+                "addEmoji": "[function]",
+                "closeMenu": "[function]",
+                "showEmoji": "[function]",
+                "usersOnline": [],
+                "userState": "offline",
+                "clickChat": "[function]",
+                "usersList": [],
+                "clickUsers": "[function]",
+                "emojiMenu": false,
+                "messages": [],
+                "openPrivateChat": "[function]",
+                "clickButtonSend": "[function]",
+                "windowState": "users",
+                "updateMessageValue": "[function]",
+                "messageAreaValue": ""
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "function",
+            "type": "MainHeader",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "email": "",
+              "clickButtonLogOut": "logout"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "ContentBlock",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "emoji": true,
+              "addEmoji": "[function]",
+              "closeMenu": "[function]",
+              "showEmoji": "[function]",
+              "usersOnline": [],
+              "userState": "offline",
+              "clickChat": "[function]",
+              "usersList": [],
+              "clickUsers": "[function]",
+              "emojiMenu": false,
+              "messages": [],
+              "openPrivateChat": "[function]",
+              "clickButtonSend": "[function]",
+              "windowState": "users",
+              "updateMessageValue": "[function]",
+              "messageAreaValue": ""
+            }
+          }
+        ]
+      },
+      null
+    ]
+  },
+  "type": "div",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "header__settings",
+          "children": {
+            "type": "ButtonSettings",
+            "props": {
+              "handleShow": "[function]"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "function",
+          "type": "ButtonSettings",
+          "props": {
+            "handleShow": "[function]"
+          }
+        }
+      },
+      "type": "div",
+      "props": {
+        "className": "header__settings"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "ButtonSettings",
+            "props": {
+              "handleShow": "[function]"
+            }
+          },
+          "type": "ButtonSettings",
+          "props": {
+            "handleShow": "[function]"
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "main",
+          "children": [
+            {
+              "type": "MainHeader",
+              "props": {
+                "name": "",
+                "translate": "translate",
+                "email": "",
+                "clickButtonLogOut": "logout"
+              },
+              "_store": {}
+            },
+            {
+              "type": "ContentBlock",
+              "props": {
+                "name": "",
+                "translate": "translate",
+                "emoji": true,
+                "addEmoji": "[function]",
+                "closeMenu": "[function]",
+                "showEmoji": "[function]",
+                "usersOnline": [],
+                "userState": "offline",
+                "clickChat": "[function]",
+                "usersList": [],
+                "clickUsers": "[function]",
+                "emojiMenu": false,
+                "messages": [],
+                "openPrivateChat": "[function]",
+                "clickButtonSend": "[function]",
+                "windowState": "users",
+                "updateMessageValue": "[function]",
+                "messageAreaValue": ""
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "function",
+            "type": "MainHeader",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "email": "",
+              "clickButtonLogOut": "logout"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "ContentBlock",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "emoji": true,
+              "addEmoji": "[function]",
+              "closeMenu": "[function]",
+              "showEmoji": "[function]",
+              "usersOnline": [],
+              "userState": "offline",
+              "clickChat": "[function]",
+              "usersList": [],
+              "clickUsers": "[function]",
+              "emojiMenu": false,
+              "messages": [],
+              "openPrivateChat": "[function]",
+              "clickButtonSend": "[function]",
+              "windowState": "users",
+              "updateMessageValue": "[function]",
+              "messageAreaValue": ""
+            }
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "main"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "MainHeader",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "email": "",
+              "clickButtonLogOut": "logout"
+            }
+          },
+          "type": "MainHeader",
+          "props": {
+            "name": "",
+            "translate": "translate",
+            "email": "",
+            "clickButtonLogOut": "logout"
+          }
+        },
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "ContentBlock",
+            "props": {
+              "name": "",
+              "translate": "translate",
+              "emoji": true,
+              "addEmoji": "[function]",
+              "closeMenu": "[function]",
+              "showEmoji": "[function]",
+              "usersOnline": [],
+              "userState": "offline",
+              "clickChat": "[function]",
+              "usersList": [],
+              "clickUsers": "[function]",
+              "emojiMenu": false,
+              "messages": [],
+              "openPrivateChat": "[function]",
+              "clickButtonSend": "[function]",
+              "windowState": "users",
+              "updateMessageValue": "[function]",
+              "messageAreaValue": ""
+            }
+          },
+          "type": "ContentBlock",
+          "props": {
+            "name": "",
+            "translate": "translate",
+            "emoji": true,
+            "addEmoji": "[function]",
+            "closeMenu": "[function]",
+            "showEmoji": "[function]",
+            "usersOnline": [],
+            "userState": "offline",
+            "clickChat": "[function]",
+            "usersList": [],
+            "clickUsers": "[function]",
+            "emojiMenu": false,
+            "messages": [],
+            "openPrivateChat": "[function]",
+            "clickButtonSend": "[function]",
+            "windowState": "users",
+            "updateMessageValue": "[function]",
+            "messageAreaValue": ""
+          }
+        }
+      ]
+    }
+  ]
+};
+

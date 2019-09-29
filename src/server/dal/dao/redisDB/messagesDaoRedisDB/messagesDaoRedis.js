@@ -1,10 +1,17 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const redis = require('async-redis');
-const util = require('../util');
+const util = require('../../util');
 const url = config.settings.redis.connectionRedis;
 
 function MessagesDaoRedisDB() {
+    this.client = null;
+}
+
+MessagesDaoRedisDB.prototype = Object.create(DAO.prototype);
+MessagesDaoRedisDB.prototype.constructor = MessagesDaoRedisDB;
+
+MessagesDaoRedisDB.prototype.initialize = function () {
     this.client = redis.createClient(url);
     this.client.on('connection', function () {
         console.log('Redis client connected');
@@ -13,12 +20,6 @@ function MessagesDaoRedisDB() {
     this.client.on('error', function (err) {
         console.log(err);
     });
-}
-
-MessagesDaoRedisDB.prototype = Object.create(DAO.prototype);
-MessagesDaoRedisDB.prototype.constructor = MessagesDaoRedisDB;
-
-MessagesDaoRedisDB.prototype.initialize = function () {
 };
 
 MessagesDaoRedisDB.prototype.create = async function (msg) {

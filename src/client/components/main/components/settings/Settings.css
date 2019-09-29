@@ -16,4 +16,12 @@
 
 .modal__settings p {
     text-align: center;
+    color: var(--color-textForm);
+}
+
+.button {
+    padding: 5px 30px;
+    border-radius: 19px;
+    margin-left: -10px;
+    cursor: pointer;
 }

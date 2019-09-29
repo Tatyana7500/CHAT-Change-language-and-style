@@ -1,7 +1,7 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const mysql = require('mysql2');
-const util = require('../util');
+const util = require('../../util');
 
 const messages = `create table if not exists messages(
   _id INT PRIMARY KEY AUTO_INCREMENT,

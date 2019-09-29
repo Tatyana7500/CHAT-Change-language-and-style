@@ -5,7 +5,7 @@
   "main": "src/server/index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test  mocha --opts ./mocha.opts ./src/**/*.test.js --recursive -R nyan --silent",
-    "coverage": "nyc --reporter html --reporter text npm test",
+    "coverage": "nyc --extension .jsx --reporter html --reporter text npm test",
     "build": "webpack --mode production",
     "start": "npm run build && node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",

@@ -1,7 +1,7 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const { Client } = require('pg');
-const util = require('../util');
+const util = require('../../util');
 
 function MessagesDaoPostgresDB() {
     this.connection = null;
