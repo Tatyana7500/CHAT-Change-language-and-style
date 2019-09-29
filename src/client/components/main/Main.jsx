@@ -101,24 +101,22 @@ class Main extends Component {
         this.setState({
                 emojiMenu: true,
             },
-            () => document.addEventListener('click', this.closeMenu)
         );
+        document.addEventListener('click', this.closeMenu);
     };
 
     closeMenu = () => {
         this.setState({
                 emojiMenu: false,
             },
-            () => document.removeEventListener('click', this.closeMenu)
         );
+        document.removeEventListener('click', this.closeMenu);
     };
 
     clickButtonUser = async () => {
-        const response = await util.sendGetRequest(`${constants.LOCALHOST}/users`);
+        const response = await util.sendGet(`${constants.LOCALHOST}/users`);
         await this.setState({
             mainWindowState: constants.USERS,
-        });
-        await this.setState({
             usersList: response,
         });
     };
@@ -131,7 +129,7 @@ class Main extends Component {
             mainWindowState: constants.MESSAGE,
         }));
 
-        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
+        const data = await util.sendGet(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
 
         await this.setState({
             messagesList: data,
@@ -143,22 +141,23 @@ class Main extends Component {
     };
 
     clickButtonSend = async () => {
+        const date = new Date().getTime();
         await this.setState({
             messageBody: {
                 sender: this.state.idUserSender,
                 receiver: this.state.idUserReceiver,
                 message: this.state.messageAreaValue,
-                date: new Date().getTime(),
+                date: date,
             },
             myMessage: {
                 name: this.state.name,
                 email: this.state.email,
                 message: this.state.messageAreaValue,
-                date: new Date().getTime(),
+                date: date,
             },
         });
 
-        await util.sendPostRequest(`${constants.LOCALHOST}/message`, this.state.messageBody);
+        await util.sendPost(`${constants.LOCALHOST}/message`, this.state.messageBody);
 
         await this.setState({
             messageAreaValue: '',
@@ -192,9 +191,11 @@ class Main extends Component {
             chat: constants.PRIVATE,
         }));
 
-        const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
+        const data = await util.sendGet(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
         await this.setState({
             mainWindowState: constants.MESSAGE,
+        });
+        await this.setState({
             messagesList: data,
         });
     };

@@ -43,7 +43,7 @@ class SignIn extends React.Component {
                 password: this.passwordInputRef.current.value,
             };
 
-            const response = await util.sendPostRequest(`${constants.LOCALHOST}/signin`, data);
+            const response = await util.sendPost(`${constants.LOCALHOST}/signin`, data);
 
             if (response.status !== 200) {
                 const errorText = await response.text();

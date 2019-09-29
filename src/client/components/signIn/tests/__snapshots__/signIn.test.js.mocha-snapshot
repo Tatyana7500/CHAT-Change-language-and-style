@@ -1,4 +1,4 @@
-exports["Login snapshot/should render correctly(0)"] = {
+exports["SignIn snapshot/should render correctly(0)"] = {
   "node": {
     "nodeType": "host",
     "type": "div",
@@ -22,7 +22,7 @@ exports["Login snapshot/should render correctly(0)"] = {
         {
           "type": "div",
           "props": {
-            "className": "login-wrapper",
+            "className": "signin",
             "children": [
               {
                 "type": "div",
@@ -32,8 +32,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                     {
                       "type": "a",
                       "props": {
-                        "id": "loginBtn",
                         "href": "/login",
+                        "id": "singin_loginBtn",
                         "className": "btn buttons__btn"
                       },
                       "_store": {}
@@ -41,9 +41,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                     {
                       "type": "a",
                       "props": {
-                        "id": "singInBtn",
                         "href": "/signIn",
-                        "className": "btn buttons__btn buttons__btn_active"
+                        "id": "singin_singInBtn",
+                        "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                       },
                       "_store": {}
                     }
@@ -54,7 +54,7 @@ exports["Login snapshot/should render correctly(0)"] = {
               {
                 "type": "div",
                 "props": {
-                  "className": "login-form",
+                  "className": "signin-form",
                   "children": [
                     {
                       "type": "label",
@@ -69,10 +69,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                       "type": "input",
                       "ref": {},
                       "props": {
-                        "required": true,
+                        "type": "text",
+                        "maxLength": "25",
+                        "id": "singinPageEmailInput",
+                        "className": "login-form__input"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "label",
+                      "props": {
+                        "name": "name",
+                        "htmlFor": "singinPageNameInput",
+                        "className": "login-form__label"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "input",
+                      "ref": {},
+                      "props": {
                         "type": "text",
                         "maxLength": "16",
-                        "id": "loginPageEmailInput",
+                        "id": "singinPageNameInput",
                         "className": "login-form__input"
                       },
                       "_store": {}
@@ -90,11 +109,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                       "type": "input",
                       "ref": {},
                       "props": {
-                        "required": true,
                         "maxLength": "16",
                         "type": "password",
-                        "id": "loginPagePasswordInput",
+                        "id": "singinPagePasswordInput",
                         "className": "login-form__input"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "label",
+                      "props": {
+                        "name": "confirmPassword",
+                        "htmlFor": "singinPageComfirmPasswordInput",
+                        "className": "login-form__label"
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "input",
+                      "ref": {},
+                      "props": {
+                        "maxLength": "16",
+                        "type": "password",
+                        "className": "login-form__input",
+                        "id": "singinPageComfirmPasswordInput"
                       },
                       "_store": {}
                     },
@@ -102,9 +140,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                       "type": "input",
                       "props": {
                         "type": "submit",
-                        "id": "enterAccount",
-                        "onClick": "onClick",
-                        "className": "btn login-form__btn"
+                        "id": "regAccount",
+                        "className": "btn signin-form__btn",
+                        "onClick": "[function]"
                       },
                       "_store": {}
                     }
@@ -147,7 +185,7 @@ exports["Login snapshot/should render correctly(0)"] = {
         "nodeType": "host",
         "type": "div",
         "props": {
-          "className": "login-wrapper",
+          "className": "signin",
           "children": [
             {
               "type": "div",
@@ -157,8 +195,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                   {
                     "type": "a",
                     "props": {
-                      "id": "loginBtn",
                       "href": "/login",
+                      "id": "singin_loginBtn",
                       "className": "btn buttons__btn"
                     },
                     "_store": {}
@@ -166,9 +204,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                   {
                     "type": "a",
                     "props": {
-                      "id": "singInBtn",
                       "href": "/signIn",
-                      "className": "btn buttons__btn buttons__btn_active"
+                      "id": "singin_singInBtn",
+                      "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                     },
                     "_store": {}
                   }
@@ -179,7 +217,7 @@ exports["Login snapshot/should render correctly(0)"] = {
             {
               "type": "div",
               "props": {
-                "className": "login-form",
+                "className": "signin-form",
                 "children": [
                   {
                     "type": "label",
@@ -194,10 +232,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "ref": {},
                     "props": {
-                      "required": true,
+                      "type": "text",
+                      "maxLength": "25",
+                      "id": "singinPageEmailInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "name",
+                      "htmlFor": "singinPageNameInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
                       "type": "text",
                       "maxLength": "16",
-                      "id": "loginPageEmailInput",
+                      "id": "singinPageNameInput",
                       "className": "login-form__input"
                     },
                     "_store": {}
@@ -215,11 +272,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "ref": {},
                     "props": {
-                      "required": true,
                       "maxLength": "16",
                       "type": "password",
-                      "id": "loginPagePasswordInput",
+                      "id": "singinPagePasswordInput",
                       "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "confirmPassword",
+                      "htmlFor": "singinPageComfirmPasswordInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "maxLength": "16",
+                      "type": "password",
+                      "className": "login-form__input",
+                      "id": "singinPageComfirmPasswordInput"
                     },
                     "_store": {}
                   },
@@ -227,9 +303,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "props": {
                       "type": "submit",
-                      "id": "enterAccount",
-                      "onClick": "onClick",
-                      "className": "btn login-form__btn"
+                      "id": "regAccount",
+                      "className": "btn signin-form__btn",
+                      "onClick": "[function]"
                     },
                     "_store": {}
                   }
@@ -249,8 +325,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "loginBtn",
                     "href": "/login",
+                    "id": "singin_loginBtn",
                     "className": "btn buttons__btn"
                   },
                   "_store": {}
@@ -258,9 +334,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "singInBtn",
                     "href": "/signIn",
-                    "className": "btn buttons__btn buttons__btn_active"
+                    "id": "singin_singInBtn",
+                    "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                   },
                   "_store": {}
                 }
@@ -271,8 +347,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "loginBtn",
                   "href": "/login",
+                  "id": "singin_loginBtn",
                   "className": "btn buttons__btn"
                 }
               },
@@ -280,9 +356,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "singInBtn",
                   "href": "/signIn",
-                  "className": "btn buttons__btn buttons__btn_active"
+                  "id": "singin_singInBtn",
+                  "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                 }
               }
             ]
@@ -291,7 +367,7 @@ exports["Login snapshot/should render correctly(0)"] = {
             "nodeType": "host",
             "type": "div",
             "props": {
-              "className": "login-form",
+              "className": "signin-form",
               "children": [
                 {
                   "type": "label",
@@ -306,10 +382,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
+                    "type": "text",
+                    "maxLength": "25",
+                    "id": "singinPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "name",
+                    "htmlFor": "singinPageNameInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
                     "type": "text",
                     "maxLength": "16",
-                    "id": "loginPageEmailInput",
+                    "id": "singinPageNameInput",
                     "className": "login-form__input"
                   },
                   "_store": {}
@@ -327,11 +422,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
                     "maxLength": "16",
                     "type": "password",
-                    "id": "loginPagePasswordInput",
+                    "id": "singinPagePasswordInput",
                     "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "confirmPassword",
+                    "htmlFor": "singinPageComfirmPasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "maxLength": "16",
+                    "type": "password",
+                    "className": "login-form__input",
+                    "id": "singinPageComfirmPasswordInput"
                   },
                   "_store": {}
                 },
@@ -339,9 +453,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "props": {
                     "type": "submit",
-                    "id": "enterAccount",
-                    "onClick": "onClick",
-                    "className": "btn login-form__btn"
+                    "id": "regAccount",
+                    "className": "btn signin-form__btn",
+                    "onClick": "[function]"
                   },
                   "_store": {}
                 }
@@ -361,10 +475,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
+                  "type": "text",
+                  "maxLength": "25",
+                  "id": "singinPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "name",
+                  "htmlFor": "singinPageNameInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
                   "type": "text",
                   "maxLength": "16",
-                  "id": "loginPageEmailInput",
+                  "id": "singinPageNameInput",
                   "className": "login-form__input"
                 },
                 "ref": {}
@@ -382,11 +515,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
                   "maxLength": "16",
                   "type": "password",
-                  "id": "loginPagePasswordInput",
+                  "id": "singinPagePasswordInput",
                   "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "confirmPassword",
+                  "htmlFor": "singinPageComfirmPasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "maxLength": "16",
+                  "type": "password",
+                  "className": "login-form__input",
+                  "id": "singinPageComfirmPasswordInput"
                 },
                 "ref": {}
               },
@@ -395,9 +547,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "type": "input",
                 "props": {
                   "type": "submit",
-                  "id": "enterAccount",
-                  "onClick": "onClick",
-                  "className": "btn login-form__btn"
+                  "id": "regAccount",
+                  "className": "btn signin-form__btn",
+                  "onClick": "[function]"
                 }
               }
             ]
@@ -461,7 +613,7 @@ exports["Login snapshot/should render correctly(0)"] = {
         "nodeType": "host",
         "type": "div",
         "props": {
-          "className": "login-wrapper",
+          "className": "signin",
           "children": [
             {
               "type": "div",
@@ -471,8 +623,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                   {
                     "type": "a",
                     "props": {
-                      "id": "loginBtn",
                       "href": "/login",
+                      "id": "singin_loginBtn",
                       "className": "btn buttons__btn"
                     },
                     "_store": {}
@@ -480,9 +632,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                   {
                     "type": "a",
                     "props": {
-                      "id": "singInBtn",
                       "href": "/signIn",
-                      "className": "btn buttons__btn buttons__btn_active"
+                      "id": "singin_singInBtn",
+                      "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                     },
                     "_store": {}
                   }
@@ -493,7 +645,7 @@ exports["Login snapshot/should render correctly(0)"] = {
             {
               "type": "div",
               "props": {
-                "className": "login-form",
+                "className": "signin-form",
                 "children": [
                   {
                     "type": "label",
@@ -508,10 +660,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "ref": {},
                     "props": {
-                      "required": true,
+                      "type": "text",
+                      "maxLength": "25",
+                      "id": "singinPageEmailInput",
+                      "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "name",
+                      "htmlFor": "singinPageNameInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
                       "type": "text",
                       "maxLength": "16",
-                      "id": "loginPageEmailInput",
+                      "id": "singinPageNameInput",
                       "className": "login-form__input"
                     },
                     "_store": {}
@@ -529,11 +700,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "ref": {},
                     "props": {
-                      "required": true,
                       "maxLength": "16",
                       "type": "password",
-                      "id": "loginPagePasswordInput",
+                      "id": "singinPagePasswordInput",
                       "className": "login-form__input"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "label",
+                    "props": {
+                      "name": "confirmPassword",
+                      "htmlFor": "singinPageComfirmPasswordInput",
+                      "className": "login-form__label"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "input",
+                    "ref": {},
+                    "props": {
+                      "maxLength": "16",
+                      "type": "password",
+                      "className": "login-form__input",
+                      "id": "singinPageComfirmPasswordInput"
                     },
                     "_store": {}
                   },
@@ -541,9 +731,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                     "type": "input",
                     "props": {
                       "type": "submit",
-                      "id": "enterAccount",
-                      "onClick": "onClick",
-                      "className": "btn login-form__btn"
+                      "id": "regAccount",
+                      "className": "btn signin-form__btn",
+                      "onClick": "[function]"
                     },
                     "_store": {}
                   }
@@ -563,8 +753,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "loginBtn",
                     "href": "/login",
+                    "id": "singin_loginBtn",
                     "className": "btn buttons__btn"
                   },
                   "_store": {}
@@ -572,9 +762,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "singInBtn",
                     "href": "/signIn",
-                    "className": "btn buttons__btn buttons__btn_active"
+                    "id": "singin_singInBtn",
+                    "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                   },
                   "_store": {}
                 }
@@ -585,8 +775,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "loginBtn",
                   "href": "/login",
+                  "id": "singin_loginBtn",
                   "className": "btn buttons__btn"
                 }
               },
@@ -594,9 +784,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "singInBtn",
                   "href": "/signIn",
-                  "className": "btn buttons__btn buttons__btn_active"
+                  "id": "singin_singInBtn",
+                  "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                 }
               }
             ]
@@ -605,7 +795,7 @@ exports["Login snapshot/should render correctly(0)"] = {
             "nodeType": "host",
             "type": "div",
             "props": {
-              "className": "login-form",
+              "className": "signin-form",
               "children": [
                 {
                   "type": "label",
@@ -620,10 +810,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
+                    "type": "text",
+                    "maxLength": "25",
+                    "id": "singinPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "name",
+                    "htmlFor": "singinPageNameInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
                     "type": "text",
                     "maxLength": "16",
-                    "id": "loginPageEmailInput",
+                    "id": "singinPageNameInput",
                     "className": "login-form__input"
                   },
                   "_store": {}
@@ -641,11 +850,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
                     "maxLength": "16",
                     "type": "password",
-                    "id": "loginPagePasswordInput",
+                    "id": "singinPagePasswordInput",
                     "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "confirmPassword",
+                    "htmlFor": "singinPageComfirmPasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "maxLength": "16",
+                    "type": "password",
+                    "className": "login-form__input",
+                    "id": "singinPageComfirmPasswordInput"
                   },
                   "_store": {}
                 },
@@ -653,9 +881,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "props": {
                     "type": "submit",
-                    "id": "enterAccount",
-                    "onClick": "onClick",
-                    "className": "btn login-form__btn"
+                    "id": "regAccount",
+                    "className": "btn signin-form__btn",
+                    "onClick": "[function]"
                   },
                   "_store": {}
                 }
@@ -675,10 +903,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
+                  "type": "text",
+                  "maxLength": "25",
+                  "id": "singinPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "name",
+                  "htmlFor": "singinPageNameInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
                   "type": "text",
                   "maxLength": "16",
-                  "id": "loginPageEmailInput",
+                  "id": "singinPageNameInput",
                   "className": "login-form__input"
                 },
                 "ref": {}
@@ -696,11 +943,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
                   "maxLength": "16",
                   "type": "password",
-                  "id": "loginPagePasswordInput",
+                  "id": "singinPagePasswordInput",
                   "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "confirmPassword",
+                  "htmlFor": "singinPageComfirmPasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "maxLength": "16",
+                  "type": "password",
+                  "className": "login-form__input",
+                  "id": "singinPageComfirmPasswordInput"
                 },
                 "ref": {}
               },
@@ -709,9 +975,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "type": "input",
                 "props": {
                   "type": "submit",
-                  "id": "enterAccount",
-                  "onClick": "onClick",
-                  "className": "btn login-form__btn"
+                  "id": "regAccount",
+                  "className": "btn signin-form__btn",
+                  "onClick": "[function]"
                 }
               }
             ]
@@ -720,7 +986,7 @@ exports["Login snapshot/should render correctly(0)"] = {
       },
       "type": "div",
       "props": {
-        "className": "login-wrapper"
+        "className": "signin"
       },
       "children": [
         {
@@ -733,8 +999,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "loginBtn",
                     "href": "/login",
+                    "id": "singin_loginBtn",
                     "className": "btn buttons__btn"
                   },
                   "_store": {}
@@ -742,9 +1008,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 {
                   "type": "a",
                   "props": {
-                    "id": "singInBtn",
                     "href": "/signIn",
-                    "className": "btn buttons__btn buttons__btn_active"
+                    "id": "singin_singInBtn",
+                    "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                   },
                   "_store": {}
                 }
@@ -755,8 +1021,8 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "loginBtn",
                   "href": "/login",
+                  "id": "singin_loginBtn",
                   "className": "btn buttons__btn"
                 }
               },
@@ -764,9 +1030,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "singInBtn",
                   "href": "/signIn",
-                  "className": "btn buttons__btn buttons__btn_active"
+                  "id": "singin_singInBtn",
+                  "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                 }
               }
             ]
@@ -781,15 +1047,15 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "loginBtn",
                   "href": "/login",
+                  "id": "singin_loginBtn",
                   "className": "btn buttons__btn"
                 }
               },
               "type": "a",
               "props": {
-                "id": "loginBtn",
                 "href": "/login",
+                "id": "singin_loginBtn",
                 "className": "btn buttons__btn"
               }
             },
@@ -798,16 +1064,16 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "a",
                 "props": {
-                  "id": "singInBtn",
                   "href": "/signIn",
-                  "className": "btn buttons__btn buttons__btn_active"
+                  "id": "singin_singInBtn",
+                  "className": "btn buttons__btn buttons__btn  buttons__btn_active"
                 }
               },
               "type": "a",
               "props": {
-                "id": "singInBtn",
                 "href": "/signIn",
-                "className": "btn buttons__btn buttons__btn_active"
+                "id": "singin_singInBtn",
+                "className": "btn buttons__btn buttons__btn  buttons__btn_active"
               }
             }
           ]
@@ -817,7 +1083,7 @@ exports["Login snapshot/should render correctly(0)"] = {
             "nodeType": "host",
             "type": "div",
             "props": {
-              "className": "login-form",
+              "className": "signin-form",
               "children": [
                 {
                   "type": "label",
@@ -832,10 +1098,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
+                    "type": "text",
+                    "maxLength": "25",
+                    "id": "singinPageEmailInput",
+                    "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "name",
+                    "htmlFor": "singinPageNameInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
                     "type": "text",
                     "maxLength": "16",
-                    "id": "loginPageEmailInput",
+                    "id": "singinPageNameInput",
                     "className": "login-form__input"
                   },
                   "_store": {}
@@ -853,11 +1138,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "ref": {},
                   "props": {
-                    "required": true,
                     "maxLength": "16",
                     "type": "password",
-                    "id": "loginPagePasswordInput",
+                    "id": "singinPagePasswordInput",
                     "className": "login-form__input"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "label",
+                  "props": {
+                    "name": "confirmPassword",
+                    "htmlFor": "singinPageComfirmPasswordInput",
+                    "className": "login-form__label"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "input",
+                  "ref": {},
+                  "props": {
+                    "maxLength": "16",
+                    "type": "password",
+                    "className": "login-form__input",
+                    "id": "singinPageComfirmPasswordInput"
                   },
                   "_store": {}
                 },
@@ -865,9 +1169,9 @@ exports["Login snapshot/should render correctly(0)"] = {
                   "type": "input",
                   "props": {
                     "type": "submit",
-                    "id": "enterAccount",
-                    "onClick": "onClick",
-                    "className": "btn login-form__btn"
+                    "id": "regAccount",
+                    "className": "btn signin-form__btn",
+                    "onClick": "[function]"
                   },
                   "_store": {}
                 }
@@ -887,10 +1191,29 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
+                  "type": "text",
+                  "maxLength": "25",
+                  "id": "singinPageEmailInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "name",
+                  "htmlFor": "singinPageNameInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
                   "type": "text",
                   "maxLength": "16",
-                  "id": "loginPageEmailInput",
+                  "id": "singinPageNameInput",
                   "className": "login-form__input"
                 },
                 "ref": {}
@@ -908,11 +1231,30 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
                   "maxLength": "16",
                   "type": "password",
-                  "id": "loginPagePasswordInput",
+                  "id": "singinPagePasswordInput",
                   "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "confirmPassword",
+                  "htmlFor": "singinPageComfirmPasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "maxLength": "16",
+                  "type": "password",
+                  "className": "login-form__input",
+                  "id": "singinPageComfirmPasswordInput"
                 },
                 "ref": {}
               },
@@ -921,16 +1263,16 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "type": "input",
                 "props": {
                   "type": "submit",
-                  "id": "enterAccount",
-                  "onClick": "onClick",
-                  "className": "btn login-form__btn"
+                  "id": "regAccount",
+                  "className": "btn signin-form__btn",
+                  "onClick": "[function]"
                 }
               }
             ]
           },
           "type": "div",
           "props": {
-            "className": "login-form"
+            "className": "signin-form"
           },
           "children": [
             {
@@ -955,20 +1297,55 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
                   "type": "text",
-                  "maxLength": "16",
-                  "id": "loginPageEmailInput",
+                  "maxLength": "25",
+                  "id": "singinPageEmailInput",
                   "className": "login-form__input"
                 },
                 "ref": {}
               },
               "type": "input",
               "props": {
-                "required": true,
+                "type": "text",
+                "maxLength": "25",
+                "id": "singinPageEmailInput",
+                "className": "login-form__input"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "name",
+                  "htmlFor": "singinPageNameInput",
+                  "className": "login-form__label"
+                }
+              },
+              "type": "label",
+              "props": {
+                "name": "name",
+                "htmlFor": "singinPageNameInput",
+                "className": "login-form__label"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "type": "text",
+                  "maxLength": "16",
+                  "id": "singinPageNameInput",
+                  "className": "login-form__input"
+                },
+                "ref": {}
+              },
+              "type": "input",
+              "props": {
                 "type": "text",
                 "maxLength": "16",
-                "id": "loginPageEmailInput",
+                "id": "singinPageNameInput",
                 "className": "login-form__input"
               }
             },
@@ -994,21 +1371,56 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "nodeType": "host",
                 "type": "input",
                 "props": {
-                  "required": true,
                   "maxLength": "16",
                   "type": "password",
-                  "id": "loginPagePasswordInput",
+                  "id": "singinPagePasswordInput",
                   "className": "login-form__input"
                 },
                 "ref": {}
               },
               "type": "input",
               "props": {
-                "required": true,
                 "maxLength": "16",
                 "type": "password",
-                "id": "loginPagePasswordInput",
+                "id": "singinPagePasswordInput",
                 "className": "login-form__input"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "label",
+                "props": {
+                  "name": "confirmPassword",
+                  "htmlFor": "singinPageComfirmPasswordInput",
+                  "className": "login-form__label"
+                }
+              },
+              "type": "label",
+              "props": {
+                "name": "confirmPassword",
+                "htmlFor": "singinPageComfirmPasswordInput",
+                "className": "login-form__label"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "input",
+                "props": {
+                  "maxLength": "16",
+                  "type": "password",
+                  "className": "login-form__input",
+                  "id": "singinPageComfirmPasswordInput"
+                },
+                "ref": {}
+              },
+              "type": "input",
+              "props": {
+                "maxLength": "16",
+                "type": "password",
+                "className": "login-form__input",
+                "id": "singinPageComfirmPasswordInput"
               }
             },
             {
@@ -1017,17 +1429,17 @@ exports["Login snapshot/should render correctly(0)"] = {
                 "type": "input",
                 "props": {
                   "type": "submit",
-                  "id": "enterAccount",
-                  "onClick": "onClick",
-                  "className": "btn login-form__btn"
+                  "id": "regAccount",
+                  "className": "btn signin-form__btn",
+                  "onClick": "[function]"
                 }
               },
               "type": "input",
               "props": {
                 "type": "submit",
-                "id": "enterAccount",
-                "onClick": "onClick",
-                "className": "btn login-form__btn"
+                "id": "regAccount",
+                "className": "btn signin-form__btn",
+                "onClick": "[function]"
               }
             }
           ]

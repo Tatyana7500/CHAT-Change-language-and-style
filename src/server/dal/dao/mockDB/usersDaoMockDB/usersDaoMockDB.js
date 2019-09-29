@@ -1,4 +1,4 @@
-const DAO = require('../../dao/dao');
+const DAO = require('../../dao');
 
 function UsersDaoMockDB() {
     this.connection = null;

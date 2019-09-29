@@ -87,7 +87,6 @@ describe('ChatDAL', () => {
             assert.strictEqual(actual, expected);
         });
 
-
         it('should be equal to MessagesDaoMySqlDB', () => {
             const expected = 'MessagesDaoMySqlDB';
             sandbox.stub(config, 'databaseType').get(() => constants.MYSQL);
@@ -193,33 +192,167 @@ describe('ChatDAL', () => {
     describe('createUser', () => {
         let sandbox;
         let mockObject;
-        let mockModel;
-        let mockUserModel;
+        let mockUserDAO;
 
         before(async () => {
             sandbox = sinon.createSandbox();
             mockObject = {};
-            mockModel = sandbox.stub();
-            mockUserModel = {
+            mockUserDAO = {
                 create: sandbox.stub(),
             };
-            mockModel.returns(mockUserModel);
-            sandbox.stub(chatDAL, 'usersDAO').get(() => mockModel);
+            sandbox.stub(chatDAL, 'usersDAO').get(() => mockUserDAO);
 
-            chatDAL.createUser(mockObject);
+            await chatDAL.createUser(mockObject);
         });
 
-        afterEach(() => {
+        after(() => {
             sandbox.restore();
         });
 
-        it('Should called once this.createUser', () => {
-            sinon.assert.calledOnce(chatDAL.usersDAO);
-            sinon.assert.calledWith(chatDAL.usersDAO, mockObject);
+        it('Should called once mockUserDAO.create', () => {
+            sinon.assert.calledOnce(mockUserDAO.create);
+            sinon.assert.calledWith(mockUserDAO.create, mockObject);
+        });
+    });
+
+    describe('createMessage', () => {
+        let sandbox;
+        let mockObject;
+        let mockMessagesDAO;
+
+        before(async () => {
+            sandbox = sinon.createSandbox();
+            mockObject = {};
+            mockMessagesDAO = {
+                create: sandbox.stub(),
+            };
+            sandbox.stub(chatDAL, 'messagesDAO').get(() => mockMessagesDAO);
+
+            await chatDAL.createMessage(mockObject);
         });
 
-        it('Should called once create', () => {
-            sinon.assert.calledOnce(mockUserModel.create);
+        after(() => {
+            sandbox.restore();
+        });
+
+        it('Should called once mockMessageDAO.create', () => {
+            sinon.assert.calledOnce(mockMessagesDAO.create);
+            sinon.assert.calledWith(mockMessagesDAO.create, mockObject);
+        });
+    });
+
+    describe('read', () => {
+        let sandbox;
+        let mockObject;
+        let mockUserDAO;
+        let actualResult;
+        let expectedResult;
+
+        before(async () => {
+            sandbox = sinon.createSandbox();
+            mockObject = {
+                email: 'email',
+                password: 'password',
+            };
+            expectedResult = {
+                email: 'email',
+                password: 'password',
+            };
+            mockUserDAO = {
+                read: sandbox.stub().returns(mockObject),
+            };
+            sandbox.stub(chatDAL, 'usersDAO').get(() => mockUserDAO);
+
+            actualResult = await chatDAL.read(mockObject);
+        });
+
+        after(() => {
+            sandbox.restore();
+        });
+
+        it('Should called once mockUserDAO.read', () => {
+            sinon.assert.calledOnce(mockUserDAO.read);
+            sinon.assert.calledWith(mockUserDAO.read, mockObject);
+        });
+
+        it('Should return result', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
+        });
+    });
+
+    describe('readUser', () => {
+        let sandbox;
+        let mockEmail;
+        let mockPassword;
+        let mockUserDAO;
+        let actualResult;
+        let expectedResult;
+
+        before(async () => {
+            sandbox = sinon.createSandbox();
+            mockEmail = 'email';
+            mockPassword = 'password';
+            expectedResult = {
+                email: 'email',
+                password: 'password',
+            };
+            mockUserDAO = {
+                readUser: sandbox.stub().returns(expectedResult),
+            };
+            sandbox.stub(chatDAL, 'usersDAO').get(() => mockUserDAO);
+
+            actualResult = await chatDAL.readUser(mockEmail, mockPassword);
+        });
+
+        after(() => {
+            sandbox.restore();
+        });
+
+        it('Should called once mockUserDAO.readUser', () => {
+            sinon.assert.calledOnce(mockUserDAO.readUser);
+            sinon.assert.calledWith(mockUserDAO.readUser, mockEmail, mockPassword);
+        });
+
+        it('Should return result', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
+        });
+    });
+
+    describe('readUserToId', () => {
+        let sandbox;
+        let mockId;
+        let mockUserDAO;
+        let actualResult;
+        let expectedResult;
+
+        before(async () => {
+            sandbox = sinon.createSandbox();
+            mockId = '1';
+            expectedResult = {
+                _id: '1',
+                name: 'name',
+                email: 'email',
+                password: 'password',
+            };
+            mockUserDAO = {
+                readUserToId: sandbox.stub().returns(expectedResult),
+            };
+            sandbox.stub(chatDAL, 'usersDAO').get(() => mockUserDAO);
+
+            actualResult = await chatDAL.readUserToId(mockId);
+        });
+
+        after(() => {
+            sandbox.restore();
+        });
+
+        it('Should called once mockUserDAO.readUserToId', () => {
+            sinon.assert.calledOnce(mockUserDAO.readUserToId);
+            sinon.assert.calledWith(mockUserDAO.readUserToId, mockId);
+        });
+
+        it('Should return result', () => {
+            assert.deepStrictEqual(actualResult, expectedResult);
         });
     });
 });

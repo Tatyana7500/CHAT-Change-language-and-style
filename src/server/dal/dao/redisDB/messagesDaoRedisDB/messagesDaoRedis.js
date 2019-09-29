@@ -1,7 +1,7 @@
-const DAO = require('../dao');
-const config = require('../../../config');
+const DAO = require('../../dao');
+const config = require('../../../../config');
 const redis = require('async-redis');
-const util = require('../util');
+const util = require('../../util');
 const url = config.settings.redis.connectionRedis;
 
 function MessagesDaoRedisDB() {

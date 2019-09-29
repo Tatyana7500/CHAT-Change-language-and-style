@@ -34,15 +34,18 @@ class Login extends Component {
     submitLoginForm = async () => {
         const email = this.emailInputRef.current.value;
         const password = this.passwordInputRef.current.value;
+        const body = {
+            emailInput: email,
+            passwordInput: password,
+        };
 
         if (email && password) {
-
             await this.setState({
                 emailInput: email,
                 passwordInput: password,
             });
 
-            const response = await util.sendPostRequest(`${constants.LOCALHOST}/auth`, this.state);
+            const response = await util.sendPost(`${constants.LOCALHOST}/auth`, body);
 
             if (response.status !== 200) {
                 const errorText = await response.text();
@@ -73,12 +76,12 @@ class Login extends Component {
 
         return (
             <div>
-            <div className='header__settings'>
-                <SettingLanguage
-                    defaultCountry={defaultCountry}
-                    changeLanguage={changeLanguage}
-                />
-            </div>
+                <div className='header__settings'>
+                    <SettingLanguage
+                        defaultCountry={defaultCountry}
+                        changeLanguage={changeLanguage}
+                    />
+                </div>
                 <div className='login-wrapper'>
                     <div className='buttons'>
                         <a
@@ -128,7 +131,7 @@ class Login extends Component {
                             type='submit'
                             id='enterAccount'
                             value={translate('login')}
-                            onClick={this.submitLoginForm}
+                            onClick={ () => this.submitLoginForm()}
                             className='btn login-form__btn'
                         />
                     </div>

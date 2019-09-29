@@ -1,14 +1,14 @@
 const constants = require('../../constants');
-const UsersDaoMockDB = require('./dao/mockDB/usersDaoMockDB');
-const MessagesDaoMockDB = require('./dao/mockDB/messagesDaoMockDB');
-const UsersDaoRedisDB = require('./dao/redisDB/usersDaoRedis');
-const MessagesDaoRedisDB = require('./dao/redisDB/messagesDaoRedis');
+const UsersDaoMockDB = require('./dao/mockDB/usersDaoMockDB/usersDaoMockDB');
+const MessagesDaoMockDB = require('./dao/mockDB/messagesDaoMockDB/messagesDaoMockDB');
+const UsersDaoRedisDB = require('./dao/redisDB/usersDaoRedisDB/usersDaoRedis');
+const MessagesDaoRedisDB = require('./dao/redisDB/messagesDaoRedisDB/messagesDaoRedis');
 const UsersDaoMongoDB = require('./dao/mongoDB/usersDaoMongoDB/usersDaoMongoDB');
 const MessagesDaoMongoDB = require('./dao/mongoDB/messagesDaoMongoDB/messagesDaoMongoDB');
 const UsersDaoMySqlDB = require('./dao/mysqlDB/usersDaoMySql/usersDaoMySql');
-const MessagesDaoMySqlDB = require('./dao/mysqlDB/messagesDaoMySql');
-const UsersDaoPostgresDB = require('./dao/postgresDB/usersDaoPostgresDB');
-const MessagesDaoPostgresDB = require('./dao/postgresDB/messagesDaoPostgresDB');
+const MessagesDaoMySqlDB = require('./dao/mysqlDB/messagesDaoMySql/messagesDaoMySql');
+const UsersDaoPostgresDB = require('./dao/postgresDB/usersDaoPostgresDB/usersDaoPostgresDB');
+const MessagesDaoPostgresDB = require('./dao/postgresDB/messagesDaoPostgresDB/messagesDaoPostgresDB');
 const config = require('../config');
 
 function ChatDAL() {
@@ -66,7 +66,7 @@ ChatDAL.prototype.readPrivateMessages = async function (sender, receiver) {
     return await this.messagesDAO.readBySenderAndReceiver(sender, receiver);
 };
 
-ChatDAL.prototype.createMessage = async function (message) {
+ChatDAL.prototype.createMessage = async function (message) { //good
     await this.messagesDAO.create(message);
 };
 
@@ -74,19 +74,19 @@ ChatDAL.prototype.readAllUsers = async function () {
     return await this.usersDAO.readAll();
 };
 
-ChatDAL.prototype.createUser = async function (user) {
+ChatDAL.prototype.createUser = async function (user) { //good
     await this.usersDAO.create(user);
 };
 
-ChatDAL.prototype.read = async function (user) {
+ChatDAL.prototype.read = async function (user) { //good
     return await this.usersDAO.read(user);
 };
 
-ChatDAL.prototype.readUser = async function (email, password) {
+ChatDAL.prototype.readUser = async function (email, password) { //good
     return await this.usersDAO.readUser(email, password);
 };
 
-ChatDAL.prototype.readUserToId = async function (id) {
+ChatDAL.prototype.readUserToId = async function (id) { //good
     return await this.usersDAO.readUserToId(id);
 };
 
