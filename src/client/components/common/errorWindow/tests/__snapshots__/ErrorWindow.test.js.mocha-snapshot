@@ -1,0 +1,189 @@
+exports["ErrorWindow snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "function",
+    "props": {
+      "children": [
+        {
+          "type": "button",
+          "props": {
+            "className": "settings close",
+            "onClick": "handleHide",
+            "children": {
+              "type": "img",
+              "props": {
+                "src": "src/client/assets/icons/close.png",
+                "width": "20",
+                "height": "20"
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "error",
+            "children": {
+              "type": "h3",
+              "props": {
+                "children": ""
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "button",
+        "props": {
+          "className": "settings close",
+          "onClick": "handleHide",
+          "children": {
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "error",
+          "children": {
+            "type": "h3",
+            "props": {
+              "children": ""
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "h3",
+          "props": {
+            "children": ""
+          },
+          "rendered": ""
+        }
+      }
+    ]
+  },
+  "type": "Fragment",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "button",
+        "props": {
+          "className": "settings close",
+          "onClick": "handleHide",
+          "children": {
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      },
+      "type": "button",
+      "props": {
+        "className": "settings close",
+        "onClick": "handleHide"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            }
+          },
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "error",
+          "children": {
+            "type": "h3",
+            "props": {
+              "children": ""
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "h3",
+          "props": {
+            "children": ""
+          },
+          "rendered": ""
+        }
+      },
+      "type": "div",
+      "props": {
+        "className": "error"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "h3",
+            "props": {
+              "children": ""
+            },
+            "rendered": ""
+          },
+          "type": "h3",
+          "props": {}
+        }
+      ]
+    }
+  ]
+};
+

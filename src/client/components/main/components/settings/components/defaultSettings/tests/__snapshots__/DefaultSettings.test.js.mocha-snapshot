@@ -1,0 +1,16 @@
+exports["DefaultSettings snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "button",
+    "props": {
+      "className": "button",
+      "onClick": "setDefaultSettings"
+    }
+  },
+  "type": "button",
+  "props": {
+    "className": "button",
+    "onClick": "setDefaultSettings"
+  }
+};
+

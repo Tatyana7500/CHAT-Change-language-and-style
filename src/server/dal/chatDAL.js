@@ -66,7 +66,7 @@ ChatDAL.prototype.readPrivateMessages = async function (sender, receiver) {
     return await this.messagesDAO.readBySenderAndReceiver(sender, receiver);
 };
 
-ChatDAL.prototype.createMessage = async function (message) { //good
+ChatDAL.prototype.createMessage = async function (message) {
     await this.messagesDAO.create(message);
 };
 
@@ -74,19 +74,19 @@ ChatDAL.prototype.readAllUsers = async function () {
     return await this.usersDAO.readAll();
 };
 
-ChatDAL.prototype.createUser = async function (user) { //good
+ChatDAL.prototype.createUser = async function (user) {
     await this.usersDAO.create(user);
 };
 
-ChatDAL.prototype.read = async function (user) { //good
+ChatDAL.prototype.read = async function (user) {
     return await this.usersDAO.read(user);
 };
 
-ChatDAL.prototype.readUser = async function (email, password) { //good
+ChatDAL.prototype.readUser = async function (email, password) {
     return await this.usersDAO.readUser(email, password);
 };
 
-ChatDAL.prototype.readUserToId = async function (id) { //good
+ChatDAL.prototype.readUserToId = async function (id) {
     return await this.usersDAO.readUserToId(id);
 };
 
@@ -95,7 +95,7 @@ ChatDAL.prototype.mergeMessageAndUser = function (messages, users) {
 
     for (let i = 0; i < messages.length; i++) {
         for (let j = 0; j < users.length; j++) {
-            if (users[j]._id == messages[i].sender) {
+            if (users[j]._id === messages[i].sender) {
                 const message = {
                     message: messages[i].message,
                     date: messages[i].date,

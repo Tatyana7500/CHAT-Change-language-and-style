@@ -1,0 +1,106 @@
+exports["ErrorWindow snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "button",
+    "props": {
+      "className": "settings",
+      "onClick": "handleShow",
+      "children": {
+        "type": "img",
+        "props": {
+          "src": "src/client/assets/icons/settings.png",
+          "width": "50",
+          "height": "50"
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "img",
+      "props": {
+        "src": "src/client/assets/icons/settings.png",
+        "width": "50",
+        "height": "50"
+      }
+    }
+  },
+  "type": "button",
+  "props": {
+    "className": "settings",
+    "onClick": "handleShow"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "img",
+        "props": {
+          "src": "src/client/assets/icons/settings.png",
+          "width": "50",
+          "height": "50"
+        }
+      },
+      "type": "img",
+      "props": {
+        "src": "src/client/assets/icons/settings.png",
+        "width": "50",
+        "height": "50"
+      }
+    }
+  ]
+};
+
+exports["ButtonSettings snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "button",
+    "props": {
+      "className": "settings",
+      "onClick": "handleShow",
+      "children": {
+        "type": "img",
+        "props": {
+          "src": "src/client/assets/icons/settings.png",
+          "width": "50",
+          "height": "50"
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "img",
+      "props": {
+        "src": "src/client/assets/icons/settings.png",
+        "width": "50",
+        "height": "50"
+      }
+    }
+  },
+  "type": "button",
+  "props": {
+    "className": "settings",
+    "onClick": "handleShow"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "img",
+        "props": {
+          "src": "src/client/assets/icons/settings.png",
+          "width": "50",
+          "height": "50"
+        }
+      },
+      "type": "img",
+      "props": {
+        "src": "src/client/assets/icons/settings.png",
+        "width": "50",
+        "height": "50"
+      }
+    }
+  ]
+};
+

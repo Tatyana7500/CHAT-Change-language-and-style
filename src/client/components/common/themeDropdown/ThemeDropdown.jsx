@@ -13,8 +13,8 @@ const SettingTheme = (props) => {
 };
 
 SettingTheme.propTypes = {
-    changeTheme: PropTypes.func.isRequired,
     theme: PropTypes.string.isRequired,
+    changeTheme: PropTypes.func.isRequired,
 };
 
 export default SettingTheme;

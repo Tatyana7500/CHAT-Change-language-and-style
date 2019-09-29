@@ -1,0 +1,20 @@
+exports["PrivateCheckbox snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "input",
+    "props": {
+      "className": "radio-privateChat",
+      "type": "checkbox",
+      "onChange": "changeActivePrivateChat",
+      "checked": true
+    }
+  },
+  "type": "input",
+  "props": {
+    "className": "radio-privateChat",
+    "type": "checkbox",
+    "onChange": "changeActivePrivateChat",
+    "checked": true
+  }
+};
+

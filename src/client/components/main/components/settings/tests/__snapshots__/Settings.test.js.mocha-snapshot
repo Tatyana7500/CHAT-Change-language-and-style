@@ -1,0 +1,1153 @@
+exports["Settings snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "function",
+    "props": {
+      "children": [
+        {
+          "type": "button",
+          "props": {
+            "className": "settings close",
+            "onClick": "handleHide",
+            "children": {
+              "type": "img",
+              "props": {
+                "src": "src/client/assets/icons/close.png",
+                "width": "20",
+                "height": "20"
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "modal__settings",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "modal__settings-theme",
+                  "children": [
+                    {
+                      "type": "p",
+                      "props": {},
+                      "_store": {}
+                    },
+                    {
+                      "type": "SettingTheme",
+                      "props": {
+                        "theme": "",
+                        "changeTheme": "changeTheme"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "modal__settings-language",
+                  "children": [
+                    {
+                      "type": "p",
+                      "props": {},
+                      "_store": {}
+                    },
+                    {
+                      "type": "SettingLanguage",
+                      "props": {
+                        "defaultCountry": "",
+                        "changeLanguage": "changeLanguage"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "modal__settings",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "modal__settings-emoji",
+                  "children": [
+                    {
+                      "type": "p",
+                      "props": {},
+                      "_store": {}
+                    },
+                    {
+                      "type": "SettingEmoji",
+                      "props": {
+                        "emoji": true,
+                        "changeActiveEmoji": "changeActiveEmoji"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "modal__settings-private",
+                  "children": [
+                    {
+                      "type": "p",
+                      "props": {},
+                      "_store": {}
+                    },
+                    {
+                      "type": "SettingPrivateChat",
+                      "props": {
+                        "privateChat": true,
+                        "changeActivePrivateChat": "changeActivePrivateChat"
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "modal__settings",
+            "children": [
+              {
+                "type": "p",
+                "props": {},
+                "_store": {}
+              },
+              {
+                "type": "SettingDefault",
+                "props": {
+                  "translate": "translate",
+                  "setDefaultSettings": "setDefaultSettings"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "button",
+        "props": {
+          "className": "settings close",
+          "onClick": "handleHide",
+          "children": {
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-theme",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingTheme",
+                    "props": {
+                      "theme": "",
+                      "changeTheme": "changeTheme"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-language",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingLanguage",
+                    "props": {
+                      "defaultCountry": "",
+                      "changeLanguage": "changeLanguage"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-theme",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingTheme",
+                  "props": {
+                    "theme": "",
+                    "changeTheme": "changeTheme"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingTheme",
+                "props": {
+                  "theme": "",
+                  "changeTheme": "changeTheme"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-language",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingLanguage",
+                  "props": {
+                    "defaultCountry": "",
+                    "changeLanguage": "changeLanguage"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingLanguage",
+                "props": {
+                  "defaultCountry": "",
+                  "changeLanguage": "changeLanguage"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-emoji",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingEmoji",
+                    "props": {
+                      "emoji": true,
+                      "changeActiveEmoji": "changeActiveEmoji"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-private",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingPrivateChat",
+                    "props": {
+                      "privateChat": true,
+                      "changeActivePrivateChat": "changeActivePrivateChat"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-emoji",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingEmoji",
+                  "props": {
+                    "emoji": true,
+                    "changeActiveEmoji": "changeActiveEmoji"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingEmoji",
+                "props": {
+                  "emoji": true,
+                  "changeActiveEmoji": "changeActiveEmoji"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-private",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingPrivateChat",
+                  "props": {
+                    "privateChat": true,
+                    "changeActivePrivateChat": "changeActivePrivateChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingPrivateChat",
+                "props": {
+                  "privateChat": true,
+                  "changeActivePrivateChat": "changeActivePrivateChat"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "p",
+              "props": {},
+              "_store": {}
+            },
+            {
+              "type": "SettingDefault",
+              "props": {
+                "translate": "translate",
+                "setDefaultSettings": "setDefaultSettings"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "p",
+            "props": {}
+          },
+          {
+            "nodeType": "function",
+            "type": "SettingDefault",
+            "props": {
+              "translate": "translate",
+              "setDefaultSettings": "setDefaultSettings"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "type": "Fragment",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "button",
+        "props": {
+          "className": "settings close",
+          "onClick": "handleHide",
+          "children": {
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      },
+      "type": "button",
+      "props": {
+        "className": "settings close",
+        "onClick": "handleHide"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "img",
+            "props": {
+              "src": "src/client/assets/icons/close.png",
+              "width": "20",
+              "height": "20"
+            }
+          },
+          "type": "img",
+          "props": {
+            "src": "src/client/assets/icons/close.png",
+            "width": "20",
+            "height": "20"
+          }
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-theme",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingTheme",
+                    "props": {
+                      "theme": "",
+                      "changeTheme": "changeTheme"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-language",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingLanguage",
+                    "props": {
+                      "defaultCountry": "",
+                      "changeLanguage": "changeLanguage"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-theme",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingTheme",
+                  "props": {
+                    "theme": "",
+                    "changeTheme": "changeTheme"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingTheme",
+                "props": {
+                  "theme": "",
+                  "changeTheme": "changeTheme"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-language",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingLanguage",
+                  "props": {
+                    "defaultCountry": "",
+                    "changeLanguage": "changeLanguage"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingLanguage",
+                "props": {
+                  "defaultCountry": "",
+                  "changeLanguage": "changeLanguage"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "modal__settings"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-theme",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingTheme",
+                  "props": {
+                    "theme": "",
+                    "changeTheme": "changeTheme"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingTheme",
+                "props": {
+                  "theme": "",
+                  "changeTheme": "changeTheme"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "modal__settings-theme"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              "type": "p",
+              "props": {}
+            },
+            {
+              "node": {
+                "nodeType": "function",
+                "type": "SettingTheme",
+                "props": {
+                  "theme": "",
+                  "changeTheme": "changeTheme"
+                }
+              },
+              "type": "SettingTheme",
+              "props": {
+                "theme": "",
+                "changeTheme": "changeTheme"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-language",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingLanguage",
+                  "props": {
+                    "defaultCountry": "",
+                    "changeLanguage": "changeLanguage"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingLanguage",
+                "props": {
+                  "defaultCountry": "",
+                  "changeLanguage": "changeLanguage"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "modal__settings-language"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              "type": "p",
+              "props": {}
+            },
+            {
+              "node": {
+                "nodeType": "function",
+                "type": "SettingLanguage",
+                "props": {
+                  "defaultCountry": "",
+                  "changeLanguage": "changeLanguage"
+                }
+              },
+              "type": "SettingLanguage",
+              "props": {
+                "defaultCountry": "",
+                "changeLanguage": "changeLanguage"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-emoji",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingEmoji",
+                    "props": {
+                      "emoji": true,
+                      "changeActiveEmoji": "changeActiveEmoji"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "div",
+              "props": {
+                "className": "modal__settings-private",
+                "children": [
+                  {
+                    "type": "p",
+                    "props": {},
+                    "_store": {}
+                  },
+                  {
+                    "type": "SettingPrivateChat",
+                    "props": {
+                      "privateChat": true,
+                      "changeActivePrivateChat": "changeActivePrivateChat"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-emoji",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingEmoji",
+                  "props": {
+                    "emoji": true,
+                    "changeActiveEmoji": "changeActiveEmoji"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingEmoji",
+                "props": {
+                  "emoji": true,
+                  "changeActiveEmoji": "changeActiveEmoji"
+                }
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-private",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingPrivateChat",
+                  "props": {
+                    "privateChat": true,
+                    "changeActivePrivateChat": "changeActivePrivateChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingPrivateChat",
+                "props": {
+                  "privateChat": true,
+                  "changeActivePrivateChat": "changeActivePrivateChat"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "modal__settings"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-emoji",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingEmoji",
+                  "props": {
+                    "emoji": true,
+                    "changeActiveEmoji": "changeActiveEmoji"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingEmoji",
+                "props": {
+                  "emoji": true,
+                  "changeActiveEmoji": "changeActiveEmoji"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "modal__settings-emoji"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              "type": "p",
+              "props": {}
+            },
+            {
+              "node": {
+                "nodeType": "function",
+                "type": "SettingEmoji",
+                "props": {
+                  "emoji": true,
+                  "changeActiveEmoji": "changeActiveEmoji"
+                }
+              },
+              "type": "SettingEmoji",
+              "props": {
+                "emoji": true,
+                "changeActiveEmoji": "changeActiveEmoji"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "modal__settings-private",
+              "children": [
+                {
+                  "type": "p",
+                  "props": {},
+                  "_store": {}
+                },
+                {
+                  "type": "SettingPrivateChat",
+                  "props": {
+                    "privateChat": true,
+                    "changeActivePrivateChat": "changeActivePrivateChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              {
+                "nodeType": "function",
+                "type": "SettingPrivateChat",
+                "props": {
+                  "privateChat": true,
+                  "changeActivePrivateChat": "changeActivePrivateChat"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "modal__settings-private"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "p",
+                "props": {}
+              },
+              "type": "p",
+              "props": {}
+            },
+            {
+              "node": {
+                "nodeType": "function",
+                "type": "SettingPrivateChat",
+                "props": {
+                  "privateChat": true,
+                  "changeActivePrivateChat": "changeActivePrivateChat"
+                }
+              },
+              "type": "SettingPrivateChat",
+              "props": {
+                "privateChat": true,
+                "changeActivePrivateChat": "changeActivePrivateChat"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "modal__settings",
+          "children": [
+            {
+              "type": "p",
+              "props": {},
+              "_store": {}
+            },
+            {
+              "type": "SettingDefault",
+              "props": {
+                "translate": "translate",
+                "setDefaultSettings": "setDefaultSettings"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "p",
+            "props": {}
+          },
+          {
+            "nodeType": "function",
+            "type": "SettingDefault",
+            "props": {
+              "translate": "translate",
+              "setDefaultSettings": "setDefaultSettings"
+            }
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "modal__settings"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "p",
+            "props": {}
+          },
+          "type": "p",
+          "props": {}
+        },
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "SettingDefault",
+            "props": {
+              "translate": "translate",
+              "setDefaultSettings": "setDefaultSettings"
+            }
+          },
+          "type": "SettingDefault",
+          "props": {
+            "translate": "translate",
+            "setDefaultSettings": "setDefaultSettings"
+          }
+        }
+      ]
+    }
+  ]
+};
+

@@ -1,0 +1,296 @@
+exports["ChatBlock snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "massage messageSender",
+      "children": [
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__name",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__email",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "span",
+          "props": {
+            "className": "massage__text",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__time",
+            "children": ""
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__name",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__email",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "span",
+        "props": {
+          "className": "massage__text",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__time",
+          "children": ""
+        },
+        "rendered": ""
+      }
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "massage messageSender"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__name",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__name"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__email",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__email"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "span",
+        "props": {
+          "className": "massage__text",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "span",
+      "props": {
+        "className": "massage__text"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__time",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__time"
+      }
+    }
+  ]
+};
+
+exports["ChatCloud snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "massage messageSender",
+      "children": [
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__name",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__email",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "span",
+          "props": {
+            "className": "massage__text",
+            "children": ""
+          },
+          "_store": {}
+        },
+        {
+          "type": "p",
+          "props": {
+            "className": "massage__time",
+            "children": ""
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__name",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__email",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "span",
+        "props": {
+          "className": "massage__text",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__time",
+          "children": ""
+        },
+        "rendered": ""
+      }
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "massage messageSender"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__name",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__name"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__email",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__email"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "span",
+        "props": {
+          "className": "massage__text",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "span",
+      "props": {
+        "className": "massage__text"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "massage__time",
+          "children": ""
+        },
+        "rendered": ""
+      },
+      "type": "p",
+      "props": {
+        "className": "massage__time"
+      }
+    }
+  ]
+};
+

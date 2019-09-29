@@ -1,0 +1,278 @@
+exports["UsersList snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "content",
+      "children": {
+        "type": "div",
+        "props": {
+          "className": "user",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "users__title",
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "users__info"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "users__info"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            []
+          ]
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "div",
+      "props": {
+        "className": "user",
+        "children": [
+          {
+            "type": "div",
+            "props": {
+              "className": "users__title",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          },
+          []
+        ]
+      },
+      "rendered": [
+        {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "users__title",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                },
+                "_store": {}
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "div",
+              "props": {
+                "className": "users__info"
+              }
+            },
+            {
+              "nodeType": "host",
+              "type": "div",
+              "props": {
+                "className": "users__info"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "type": "div",
+  "props": {
+    "className": "content"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "user",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "users__title",
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "users__info"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "users__info"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            []
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "users__title",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "user"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "users__title",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "className": "users__info"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "users__title"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              },
+              "type": "div",
+              "props": {
+                "className": "users__info"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "className": "users__info"
+                }
+              },
+              "type": "div",
+              "props": {
+                "className": "users__info"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+

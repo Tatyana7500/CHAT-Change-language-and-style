@@ -1,4 +1,16 @@
-const assert = require('assert');
+import React from 'react';
+import ButtonSettings from '../ButtonSettings';
 
-describe('ButtonSettings', () => {
+const mockProps = {
+    handleShow: () => {},
+};
+
+describe('ButtonSettings snapshot', () => {
+    it('should render correctly', () => {
+        const wrapper = shallow(
+            <ButtonSettings {...mockProps} />
+        );
+
+        expect(wrapper).matchSnapshot();
+    });
 });
