@@ -188,8 +188,6 @@ class Main extends Component {
         const data = await util.sendGetRequest(logic.generateUrl(this.state.chat, this.state.idUserSender, this.state.idUserReceiver));
         await this.setState({
             mainWindowState: constants.MESSAGE,
-        });
-        await this.setState({
             messagesList: data,
         });
     };

@@ -115,7 +115,8 @@ exports["Login snapshot/should render correctly(0)"] = {
             ]
           },
           "_store": {}
-        }
+        },
+        null
       ]
     },
     "rendered": [
@@ -402,7 +403,8 @@ exports["Login snapshot/should render correctly(0)"] = {
             ]
           }
         ]
-      }
+      },
+      null
     ]
   },
   "type": "div",
