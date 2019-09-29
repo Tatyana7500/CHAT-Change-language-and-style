@@ -1,0 +1,634 @@
+exports["ChatBlock snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "mainWindow",
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "wrapper mainWindow__wrapper",
+            "children": {
+              "type": "div",
+              "props": {
+                "className": "nav-main",
+                "children": [
+                  {
+                    "type": "button",
+                    "props": {
+                      "onClick": "clickUsers",
+                      "className": "buttons-main__btn buttons-main__btn_user",
+                      "id": "getUsers"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "button",
+                    "props": {
+                      "onClick": "clickChat",
+                      "className": "buttons-main__btn buttons-main__btn_chat",
+                      "id": "getChat"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        false,
+        false
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "wrapper mainWindow__wrapper",
+          "children": {
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "nav-main",
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      },
+      false,
+      false
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "mainWindow"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "wrapper mainWindow__wrapper",
+          "children": {
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "nav-main",
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      },
+      "type": "div",
+      "props": {
+        "className": "wrapper mainWindow__wrapper"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "nav-main"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                }
+              },
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                }
+              },
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+exports["ContentBlock snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "mainWindow",
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "wrapper mainWindow__wrapper",
+            "children": {
+              "type": "div",
+              "props": {
+                "className": "nav-main",
+                "children": [
+                  {
+                    "type": "button",
+                    "props": {
+                      "onClick": "clickUsers",
+                      "className": "buttons-main__btn buttons-main__btn_user",
+                      "id": "getUsers"
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "button",
+                    "props": {
+                      "onClick": "clickChat",
+                      "className": "buttons-main__btn buttons-main__btn_chat",
+                      "id": "getChat"
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            }
+          },
+          "_store": {}
+        },
+        false,
+        false
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "wrapper mainWindow__wrapper",
+          "children": {
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "nav-main",
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      },
+      false,
+      false
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "mainWindow"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "wrapper mainWindow__wrapper",
+          "children": {
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          }
+        },
+        "rendered": {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "nav-main",
+            "children": [
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "nodeType": "host",
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      },
+      "type": "div",
+      "props": {
+        "className": "wrapper mainWindow__wrapper"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "nav-main",
+              "children": [
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickUsers",
+                    "className": "buttons-main__btn buttons-main__btn_user",
+                    "id": "getUsers"
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "onClick": "clickChat",
+                    "className": "buttons-main__btn buttons-main__btn_chat",
+                    "id": "getChat"
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                }
+              },
+              {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                }
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "nav-main"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickUsers",
+                  "className": "buttons-main__btn buttons-main__btn_user",
+                  "id": "getUsers"
+                }
+              },
+              "type": "button",
+              "props": {
+                "onClick": "clickUsers",
+                "className": "buttons-main__btn buttons-main__btn_user",
+                "id": "getUsers"
+              }
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "button",
+                "props": {
+                  "onClick": "clickChat",
+                  "className": "buttons-main__btn buttons-main__btn_chat",
+                  "id": "getChat"
+                }
+              },
+              "type": "button",
+              "props": {
+                "onClick": "clickChat",
+                "className": "buttons-main__btn buttons-main__btn_chat",
+                "id": "getChat"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+

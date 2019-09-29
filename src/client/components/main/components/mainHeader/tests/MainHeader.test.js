@@ -1,4 +1,19 @@
-const assert = require('assert');
+import React from 'react';
+import MainHeader from '../MainHeader.jsx';
 
-describe('MainHeader', () => {
+const mockProps = {
+    name: '',
+    email: '',
+    translate: () => {},
+    clickButtonLogOut: () => {},
+};
+
+describe('MainHeader snapshot', () => {
+    it('should render correctly', () => {
+        const wrapper = shallow(
+            <MainHeader {...mockProps} />
+        );
+
+        expect(wrapper).matchSnapshot();
+    });
 });

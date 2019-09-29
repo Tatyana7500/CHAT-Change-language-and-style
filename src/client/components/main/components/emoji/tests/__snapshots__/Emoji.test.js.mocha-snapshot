@@ -1,0 +1,48 @@
+exports["Emoji snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "children": {
+        "type": "p",
+        "props": {
+          "className": "getEmojiButton",
+          "children": "😊"
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "p",
+      "props": {
+        "className": "getEmojiButton",
+        "children": "😊"
+      },
+      "rendered": "😊"
+    }
+  },
+  "type": "div",
+  "props": {},
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "p",
+        "props": {
+          "className": "getEmojiButton",
+          "children": "😊"
+        },
+        "rendered": "😊"
+      },
+      "type": "p",
+      "props": {
+        "className": "getEmojiButton"
+      },
+      "children": [
+        "😊"
+      ]
+    }
+  ]
+};
+

@@ -1,0 +1,996 @@
+exports["MainHeader snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "header",
+      "children": {
+        "type": "div",
+        "props": {
+          "className": "wrapper header__wrapper",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "info",
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "children": [
+                        {
+                          "type": "span",
+                          "props": {
+                            "children": [
+                              null,
+                              ":"
+                            ]
+                          },
+                          "_store": {}
+                        },
+                        {
+                          "type": "span",
+                          "props": {
+                            "className": "info__name",
+                            "children": ""
+                          },
+                          "_store": {}
+                        }
+                      ]
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "children": [
+                        {
+                          "type": "span",
+                          "props": {
+                            "children": [
+                              null,
+                              ":"
+                            ]
+                          },
+                          "_store": {}
+                        },
+                        {
+                          "type": "span",
+                          "props": {
+                            "className": "info__email",
+                            "children": ""
+                          },
+                          "_store": {}
+                        }
+                      ]
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "a",
+              "props": {
+                "href": "/login",
+                "onClick": "clickButtonLogOut",
+                "className": "btn_logout btn-main logout",
+                "id": "logOut"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "_store": {}
+      }
+    },
+    "rendered": {
+      "nodeType": "host",
+      "type": "div",
+      "props": {
+        "className": "wrapper header__wrapper",
+        "children": [
+          {
+            "type": "div",
+            "props": {
+              "className": "info",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__name",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__email",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "_store": {}
+          },
+          {
+            "type": "a",
+            "props": {
+              "href": "/login",
+              "onClick": "clickButtonLogOut",
+              "className": "btn_logout btn-main logout",
+              "id": "logOut"
+            },
+            "_store": {}
+          }
+        ]
+      },
+      "rendered": [
+        {
+          "nodeType": "host",
+          "type": "div",
+          "props": {
+            "className": "info",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__name",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              },
+              {
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__email",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "rendered": [
+            {
+              "nodeType": "host",
+              "type": "div",
+              "props": {
+                "children": [
+                  {
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "info__name",
+                      "children": ""
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "rendered": [
+                {
+                  "nodeType": "host",
+                  "type": "span",
+                  "props": {
+                    "children": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  "rendered": [
+                    null,
+                    ":"
+                  ]
+                },
+                {
+                  "nodeType": "host",
+                  "type": "span",
+                  "props": {
+                    "className": "info__name",
+                    "children": ""
+                  },
+                  "rendered": ""
+                }
+              ]
+            },
+            {
+              "nodeType": "host",
+              "type": "div",
+              "props": {
+                "children": [
+                  {
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "info__email",
+                      "children": ""
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "rendered": [
+                {
+                  "nodeType": "host",
+                  "type": "span",
+                  "props": {
+                    "children": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  "rendered": [
+                    null,
+                    ":"
+                  ]
+                },
+                {
+                  "nodeType": "host",
+                  "type": "span",
+                  "props": {
+                    "className": "info__email",
+                    "children": ""
+                  },
+                  "rendered": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "host",
+          "type": "a",
+          "props": {
+            "href": "/login",
+            "onClick": "clickButtonLogOut",
+            "className": "btn_logout btn-main logout",
+            "id": "logOut"
+          }
+        }
+      ]
+    }
+  },
+  "type": "div",
+  "props": {
+    "className": "header"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "wrapper header__wrapper",
+          "children": [
+            {
+              "type": "div",
+              "props": {
+                "className": "info",
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "children": [
+                        {
+                          "type": "span",
+                          "props": {
+                            "children": [
+                              null,
+                              ":"
+                            ]
+                          },
+                          "_store": {}
+                        },
+                        {
+                          "type": "span",
+                          "props": {
+                            "className": "info__name",
+                            "children": ""
+                          },
+                          "_store": {}
+                        }
+                      ]
+                    },
+                    "_store": {}
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "children": [
+                        {
+                          "type": "span",
+                          "props": {
+                            "children": [
+                              null,
+                              ":"
+                            ]
+                          },
+                          "_store": {}
+                        },
+                        {
+                          "type": "span",
+                          "props": {
+                            "className": "info__email",
+                            "children": ""
+                          },
+                          "_store": {}
+                        }
+                      ]
+                    },
+                    "_store": {}
+                  }
+                ]
+              },
+              "_store": {}
+            },
+            {
+              "type": "a",
+              "props": {
+                "href": "/login",
+                "onClick": "clickButtonLogOut",
+                "className": "btn_logout btn-main logout",
+                "id": "logOut"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "info",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__name",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__email",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__name",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__name",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              },
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__email",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__email",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "nodeType": "host",
+            "type": "a",
+            "props": {
+              "href": "/login",
+              "onClick": "clickButtonLogOut",
+              "className": "btn_logout btn-main logout",
+              "id": "logOut"
+            }
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "wrapper header__wrapper"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "div",
+            "props": {
+              "className": "info",
+              "children": [
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__name",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                },
+                {
+                  "type": "div",
+                  "props": {
+                    "children": [
+                      {
+                        "type": "span",
+                        "props": {
+                          "children": [
+                            null,
+                            ":"
+                          ]
+                        },
+                        "_store": {}
+                      },
+                      {
+                        "type": "span",
+                        "props": {
+                          "className": "info__email",
+                          "children": ""
+                        },
+                        "_store": {}
+                      }
+                    ]
+                  },
+                  "_store": {}
+                }
+              ]
+            },
+            "rendered": [
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__name",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__name",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              },
+              {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__email",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__email",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              }
+            ]
+          },
+          "type": "div",
+          "props": {
+            "className": "info"
+          },
+          "children": [
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__name",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__name",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              },
+              "type": "div",
+              "props": {},
+              "children": [
+                {
+                  "node": {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  "type": "span",
+                  "props": {},
+                  "children": [
+                    ":"
+                  ]
+                },
+                {
+                  "node": {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__name",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  },
+                  "type": "span",
+                  "props": {
+                    "className": "info__name"
+                  }
+                }
+              ]
+            },
+            {
+              "node": {
+                "nodeType": "host",
+                "type": "div",
+                "props": {
+                  "children": [
+                    {
+                      "type": "span",
+                      "props": {
+                        "children": [
+                          null,
+                          ":"
+                        ]
+                      },
+                      "_store": {}
+                    },
+                    {
+                      "type": "span",
+                      "props": {
+                        "className": "info__email",
+                        "children": ""
+                      },
+                      "_store": {}
+                    }
+                  ]
+                },
+                "rendered": [
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__email",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  }
+                ]
+              },
+              "type": "div",
+              "props": {},
+              "children": [
+                {
+                  "node": {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "children": [
+                        null,
+                        ":"
+                      ]
+                    },
+                    "rendered": [
+                      null,
+                      ":"
+                    ]
+                  },
+                  "type": "span",
+                  "props": {},
+                  "children": [
+                    ":"
+                  ]
+                },
+                {
+                  "node": {
+                    "nodeType": "host",
+                    "type": "span",
+                    "props": {
+                      "className": "info__email",
+                      "children": ""
+                    },
+                    "rendered": ""
+                  },
+                  "type": "span",
+                  "props": {
+                    "className": "info__email"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "a",
+            "props": {
+              "href": "/login",
+              "onClick": "clickButtonLogOut",
+              "className": "btn_logout btn-main logout",
+              "id": "logOut"
+            }
+          },
+          "type": "a",
+          "props": {
+            "href": "/login",
+            "onClick": "clickButtonLogOut",
+            "className": "btn_logout btn-main logout",
+            "id": "logOut"
+          }
+        }
+      ]
+    }
+  ]
+};
+

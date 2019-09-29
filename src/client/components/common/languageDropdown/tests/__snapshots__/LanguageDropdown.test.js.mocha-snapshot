@@ -1,0 +1,62 @@
+exports["ErrorWindow snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "class",
+    "type": "ReactFlagsSelect",
+    "props": {
+      "className": "ReactFlagsSelect",
+      "onSelect": "changeLanguage",
+      "defaultCountry": "",
+      "countries": [
+        "US",
+        "DE",
+        "AE",
+        "UA"
+      ],
+      "customLabels": {
+        "US": "EN",
+        "DE": "DE",
+        "AE": "AE",
+        "UA": "UA"
+      },
+      "selectedSize": 16,
+      "optionsSize": 14,
+      "placeholder": "Select a country",
+      "showSelectedLabel": true,
+      "showOptionLabel": true,
+      "alignOptions": "right",
+      "disabled": false,
+      "blackList": false,
+      "searchable": false,
+      "searchPlaceholder": "Search"
+    }
+  },
+  "type": "ReactFlagsSelect",
+  "props": {
+    "className": "ReactFlagsSelect",
+    "onSelect": "changeLanguage",
+    "defaultCountry": "",
+    "countries": [
+      "US",
+      "DE",
+      "AE",
+      "UA"
+    ],
+    "customLabels": {
+      "US": "EN",
+      "DE": "DE",
+      "AE": "AE",
+      "UA": "UA"
+    },
+    "selectedSize": 16,
+    "optionsSize": 14,
+    "placeholder": "Select a country",
+    "showSelectedLabel": true,
+    "showOptionLabel": true,
+    "alignOptions": "right",
+    "disabled": false,
+    "blackList": false,
+    "searchable": false,
+    "searchPlaceholder": "Search"
+  }
+};
+
