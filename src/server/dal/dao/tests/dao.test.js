@@ -1,4 +1,1 @@
-const assert = require('assert');
-
-describe('Dao', () => {
-});
+import Dao from '../dao';

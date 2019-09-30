@@ -14,7 +14,7 @@ import './Main.css';
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.socket = openSocket(constants.LOCALHOST);
+        // this.socket = openSocket(constants.LOCALHOST);
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -43,29 +43,29 @@ class Main extends Component {
             name: '',
         };
 
-        this.socket.on(constants.MESSAGE, (message) => {
-             if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-             }
-        });
-
-        this.socket.on(constants.MESSAGEPRIVATE, (message) => {
-            if (message.name !== this.state.name && this.state.chat === constants.PRIVATE && message.id === this.state.idUserReceiver) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-            }
-        });
-
-        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
-        this.socket.on(constants.ONLINE, online => {
-            this.setState(state => ({
-                ...state,
-                usersOnline: online,
-            }));
-        });
+        // this.socket.on(constants.MESSAGE, (message) => {
+        //      if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
+        //         this.setState({
+        //             messagesList: [...this.state.messagesList, message],
+        //         });
+        //      }
+        // });
+        //
+        // this.socket.on(constants.MESSAGEPRIVATE, (message) => {
+        //     if (message.name !== this.state.name && this.state.chat === constants.PRIVATE && message.id === this.state.idUserReceiver) {
+        //         this.setState({
+        //             messagesList: [...this.state.messagesList, message],
+        //         });
+        //     }
+        // });
+        //
+        // this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
+        // this.socket.on(constants.ONLINE, online => {
+        //     this.setState(state => ({
+        //         ...state,
+        //         usersOnline: online,
+        //     }));
+        // });
     }
 
     static propTypes = {

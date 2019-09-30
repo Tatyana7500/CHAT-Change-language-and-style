@@ -99,30 +99,29 @@ describe('UsersDaoMySql', () => {
     describe('readUser', () => {
         let dao;
         let sandbox;
-        let mockUser;
         let mockParams;
-        let mockPromise;
-        let actualResult;
-        let mockConnection;
         let expectedResult;
+        let mockConnection;
+        let actualResult;
 
         before(async () => {
             dao = new UsersDaoMySqlDB();
             sandbox = sinon.createSandbox();
-            mockParams = {
-                email: 'email1',
-                password: 'password1',
-            };
-            mockUser = [];
-            mockPromise = {
-                then: sandbox.stub(),
-            };
             mockConnection = {
-                execute: sandbox.stub().returns(mockPromise),
+                execute: sandbox.stub().returns([{}]),
             };
-            expectedResult = [];
+            mockParams = {
+                email: '',
+                password: '',
+            };
+            expectedResult = {
+                // id: '',
+                // email: '',
+                // name: '',
+                // password: '',
+            };
             sandbox.stub(dao, 'connection').get(() => mockConnection);
-            sandbox.stub(util, 'convertUser').returns(mockUser);
+            sandbox.stub(util, 'convertUser').returns({});
 
             actualResult = await dao.readUser(mockParams.email, mockParams.password);
         });
@@ -131,31 +130,30 @@ describe('UsersDaoMySql', () => {
             sandbox.restore();
         });
 
-        it('should be equal', () => {
-            assert.deepEqual(actualResult, expectedResult);
-        });
-
-        it('should calls .execute()', () => {
-            sinon.assert.calledOnce(mockConnection.execute);
-        });
-
-        it('should called util.convertUser', () => {
+        it('should called util.convertUser()', () => {
             sinon.assert.calledOnce(util.convertUser);
         });
 
-        it('should called util.convertUser', () => {
-            sinon.assert.calledWith(util.convertUser, mockUser);
+        it('should called util.convertUser() with args', () => {
+            sinon.assert.calledWith(util.convertUser, {});
         });
 
-        it('should calls .execute() with args', () => {
+        it('should called .execute()', () => {
+            sinon.assert.calledOnce(mockConnection.execute);
+        });
+
+        it('should called .execute() with args', () => {
             sinon.assert.calledWith(mockConnection.execute, `SELECT * FROM users WHERE email='${mockParams.email}' AND password='${mockParams.password}'`);
+        });
+
+        it('Should be equal', () => {
+            assert.deepEqual(actualResult, expectedResult);
         });
     });
 
     describe('readAll', () => {
         let dao;
         let sandbox;
-        let mockUsers;
         let mockResult;
         let actualResult;
         let mockConnection;
@@ -200,22 +198,50 @@ describe('UsersDaoMySql', () => {
         });
     });
 
-    // describe('readUserToId', () => {
-    //     let dao;
-    //     let sandbox;
-    //     let expectedResult;
-    //     let actualResult;
-    //
-    //     before(async () => {
-    //         dao = new UsersDaoMySqlDB();
-    //         sandbox = sinon.createSandbox();
-    //         expectedResult = {};
-    //     });
-    //
-    //     after(() => {
-    //         sandbox.restore();
-    //     });
-    //
-    //     it();
-    // });
+    describe('readUserToId', () => {
+        let dao;
+        let mockId;
+        let sandbox;
+        let expectedResult;
+        let mockConnection;
+        let actualResult;
+
+        before(async () => {
+            dao = new UsersDaoMySqlDB();
+            sandbox = sinon.createSandbox();
+            expectedResult = {};
+            mockId = 0;
+            mockConnection = {
+                query: sandbox.stub().returns([{}]),
+            };
+            sandbox.stub(dao, 'connection').get(() => mockConnection);
+            sandbox.stub(util, 'convertUsers').returns(expectedResult);
+
+            actualResult = await dao.readUserToId(mockId);
+        });
+
+        after(() => {
+            sandbox.restore();
+        });
+
+        it('should called util.convertUsers()', () => {
+            sinon.assert.calledOnce(util.convertUsers);
+        });
+
+        it('should called util.convertUsers() with args', () => {
+            sinon.assert.calledWith(util.convertUsers, expectedResult);
+        });
+
+        it('should called .query()', () => {
+            sinon.assert.calledOnce(mockConnection.query);
+        });
+
+        it('should called .query() with args', () => {
+            sinon.assert.calledWith(mockConnection.query, `SELECT * FROM users WHERE _id=${parseInt(mockId)}`);
+        });
+
+        it('Should be equal', () => {
+            assert.deepEqual(actualResult, expectedResult);
+        });
+    });
 });

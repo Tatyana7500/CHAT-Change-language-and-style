@@ -93,7 +93,7 @@ describe('Login submitLoginForm() status 200', () => {
     });
 });
 
-describe('Login submitLoginForm() satus !200', () => {
+describe('Login submitLoginForm() status !200', () => {
 
     let sandbox;
     let component;

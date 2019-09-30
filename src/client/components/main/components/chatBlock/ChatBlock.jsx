@@ -1,6 +1,7 @@
 import HatCloud from '../chatCloud/ChatCloud.jsx';
 import Emoji from '../emoji/Emoji.jsx';
 import PropTypes from 'prop-types';
+import logic from './logic';
 import React from 'react';
 import './ChatBlock.css';
 
@@ -22,7 +23,7 @@ const HatBlock = props => {
         <div className='content'>
             <div className='massageField' id='massageField'>
                 {messages.map((item, index) => {
-                    const date = new Date(parseInt(item.date)).toTimeString().slice(0, 8);
+                    const date = logic.parseDate(item.date);
 
                     return (
                         <HatCloud key={index} name={item.name} text={item.message} email={item.email} date={date} nameSender={name}/>

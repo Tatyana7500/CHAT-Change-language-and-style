@@ -35,36 +35,18 @@ MessagesDaoMySqlDB.prototype.create = async function (obj) {
 };
 
 MessagesDaoMySqlDB.prototype.readByReceiver = async function (receiver) {
-    let messages;
-
-    await this.connection.query(`SELECT * FROM messages WHERE receiver = '${receiver}'`)
-        .then(([rows]) => {
-            messages = rows;
-        });
-
-    messages = util.convertMessages(messages);
-
-    return messages;
+    const result = this.connection.query(`SELECT * FROM messages WHERE receiver = '${receiver}'`);
+    return util.convertMessages(result[0]);
 };
 
 MessagesDaoMySqlDB.prototype.readBySenderAndReceiver = async function (sender, receiver) {
-    let sent;
-    let received;
+    const resultSend = await this.connection.query(`SELECT * FROM messages WHERE sender = '${sender}' AND receiver = '${receiver}'`);
 
-    await this.connection.query(`SELECT * FROM messages WHERE sender = '${sender}' AND receiver = '${receiver}'`)
-        .then(([rows]) => {
-            sent = rows;
-        });
+    const resultReceived = await this.connection.query(`SELECT * FROM messages WHERE sender = '${receiver}' AND receiver = '${sender}'`);
 
-    await this.connection.query(`SELECT * FROM messages WHERE sender = '${receiver}' AND receiver = '${sender}'`)
-        .then(([rows]) => {
-            received = rows;
-        });
+    let messages = [...resultSend[0], ...resultReceived[0]];
 
-    let messages = [...sent, ...received];
-
-    messages = util.convertMessages(messages);
-    messages.sort(util.dynamicSort('date'));
+    messages = util.convertMessages(messages).sort(util.dynamicSort('date'));
 
     return messages;
 };
