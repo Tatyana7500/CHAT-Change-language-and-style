@@ -35,7 +35,7 @@ MessagesDaoMySqlDB.prototype.create = async function (obj) {
 };
 
 MessagesDaoMySqlDB.prototype.readByReceiver = async function (receiver) {
-    const result = this.connection.query(`SELECT * FROM messages WHERE receiver = '${receiver}'`);
+    const result = await this.connection.query(`SELECT * FROM messages WHERE receiver = '${receiver}'`);
     return util.convertMessages(result[0]);
 };
 
@@ -44,11 +44,9 @@ MessagesDaoMySqlDB.prototype.readBySenderAndReceiver = async function (sender, r
 
     const resultReceived = await this.connection.query(`SELECT * FROM messages WHERE sender = '${receiver}' AND receiver = '${sender}'`);
 
-    let messages = [...resultSend[0], ...resultReceived[0]];
+    const messages = [...resultSend[0], ...resultReceived[0]];
 
-    messages = util.convertMessages(messages).sort(util.dynamicSort('date'));
-
-    return messages;
+    return util.convertMessages(messages).sort(util.dynamicSort('date'));
 };
 
 module.exports = MessagesDaoMySqlDB;

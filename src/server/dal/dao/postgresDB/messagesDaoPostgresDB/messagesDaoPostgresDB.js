@@ -52,6 +52,9 @@ MessagesDaoPostgresDB.prototype.readBySenderAndReceiver = async function (sender
             received = result.rows;
         });
 
+
+    console.log(sent);
+    console.log(received);
     const messages = [...sent, ...received];
     messages.sort(util.dynamicSort('date'));
 

@@ -35,7 +35,9 @@ UsersDaoMySqlDB.prototype.create = async function (obj) {
 
 UsersDaoMySqlDB.prototype.readUser = async function (email, password) {
     const result = await this.connection.execute(`SELECT * FROM users WHERE email='${email}' AND password='${password}'`);
-    return util.convertUser(result[0]);
+    const user = result[0][0];
+
+    return util.convertUser(user);
 };
 
 UsersDaoMySqlDB.prototype.readAll = async function () {

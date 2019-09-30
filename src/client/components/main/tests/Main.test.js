@@ -8,7 +8,7 @@ const mockProps = {
     logout: () => { },
     theme: 'light',
     translate: () => { },
-    privatChat: true,
+    privateChat: true,
     changeTheme: () => { },
     changeLanguage: () => { },
     defaultCountry: 'US',
@@ -16,12 +16,39 @@ const mockProps = {
     setDefaultSettings: () => { },
     changeActivePrivateChat: () => { },
 };
+let mockSocket;
+let mockId;
+let mockJSON;
+
+mockSocket = {
+    on: () => { },
+    emit: () => { },
+};
+mockId = {
+    _id: 'id',
+};
 
 describe('Main snapshot', () => {
-    it('Main render corectly', () => {
-        const component = shallow(
+    let sandbox;
+    let component;
+    let mockSocket;
+    before(() => {
+        sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
+        component = shallow(
             <Main {...mockProps} />
         );
+    });
+
+    after(() => {
+        sandbox.restore();
+        sandbox.reset();
+    });
+    it('Main render corectly', () => {
         expect(component).matchSnapshot();
     });
 });
@@ -29,9 +56,14 @@ describe('Main snapshot', () => {
 describe('handleShow()', () => {
     let sandbox;
     let component;
-
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -54,8 +86,14 @@ describe('handleShow()', () => {
 describe('handleHide()', () => {
     let sandbox;
     let component;
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -77,8 +115,14 @@ describe('clickButtonUser()', () => {
     let sandbox;
     let component;
     let mockUrl;
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -112,8 +156,14 @@ describe('clickButtonChat()', () => {
     let component;
     let mockState;
     let mockResult;
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -129,6 +179,11 @@ describe('clickButtonChat()', () => {
         sandbox.stub(logic, 'generateUrl').returns(mockResult);
         sandbox.stub(component.instance(), 'setState');
         component.instance().clickButtonChat();
+    });
+
+    after(() => {
+        sandbox.restore();
+        sandbox.reset();
     });
 
     it('should called once setState', () => {
@@ -152,9 +207,14 @@ describe('showEmoji()', () => {
     let sandbox;
     let component;
     let event;
-
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -187,9 +247,14 @@ describe('closeMenu()', () => {
     let sandbox;
     let component;
     let event;
-
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -222,8 +287,14 @@ describe('updateMessageValue()', () => {
     let sandbox;
     let component;
     let mockEvent;
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -250,9 +321,14 @@ describe('clickButtonSend', () => {
     let component;
     let sandbox;
     let mockUrl;
-
+    let mockSocket;
     before(() => {
         sandbox = sinon.createSandbox();
+        mockSocket = {
+            on: () => { },
+        };
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -286,8 +362,12 @@ describe('getItemFromLocalStorage()', () => {
     let sandbox;
     let mockObj;
     let parseObj;
+    let JSONstub;
     before(() => {
         sandbox = sinon.createSandbox();
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+
+        sandbox.stub(Main.prototype, 'componentDidMount');
         component = shallow(
             <Main {...mockProps} />
         );
@@ -311,6 +391,7 @@ describe('getItemFromLocalStorage()', () => {
 
     after(() => {
         sandbox.reset();
+        sandbox.restore();
     });
 
     it('should called Once setState', () => {
@@ -321,7 +402,138 @@ describe('getItemFromLocalStorage()', () => {
         sinon.assert.calledOnce(logic.getLocalStorage);
     });
 
-    it('should called Once getLocalStorage', () => {
+    it('should called Once JSON.parse', () => {
         sinon.assert.calledThrice(JSON.parse);
+    });
+});
+
+describe('OpenPrivatChat()', () => {
+    let component;
+    let sandbox;
+    let mockEvent;
+    let mockState;
+    let mockResult;
+
+    before(() => {
+        sandbox = sinon.createSandbox();
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(JSON, 'parse').returns(mockId);
+        sandbox.stub(Main.prototype, 'componentDidMount');
+        component = shallow(
+            <Main {...mockProps} />
+        );
+        mockEvent = {
+            target: {
+                id: 'id',
+            },
+        };
+        mockState = {
+            chat: 'PUBLIC',
+            idUserSender: null,
+            idUserReceiver: 'ALL',
+        };
+        mockResult = `http://localhost:8080/messages?chat=${mockState.chat}&sender=${mockState.idUserSender}&receiver=${mockState.idUserReceiver}`;
+        component.state();
+        sandbox.stub(util, 'sendGet');
+        sandbox.stub(component.instance(), 'setState');
+        sandbox.stub(logic, 'generateUrl').returns(mockResult);
+        component.instance().openPrivateChat(mockEvent);
+    });
+
+    after(() => {
+        sandbox.reset();
+        sandbox.restore();
+    });
+    it('should called Once setState', () => {
+        sinon.assert.calledThrice(component.instance().setState);
+    });
+
+    it('should called once sendGet', () => {
+        sinon.assert.calledOnce(util.sendGet);
+    });
+
+    it('should called once generateUrl with arg', () => {
+        sinon.assert.calledWith(logic.generateUrl, mockState.chat, mockState.idUserSender, mockState.idUserReceiver);
+    });
+
+    it('should called once sendGet with arg', () => {
+        sinon.assert.calledWith(util.sendGet, mockResult);
+    });
+});
+
+describe('addEmoji()', () => {
+    let component;
+    let sandbox;
+    let mockEvent;
+
+    before(() => {
+        sandbox = sinon.createSandbox();
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(JSON, 'parse').returns(mockId);
+        sandbox.stub(Main.prototype, 'componentDidMount');
+        component = shallow(
+            <Main {...mockProps} />
+        );
+
+        mockEvent = {
+            native: 'smile',
+        };
+
+        sandbox.stub(component.instance(), 'setState');
+        component.instance().addEmoji(mockEvent);
+    });
+
+    after(() => {
+        sandbox.restore();
+        sandbox.reset();
+    });
+    it('should called Once setState', () => {
+        sinon.assert.calledOnce(component.instance().setState);
+    });
+});
+
+describe('Soket', () => {
+    let main;
+    let sandbox;
+
+    before(() => {
+        sandbox = sinon.createSandbox();
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(JSON, 'parse').returns(mockId);
+        sandbox.stub(Main.prototype, 'componentDidMount');
+        main = new Main();
+    });
+
+    after(() => {
+        sandbox.reset();
+        sandbox.restore();
+
+    });
+
+    it('should create socket', () => {
+        sinon.assert.calledOnce(Main.createSocket);
+    });
+});
+
+describe('ComponentDidMount', () => {
+    let component;
+    let sandbox;
+
+    before(() => {
+        sandbox = sinon.createSandbox();
+        sandbox.stub(Main, 'createSocket').returns(mockSocket);
+        sandbox.stub(JSON, 'parse').returns(mockId);
+        component = new Main();
+        sandbox.stub(component, 'getItemFromLocalStorage');
+        component.componentDidMount();
+    });
+
+    after(() => {
+        sandbox.restore();
+        sandbox.reset();
+    });
+
+    it('should called once getItemFromLocalStorage', () => {
+        sinon.assert.calledOnce(component.getItemFromLocalStorage);
     });
 });

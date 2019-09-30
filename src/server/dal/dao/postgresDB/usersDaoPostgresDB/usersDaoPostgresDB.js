@@ -17,7 +17,7 @@ UsersDaoPostgresDB.prototype.initialize = function () {
 
     const url = config.settings.postgres.connectionPostgres;
 
-    this.client = new Client(url);
+    this.client = UsersDaoPostgresDB.createPgClient(url);
     this.client.connect()
         .then(() => {
             this.connection = true;
@@ -25,6 +25,10 @@ UsersDaoPostgresDB.prototype.initialize = function () {
         .catch((error) => {
             console.log(error);
         });
+};
+
+UsersDaoPostgresDB.createPgClient = url => {
+    return new Client(url);
 };
 
 UsersDaoPostgresDB.prototype.create = async function (obj) {

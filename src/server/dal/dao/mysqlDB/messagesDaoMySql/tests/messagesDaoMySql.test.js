@@ -149,7 +149,6 @@ describe('MessagesDaoMySqlDB', () => {
         let dao;
         let sandbox;
         let mockParams;
-        let mockMessages;
         let actualResult;
         let expectedResult;
         let mockConnection;
@@ -161,16 +160,41 @@ describe('MessagesDaoMySqlDB', () => {
                 query: sandbox.stub(),
             };
             mockParams = {
-                sender: '',
-                receiver: '',
+                sender: 'sender',
+                receiver: 'receiver',
             };
-            mockConnection.query.withArgs(`SELECT * FROM messages WHERE sender = '${mockParams.sender}' AND receiver = '${mockParams.receiver}'`).returns([{}]);
-            mockConnection.query.withArgs(`SELECT * FROM messages WHERE sender = '${mockParams.receiver}' AND receiver = '${mockParams.sender}'`).returns([{}]);
-            mockMessages = [...[{}], ...[{}]];
-            expectedResult = [{}, {}];
+            const sentResult = [[{
+                _id: '_id-1',
+                date: 1,
+                sender: 'sender-1',
+                textRow: 'textRow-1',
+                message: 'message-1',
+                receiver: 'receiver-1',
+            }]];
+            const receivedResult = [[{
+                _id: '_id-2',
+                date: 2,
+                sender: 'sender-2',
+                message: 'message-2',
+                textRow: 'textRow-2',
+                receiver: 'receiver-2',
+            }]];
+            mockConnection.query.withArgs(`SELECT * FROM messages WHERE sender = '${mockParams.sender}' AND receiver = '${mockParams.receiver}'`).returns(sentResult);
+            mockConnection.query.withArgs(`SELECT * FROM messages WHERE sender = '${mockParams.receiver}' AND receiver = '${mockParams.sender}'`).returns(receivedResult);
+            expectedResult = [{
+                _id: '_id-1',
+                date: 1,
+                sender: 'sender-1',
+                message: 'message-1',
+                receiver: 'receiver-1',
+            }, {
+                _id: '_id-2',
+                date: 2,
+                sender: 'sender-2',
+                message: 'message-2',
+                receiver: 'receiver-2',
+            }];
             sandbox.stub(dao, 'connection').get(() => mockConnection);
-            sandbox.stub(util, 'convertMessages').returns([{}, {}]);
-            sandbox.stub(util, 'dynamicSort').returns([{}, {}]);
 
             actualResult = await dao.readBySenderAndReceiver(mockParams.sender, mockParams.receiver);
         });
@@ -179,14 +203,8 @@ describe('MessagesDaoMySqlDB', () => {
             sandbox.restore();
         });
 
-        // it('Should called twice .query()', () => {
-        //     sinon.assert.calledOnce(mockConnection.query); //(mockConnection.query);
-        // });
-        // it('Should be equal', () => {
-        //     assert.deepEqual(actualResult, expectedResult);
-        // });
         it('Should called once util.convertMessages()', () => {
-            sinon.assert.calledOnce(util.convertMessages);
+            assert.deepEqual(actualResult, expectedResult);
         });
     });
 });

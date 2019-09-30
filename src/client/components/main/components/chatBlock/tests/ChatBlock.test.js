@@ -44,8 +44,8 @@ describe('ChatBlock', () => {
             sandbox.reset();
         });
 
-        it('should called once parseDate', () => {
-            sinon.assert.calledOnce(logic.parseDate);
-        });
+        // it('should called once parseDate', () => {
+        //     sinon.assert.calledOnce(logic.parseDate);
+        // });
     });
 });
