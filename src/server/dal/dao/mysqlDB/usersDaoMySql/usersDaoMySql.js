@@ -34,27 +34,19 @@ UsersDaoMySqlDB.prototype.create = async function (obj) {
 };
 
 UsersDaoMySqlDB.prototype.readUser = async function (email, password) {
-    let user = [];
+    const result = await this.connection.execute(`SELECT * FROM users WHERE email='${email}' AND password='${password}'`);
+    const user = result[0][0];
 
-    await this.connection.execute(`SELECT * FROM users WHERE email='${email}' AND password='${password}'`)
-        .then(([rows]) => {
-            user = rows[0];
-        });
-
-    user = util.convertUser(user);
-
-    return user;
+    return util.convertUser(user);
 };
 
 UsersDaoMySqlDB.prototype.readAll = async function () {
     const result = await this.connection.query('SELECT * FROM users');
-
     return util.convertUsers(result[0]);
 };
 
 UsersDaoMySqlDB.prototype.readUserToId = async function (id) {
     const result = await this.connection.query(`SELECT * FROM users WHERE _id=${parseInt(id)}`);
-
     return util.convertUsers(result[0]);
 };
 

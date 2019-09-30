@@ -21,7 +21,7 @@ module.exports = {
         postgres: {
             connectionPostgres: {
                 user: 'postgres',
-                password: 'qazxsw01',
+                password: 'knopka',
                 host: 'localhost',
                 port: 5432,
                 database: 'chatDB',

@@ -14,7 +14,6 @@ import './Main.css';
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.socket = openSocket(constants.LOCALHOST);
         this.state = {
             mainWindowState: constants.USERS,
             idUserReceiver: constants.ALL,
@@ -43,14 +42,21 @@ class Main extends Component {
             name: '',
         };
 
-        this.socket.on(constants.MESSAGE, (message) => {
-             if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
+        this.socket = Main.createSocket();
+        this.subscribeSocket();
+    }
+
+    subscribeMessages = () => {
+        this.socket.on(constants.MESSAGE, message => {
+            if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
                 this.setState({
                     messagesList: [...this.state.messagesList, message],
                 });
-             }
+            }
         });
+    };
 
+    subscribePrivateMessages = () => {
         this.socket.on(constants.MESSAGEPRIVATE, (message) => {
             if (message.name !== this.state.name && this.state.chat === constants.PRIVATE && message.id === this.state.idUserReceiver) {
                 this.setState({
@@ -58,15 +64,24 @@ class Main extends Component {
                 });
             }
         });
+    };
 
-        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
+    subscribeOnline = () => {
         this.socket.on(constants.ONLINE, online => {
             this.setState(state => ({
                 ...state,
                 usersOnline: online,
             }));
         });
-    }
+
+        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
+    };
+
+    subscribeSocket = () => {
+        this.subscribeMessages();
+        this.subscribeOnline();
+        this.subscribePrivateMessages();
+    };
 
     static propTypes = {
         emoji: PropTypes.bool.isRequired,
@@ -80,6 +95,10 @@ class Main extends Component {
         changeActiveEmoji: PropTypes.func.isRequired,
         setDefaultSettings: PropTypes.func.isRequired,
         changeActivePrivateChat: PropTypes.func.isRequired,
+    };
+
+    static createSocket = () => {
+        return openSocket(constants.LOCALHOST);
     };
 
     handleShow = () => {
@@ -174,8 +193,8 @@ class Main extends Component {
         });
     };
 
-    async componentDidMount() {
-        await this.getItemFromLocalStorage();
+    componentDidMount() {
+        this.getItemFromLocalStorage();
     }
 
     openPrivateChat = async (e) => {

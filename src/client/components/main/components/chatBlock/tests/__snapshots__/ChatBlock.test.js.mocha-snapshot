@@ -293,3 +293,593 @@ exports["ChatBlock snapshot/should render correctly(0)"] = {
   ]
 };
 
+exports["ChatBlock/ChatBlock snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "content",
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "massageField",
+            "id": "massageField",
+            "children": []
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "footer",
+            "children": [
+              {
+                "type": "textarea",
+                "props": {
+                  "id": "textMassage",
+                  "className": "textMassage",
+                  "value": "",
+                  "onChange": "updateMessageValue"
+                },
+                "_store": {}
+              },
+              {
+                "type": "Emoji",
+                "props": {
+                  "clickButtonSend": "clickButtonSend",
+                  "emojiMenu": false,
+                  "showEmoji": "showEmoji",
+                  "addEmoji": "addEmoji",
+                  "translate": "translate"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickButtonSend",
+                  "className": "btn btn-main footer__send"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "massageField",
+          "id": "massageField",
+          "children": []
+        },
+        "rendered": []
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "footer",
+          "children": [
+            {
+              "type": "textarea",
+              "props": {
+                "id": "textMassage",
+                "className": "textMassage",
+                "value": "",
+                "onChange": "updateMessageValue"
+              },
+              "_store": {}
+            },
+            {
+              "type": "Emoji",
+              "props": {
+                "clickButtonSend": "clickButtonSend",
+                "emojiMenu": false,
+                "showEmoji": "showEmoji",
+                "addEmoji": "addEmoji",
+                "translate": "translate"
+              },
+              "_store": {}
+            },
+            {
+              "type": "button",
+              "props": {
+                "onClick": "clickButtonSend",
+                "className": "btn btn-main footer__send"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "content"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "massageField",
+          "id": "massageField",
+          "children": []
+        },
+        "rendered": []
+      },
+      "type": "div",
+      "props": {
+        "className": "massageField",
+        "id": "massageField"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "footer",
+          "children": [
+            {
+              "type": "textarea",
+              "props": {
+                "id": "textMassage",
+                "className": "textMassage",
+                "value": "",
+                "onChange": "updateMessageValue"
+              },
+              "_store": {}
+            },
+            {
+              "type": "Emoji",
+              "props": {
+                "clickButtonSend": "clickButtonSend",
+                "emojiMenu": false,
+                "showEmoji": "showEmoji",
+                "addEmoji": "addEmoji",
+                "translate": "translate"
+              },
+              "_store": {}
+            },
+            {
+              "type": "button",
+              "props": {
+                "onClick": "clickButtonSend",
+                "className": "btn btn-main footer__send"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "footer"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          "type": "textarea",
+          "props": {
+            "id": "textMassage",
+            "className": "textMassage",
+            "value": "",
+            "onChange": "updateMessageValue"
+          }
+        },
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          "type": "Emoji",
+          "props": {
+            "clickButtonSend": "clickButtonSend",
+            "emojiMenu": false,
+            "showEmoji": "showEmoji",
+            "addEmoji": "addEmoji",
+            "translate": "translate"
+          }
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          },
+          "type": "button",
+          "props": {
+            "onClick": "clickButtonSend",
+            "className": "btn btn-main footer__send"
+          }
+        }
+      ]
+    }
+  ]
+};
+
+exports["ChatBlock/parseDate/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "host",
+    "type": "div",
+    "props": {
+      "className": "content",
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "className": "massageField",
+            "id": "massageField",
+            "children": []
+          },
+          "_store": {}
+        },
+        {
+          "type": "div",
+          "props": {
+            "className": "footer",
+            "children": [
+              {
+                "type": "textarea",
+                "props": {
+                  "id": "textMassage",
+                  "className": "textMassage",
+                  "value": "",
+                  "onChange": "updateMessageValue"
+                },
+                "_store": {}
+              },
+              {
+                "type": "Emoji",
+                "props": {
+                  "clickButtonSend": "clickButtonSend",
+                  "emojiMenu": false,
+                  "showEmoji": "showEmoji",
+                  "addEmoji": "addEmoji",
+                  "translate": "translate"
+                },
+                "_store": {}
+              },
+              {
+                "type": "button",
+                "props": {
+                  "onClick": "clickButtonSend",
+                  "className": "btn btn-main footer__send"
+                },
+                "_store": {}
+              }
+            ]
+          },
+          "_store": {}
+        }
+      ]
+    },
+    "rendered": [
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "massageField",
+          "id": "massageField",
+          "children": []
+        },
+        "rendered": []
+      },
+      {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "footer",
+          "children": [
+            {
+              "type": "textarea",
+              "props": {
+                "id": "textMassage",
+                "className": "textMassage",
+                "value": "",
+                "onChange": "updateMessageValue"
+              },
+              "_store": {}
+            },
+            {
+              "type": "Emoji",
+              "props": {
+                "clickButtonSend": "clickButtonSend",
+                "emojiMenu": false,
+                "showEmoji": "showEmoji",
+                "addEmoji": "addEmoji",
+                "translate": "translate"
+              },
+              "_store": {}
+            },
+            {
+              "type": "button",
+              "props": {
+                "onClick": "clickButtonSend",
+                "className": "btn btn-main footer__send"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "type": "div",
+  "props": {
+    "className": "content"
+  },
+  "children": [
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "massageField",
+          "id": "massageField",
+          "children": []
+        },
+        "rendered": []
+      },
+      "type": "div",
+      "props": {
+        "className": "massageField",
+        "id": "massageField"
+      }
+    },
+    {
+      "node": {
+        "nodeType": "host",
+        "type": "div",
+        "props": {
+          "className": "footer",
+          "children": [
+            {
+              "type": "textarea",
+              "props": {
+                "id": "textMassage",
+                "className": "textMassage",
+                "value": "",
+                "onChange": "updateMessageValue"
+              },
+              "_store": {}
+            },
+            {
+              "type": "Emoji",
+              "props": {
+                "clickButtonSend": "clickButtonSend",
+                "emojiMenu": false,
+                "showEmoji": "showEmoji",
+                "addEmoji": "addEmoji",
+                "translate": "translate"
+              },
+              "_store": {}
+            },
+            {
+              "type": "button",
+              "props": {
+                "onClick": "clickButtonSend",
+                "className": "btn btn-main footer__send"
+              },
+              "_store": {}
+            }
+          ]
+        },
+        "rendered": [
+          {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          }
+        ]
+      },
+      "type": "div",
+      "props": {
+        "className": "footer"
+      },
+      "children": [
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "textarea",
+            "props": {
+              "id": "textMassage",
+              "className": "textMassage",
+              "value": "",
+              "onChange": "updateMessageValue"
+            }
+          },
+          "type": "textarea",
+          "props": {
+            "id": "textMassage",
+            "className": "textMassage",
+            "value": "",
+            "onChange": "updateMessageValue"
+          }
+        },
+        {
+          "node": {
+            "nodeType": "function",
+            "type": "Emoji",
+            "props": {
+              "clickButtonSend": "clickButtonSend",
+              "emojiMenu": false,
+              "showEmoji": "showEmoji",
+              "addEmoji": "addEmoji",
+              "translate": "translate"
+            }
+          },
+          "type": "Emoji",
+          "props": {
+            "clickButtonSend": "clickButtonSend",
+            "emojiMenu": false,
+            "showEmoji": "showEmoji",
+            "addEmoji": "addEmoji",
+            "translate": "translate"
+          }
+        },
+        {
+          "node": {
+            "nodeType": "host",
+            "type": "button",
+            "props": {
+              "onClick": "clickButtonSend",
+              "className": "btn btn-main footer__send"
+            }
+          },
+          "type": "button",
+          "props": {
+            "onClick": "clickButtonSend",
+            "className": "btn btn-main footer__send"
+          }
+        }
+      ]
+    }
+  ]
+};
+

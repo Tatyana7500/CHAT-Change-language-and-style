@@ -1,9 +1,9 @@
-const MessagesDaoRedisDB = require('../messagesDaoRedis');
+const UsersDaoRedisDB = require('../usersDaoRedis');
 const sinon = require('sinon');
 const assert = require('assert');
 
-describe('MessagesDaoRedisDB', () => {
-    describe('MessagesDaoRedisDB', () => {
+describe('UsersDaoRedisDB', () => {
+    describe('UsersDaoRedisDB', () => {
         let expected = null;
 
         before(() => {
@@ -13,7 +13,7 @@ describe('MessagesDaoRedisDB', () => {
         });
 
         it('Should past!', () => {
-            const actual = new MessagesDaoRedisDB();
+            const actual = new UsersDaoRedisDB();
             assert.deepEqual(actual, expected);
         });
     });

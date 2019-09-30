@@ -1,0 +1,22 @@
+exports["Modal/Modal snapshot/should render correctly(0)"] = {
+  "node": {
+    "nodeType": "portal",
+    "props": {
+      "children": {},
+      "containerInfo": {}
+    },
+    "rendered": {}
+  },
+  "type": "Portal",
+  "props": {
+    "containerInfo": {}
+  },
+  "children": [
+    {
+      "node": {},
+      "type": "Component",
+      "props": {}
+    }
+  ]
+};
+
