@@ -2,6 +2,7 @@ import ButtonSettings from './components/buttonSettings/ButtonSettings.jsx';
 import ContentBlock from './components/contentBlock/ContentBlock.jsx';
 import MainHeader from './components/mainHeader/MainHeader.jsx';
 import Settings from './components/settings/Settings.jsx';
+import sockets from '../../utils/socketsHelper';
 import Modal from '../../libs/modal/Modal.jsx';
 import util from '../../utils/requestHelper';
 import constants from '../../../constants';
@@ -43,46 +44,9 @@ class Main extends Component {
         };
 
         this.socket = Main.createSocket();
-        this.subscribeSocket();
+        sockets.subscribeSocket(this.socket, this);
     }
-
-    subscribeMessages = () => {
-        this.socket.on(constants.MESSAGE, message => {
-            if (message.name !== this.state.name && this.state.chat === constants.PUBLIC) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-            }
-        });
-    };
-
-    subscribePrivateMessages = () => {
-        this.socket.on(constants.MESSAGEPRIVATE, (message) => {
-            if (message.name !== this.state.name && this.state.chat === constants.PRIVATE && message.id === this.state.idUserReceiver) {
-                this.setState({
-                    messagesList: [...this.state.messagesList, message],
-                });
-            }
-        });
-    };
-
-    subscribeOnline = () => {
-        this.socket.on(constants.ONLINE, online => {
-            this.setState(state => ({
-                ...state,
-                usersOnline: online,
-            }));
-        });
-
-        this.socket.emit(constants.ONLINE, JSON.parse(logic.getLocalStorage())._id);
-    };
-
-    subscribeSocket = () => {
-        this.subscribeMessages();
-        this.subscribeOnline();
-        this.subscribePrivateMessages();
-    };
-
+    
     static propTypes = {
         emoji: PropTypes.bool.isRequired,
         logout: PropTypes.func.isRequired,
@@ -98,7 +62,7 @@ class Main extends Component {
     };
 
     static createSocket = () => {
-        return openSocket(constants.LOCALHOST);
+        return openSocket(constants.LOCALHOST); //TODO: вынести в отдельный файл. ОБЯЗАТЕЛЬНО НЕ ЗАБЫТЬ!!
     };
 
     handleShow = () => {

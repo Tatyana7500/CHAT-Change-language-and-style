@@ -197,14 +197,9 @@ class App extends Component {
             changeActivePrivateChat,
         };
 
-        // const MainRoute = withAuthorization(Main, isAuthorized, redirect, logout, componentProps);
-
-        console.log('render App');
-
         return (
             <Router>
                 <Switch>
-                    {/*<Route exact path='/main' render={() => <MainRoute/>}/>*/}
                     <Route exact path='/main' render={props => (
                         <WithAuthorizationWrapper
                             logout={logout}
