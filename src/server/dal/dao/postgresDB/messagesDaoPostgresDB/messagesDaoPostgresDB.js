@@ -5,6 +5,7 @@ const util = require('../../util');
 
 function MessagesDaoPostgresDB() {
     this.connection = null;
+    this.client = null;
 }
 
 MessagesDaoPostgresDB.prototype = Object.create(DAO.prototype);
@@ -17,7 +18,7 @@ MessagesDaoPostgresDB.prototype.initialize = function () {
 
     const url = config.settings.postgres.connectionPostgres;
 
-    this.client = new Client(url);
+    this.client = MessagesDaoPostgresDB.createPgClient(url);
     this.client.connect()
         .then(() => {
             this.connection = true;
@@ -27,38 +28,27 @@ MessagesDaoPostgresDB.prototype.initialize = function () {
         });
 };
 
+MessagesDaoPostgresDB.createPgClient = url => {
+    return new Client(url);
+};
+
 MessagesDaoPostgresDB.prototype.create = async function (obj) {
     await this.client.query(`insert into messages(message, sender, receiver, date) values($1,$2,$3,$4)`, [obj.message, obj.sender, obj.receiver, obj.date]);
 };
 
 MessagesDaoPostgresDB.prototype.readByReceiver = async function (receiver) {
-    let messages;
-    await this.client.query('select * from messages where receiver = $1', [receiver])
-        .then((res) => messages = res.rows);
-
-    return messages;
+    return await this.client.query('select * from messages where receiver = $1', [receiver])
+        .then(res => res.rows);
 };
 
 MessagesDaoPostgresDB.prototype.readBySenderAndReceiver = async function (sender, receiver) {
-    let sent;
-    let received;
-    await this.client.query('select * from messages where sender = $1 and receiver = $2', [sender, receiver])
-        .then((result) => {
-            sent = result.rows;
-        });
+    const sent = await this.client.query('select * from messages where sender = $1 and receiver = $2', [sender, receiver]);
 
-    await this.client.query('select * from messages where sender = $1 and receiver = $2', [receiver, sender])
-        .then((result) => {
-            received = result.rows;
-        });
+    const received = await this.client.query('select * from messages where sender = $1 and receiver = $2', [receiver, sender]);
 
+    const messages = [...sent[0], ...received[0]];
 
-    console.log(sent);
-    console.log(received);
-    const messages = [...sent, ...received];
-    messages.sort(util.dynamicSort('date'));
-
-    return messages;
+    return messages.sort(util.dynamicSort('date'));
 };
 
 module.exports = MessagesDaoPostgresDB;
