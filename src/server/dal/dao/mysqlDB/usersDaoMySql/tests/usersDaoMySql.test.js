@@ -135,7 +135,7 @@ describe('UsersDaoMySql', () => {
         });
 
         it('should called util.convertUser() with args', () => {
-            sinon.assert.calledWith(util.convertUser, {});
+            sinon.assert.calledWith(util.convertUser, void 0);
         });
 
         it('should called .execute()', () => {

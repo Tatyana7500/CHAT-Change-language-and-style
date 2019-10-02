@@ -183,9 +183,7 @@ describe('UsersDaoPostgresDB', () => {
             dao = new UsersDaoPostgresDB();
             sandbox = sinon.createSandbox();
             mockId = void 0;
-            expectedResult = {
-                _id: void 0,
-            };
+            expectedResult = void 0;
             mockPromise = {
                 then: sandbox.stub().returns(expectedResult),
             };
