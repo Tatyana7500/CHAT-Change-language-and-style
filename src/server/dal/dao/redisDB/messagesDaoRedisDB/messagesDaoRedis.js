@@ -55,8 +55,7 @@ MessagesDaoRedisDB.prototype.readBySenderAndReceiver = async function (sender, r
         messages.push(JSON.parse(received[i]));
     }
 
-    messages.sort(util.dynamicSort('date'));
-    resolve(messages);
+    return messages.sort(util.dynamicSort('date'));
 };
 
 module.exports = MessagesDaoRedisDB;
