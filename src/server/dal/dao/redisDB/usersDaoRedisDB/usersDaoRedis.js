@@ -33,9 +33,8 @@ UsersDaoRedisDB.prototype.create = async function (object) {
 UsersDaoRedisDB.prototype.readUser = async function (email, password) {
     const string = await this.client.get('user_' + email);
     const user = JSON.parse(string);
-    if (user.email === email && user.password === password) {
-        return user;
-    }
+
+    return user.email === email && user.password === password ? user : null;
 };
 
 UsersDaoRedisDB.prototype.readAll = async function () {
